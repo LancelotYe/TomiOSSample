@@ -16,6 +16,7 @@
 		E2B72396204D1F5F00BD972F /* liveSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72395204D1F5F00BD972F /* liveSampleTests.m */; };
 		E2B723A1204D1F5F00BD972F /* liveSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723A0204D1F5F00BD972F /* liveSampleUITests.m */; };
 		E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723AF204D20E900BD972F /* RaceStateCell.m */; };
+		E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		E2B723A2204D1F5F00BD972F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2B723AE204D20E900BD972F /* RaceStateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateCell.h; sourceTree = "<group>"; };
 		E2B723AF204D20E900BD972F /* RaceStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateCell.m; sourceTree = "<group>"; };
+		E2C284C9204E9AC700FD3823 /* RaceStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateViewController.h; sourceTree = "<group>"; };
+		E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +111,7 @@
 				E2B7237D204D1F5F00BD972F /* AppDelegate.m */,
 				E2B7237F204D1F5F00BD972F /* ViewController.h */,
 				E2B72380204D1F5F00BD972F /* ViewController.m */,
-				E2B723AE204D20E900BD972F /* RaceStateCell.h */,
-				E2B723AF204D20E900BD972F /* RaceStateCell.m */,
+				E2C284C8204E9A5B00FD3823 /* cell布局显示collectionView数据 */,
 				E2B72382204D1F5F00BD972F /* Main.storyboard */,
 				E2B72385204D1F5F00BD972F /* Assets.xcassets */,
 				E2B72387204D1F5F00BD972F /* LaunchScreen.storyboard */,
@@ -135,6 +137,17 @@
 				E2B723A2204D1F5F00BD972F /* Info.plist */,
 			);
 			path = liveSampleUITests;
+			sourceTree = "<group>";
+		};
+		E2C284C8204E9A5B00FD3823 /* cell布局显示collectionView数据 */ = {
+			isa = PBXGroup;
+			children = (
+				E2B723AE204D20E900BD972F /* RaceStateCell.h */,
+				E2B723AF204D20E900BD972F /* RaceStateCell.m */,
+				E2C284C9204E9AC700FD3823 /* RaceStateViewController.h */,
+				E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */,
+			);
+			path = "cell布局显示collectionView数据";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +287,7 @@
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
+				E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

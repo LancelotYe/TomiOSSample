@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "RaceStateCell.h"
+#import "RaceStateViewController.h"
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @end
@@ -25,6 +25,7 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    self.navigationItem.title = @"首页";
 }
 
 
@@ -35,10 +36,14 @@ static NSString *cellID = @"cellID";
     return 100;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    RaceStateCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[RaceStateCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"cell布局collectionView用于直播数据";
+    }
+    
 //    cell.backgroundColor = [UIColor greenColor];
 //    if (indexPath.row == 2) {
 //        cell.backgroundColor = [UIColor redColor];
@@ -48,5 +53,9 @@ static NSString *cellID = @"cellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    testVCViewController *tctr = [[testVCViewController alloc] init];
 //    [self.navigationController pushViewController:tctr animated:YES];
+    if (indexPath.row == 0) {
+        RaceStateViewController *race = [[RaceStateViewController alloc] init];
+        [self.navigationController pushViewController:race animated:YES];
+    }
 }
 @end
