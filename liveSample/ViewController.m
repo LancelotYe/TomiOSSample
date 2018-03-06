@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RaceStateViewController.h"
+#import "StretchingableNavViewController.h"
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @end
@@ -33,7 +34,7 @@ static NSString *cellID = @"cellID";
     return 4;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 60;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
@@ -42,6 +43,8 @@ static NSString *cellID = @"cellID";
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"cell布局collectionView用于直播数据";
+    }else if (indexPath.row == 1){
+        cell.textLabel.text = @"可拉伸导航栏";
     }
     return cell;
 }
@@ -51,6 +54,9 @@ static NSString *cellID = @"cellID";
     if (indexPath.row == 0) {
         RaceStateViewController *race = [[RaceStateViewController alloc] init];
         [self.navigationController pushViewController:race animated:YES];
+    }else if(indexPath.row == 1){
+        StretchingableNavViewController *stretch = [[StretchingableNavViewController alloc] init];
+        [self.navigationController pushViewController:stretch animated:YES];
     }
 }
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */; };
+		28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CFC204ECEE000289238 /* StretchingNavBar.m */; };
 		E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7237D204D1F5F00BD972F /* AppDelegate.m */; };
 		E2B72381204D1F5F00BD972F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72380204D1F5F00BD972F /* ViewController.m */; };
 		E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B72382204D1F5F00BD972F /* Main.storyboard */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28018CF8204EC8FF00289238 /* StretchingableNavViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingableNavViewController.h; sourceTree = "<group>"; };
+		28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingableNavViewController.m; sourceTree = "<group>"; };
+		28018CFB204ECEE000289238 /* StretchingNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingNavBar.h; sourceTree = "<group>"; };
+		28018CFC204ECEE000289238 /* StretchingNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingNavBar.m; sourceTree = "<group>"; };
 		E2B72379204D1F5F00BD972F /* liveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B7237C204D1F5F00BD972F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E2B7237D204D1F5F00BD972F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +90,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28018CF7204EC8A800289238 /* 可拉伸导航栏 */ = {
+			isa = PBXGroup;
+			children = (
+				28018CF8204EC8FF00289238 /* StretchingableNavViewController.h */,
+				28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */,
+				28018CFB204ECEE000289238 /* StretchingNavBar.h */,
+				28018CFC204ECEE000289238 /* StretchingNavBar.m */,
+			);
+			path = "可拉伸导航栏";
+			sourceTree = "<group>";
+		};
 		E2B72370204D1F5E00BD972F = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +128,7 @@
 				E2B7237D204D1F5F00BD972F /* AppDelegate.m */,
 				E2B7237F204D1F5F00BD972F /* ViewController.h */,
 				E2B72380204D1F5F00BD972F /* ViewController.m */,
+				28018CF7204EC8A800289238 /* 可拉伸导航栏 */,
 				E2C284C8204E9A5B00FD3823 /* cell布局显示collectionView数据 */,
 				E2B72382204D1F5F00BD972F /* Main.storyboard */,
 				E2B72385204D1F5F00BD972F /* Assets.xcassets */,
@@ -286,8 +304,10 @@
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
+				28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */,
+				28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
