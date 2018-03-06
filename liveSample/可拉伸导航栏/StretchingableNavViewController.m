@@ -9,7 +9,7 @@
 #import "StretchingableNavViewController.h"
 #import "StretchingNavBar.h"
 #define screenW [UIScreen mainScreen].bounds.size.width
-@interface StretchingableNavViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface StretchingableNavViewController ()<UITableViewDelegate, UITableViewDataSource,StretchingNavBarlegate>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)UIImageView *bgView;
 @property(nonatomic, strong)StretchingNavBar *navbar;
@@ -50,10 +50,12 @@ static NSString *cellID = @"cellID";
     _navbar.leftImg = @"234";
     _navbar.rightImg = @"234";
     _navbar.tileColor = [UIColor greenColor];
-    
+    _navbar.delegate = self;
     [self.view addSubview:_navbar];
 }
-
+-(void)backClickaction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "liveSample/&#x53ef;&#x62c9;&#x4f38;&#x5bfc;&#x822a;&#x680f;/StretchingableNavViewController.m"
-            timestampString = "542042089.699048"
+            filePath = "liveSample/&#x53ef;&#x62c9;&#x4f38;&#x5bfc;&#x822a;&#x680f;/StretchingNavBar.m"
+            timestampString = "542042946.762791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-scrollViewDidScroll:"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-leftImgView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "liveSample/&#x53ef;&#x62c9;&#x4f38;&#x5bfc;&#x822a;&#x680f;/StretchingNavBar.m"
+            timestampString = "542042946.763061"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-backClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

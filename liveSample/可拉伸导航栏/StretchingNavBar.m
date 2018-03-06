@@ -27,6 +27,9 @@ CGFloat titleW = 200;
 - (UIImageView *)leftImgView{
     if (!_leftImgView) {
         _leftImgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (self.bounds.size.height - imgWH)*0.5 + 10, imgWH, imgWH)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backClick)];
+        _leftImgView.userInteractionEnabled = YES;
+        [_leftImgView addGestureRecognizer:tap];
     }
     return _leftImgView;
 }
@@ -36,6 +39,12 @@ CGFloat titleW = 200;
     }
     return _rightImgView;
 }
+- (void)backClick{
+    if ([self.delegate respondsToSelector:@selector(backClickaction)]) {
+        [self.delegate backClickaction];
+    }
+}
+
 - (instancetype)init{
     self = [super init];
     if (self) {

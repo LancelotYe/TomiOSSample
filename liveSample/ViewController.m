@@ -28,7 +28,10 @@ static NSString *cellID = @"cellID";
     [self.view addSubview:self.tableView];
     self.navigationItem.title = @"首页";
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 4;
