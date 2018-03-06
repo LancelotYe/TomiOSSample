@@ -25,9 +25,6 @@ static NSString *cellID = @"cellID";
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
 }
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -46,19 +43,7 @@ static NSString *cellID = @"cellID";
     
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    testVCViewController *tctr = [[testVCViewController alloc] init];
-    //    [self.navigationController pushViewController:tctr animated:YES];
-    
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

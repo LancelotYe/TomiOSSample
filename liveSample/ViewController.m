@@ -43,11 +43,6 @@ static NSString *cellID = @"cellID";
     if (indexPath.row == 0) {
         cell.textLabel.text = @"cell布局collectionView用于直播数据";
     }
-    
-//    cell.backgroundColor = [UIColor greenColor];
-//    if (indexPath.row == 2) {
-//        cell.backgroundColor = [UIColor redColor];
-//    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
