@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "RaceStateCell.h"
-#import "testVCViewController.h"
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @end
@@ -47,7 +46,7 @@ static NSString *cellID = @"cellID";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    testVCViewController *tctr = [[testVCViewController alloc] init];
-    [self.navigationController pushViewController:tctr animated:YES];
+//    testVCViewController *tctr = [[testVCViewController alloc] init];
+//    [self.navigationController pushViewController:tctr animated:YES];
 }
 @end

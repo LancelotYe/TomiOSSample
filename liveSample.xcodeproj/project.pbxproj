@@ -16,9 +16,6 @@
 		E2B72396204D1F5F00BD972F /* liveSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72395204D1F5F00BD972F /* liveSampleTests.m */; };
 		E2B723A1204D1F5F00BD972F /* liveSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723A0204D1F5F00BD972F /* liveSampleUITests.m */; };
 		E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723AF204D20E900BD972F /* RaceStateCell.m */; };
-		E2B723B3204D216B00BD972F /* TeamStatisticsGraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723B2204D216B00BD972F /* TeamStatisticsGraphCell.m */; };
-		E2B723B6204D218300BD972F /* TeamStatisticsDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723B5204D218300BD972F /* TeamStatisticsDataCell.m */; };
-		E2B723BB204E6BD600BD972F /* testVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723BA204E6BD600BD972F /* testVCViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,12 +54,6 @@
 		E2B723A2204D1F5F00BD972F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2B723AE204D20E900BD972F /* RaceStateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateCell.h; sourceTree = "<group>"; };
 		E2B723AF204D20E900BD972F /* RaceStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateCell.m; sourceTree = "<group>"; };
-		E2B723B1204D216B00BD972F /* TeamStatisticsGraphCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticsGraphCell.h; sourceTree = "<group>"; };
-		E2B723B2204D216B00BD972F /* TeamStatisticsGraphCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamStatisticsGraphCell.m; sourceTree = "<group>"; };
-		E2B723B4204D218300BD972F /* TeamStatisticsDataCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticsDataCell.h; sourceTree = "<group>"; };
-		E2B723B5204D218300BD972F /* TeamStatisticsDataCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamStatisticsDataCell.m; sourceTree = "<group>"; };
-		E2B723B9204E6BD600BD972F /* testVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testVCViewController.h; sourceTree = "<group>"; };
-		E2B723BA204E6BD600BD972F /* testVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testVCViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +108,8 @@
 				E2B7237D204D1F5F00BD972F /* AppDelegate.m */,
 				E2B7237F204D1F5F00BD972F /* ViewController.h */,
 				E2B72380204D1F5F00BD972F /* ViewController.m */,
-				E2B723B9204E6BD600BD972F /* testVCViewController.h */,
-				E2B723BA204E6BD600BD972F /* testVCViewController.m */,
 				E2B723AE204D20E900BD972F /* RaceStateCell.h */,
 				E2B723AF204D20E900BD972F /* RaceStateCell.m */,
-				E2B723B1204D216B00BD972F /* TeamStatisticsGraphCell.h */,
-				E2B723B2204D216B00BD972F /* TeamStatisticsGraphCell.m */,
-				E2B723B4204D218300BD972F /* TeamStatisticsDataCell.h */,
-				E2B723B5204D218300BD972F /* TeamStatisticsDataCell.m */,
 				E2B72382204D1F5F00BD972F /* Main.storyboard */,
 				E2B72385204D1F5F00BD972F /* Assets.xcassets */,
 				E2B72387204D1F5F00BD972F /* LaunchScreen.storyboard */,
@@ -285,13 +270,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2B723B3204D216B00BD972F /* TeamStatisticsGraphCell.m in Sources */,
-				E2B723B6204D218300BD972F /* TeamStatisticsDataCell.m in Sources */,
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
-				E2B723BB204E6BD600BD972F /* testVCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
