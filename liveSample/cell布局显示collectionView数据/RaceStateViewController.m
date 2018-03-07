@@ -8,8 +8,10 @@
 
 #import "RaceStateViewController.h"
 #import "RaceStateCell.h"
+#import "PointStatisticCell.h"
 @interface RaceStateViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
+@property(nonatomic, strong)NSArray *teamsData;
 @end
 @implementation RaceStateViewController
 static NSString *cellID = @"cellID";
@@ -24,6 +26,9 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    _teamsData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -33,15 +38,29 @@ static NSString *cellID = @"cellID";
     return 4;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    return 200;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    RaceStateCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[RaceStateCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+    if (indexPath == 0) {
+        RaceStateCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        if (!cell) {
+            cell = [[RaceStateCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        }
+        return cell;
+    }else if (indexPath.row ==1){
+        NSDictionary *teamADict = _teamsData[0];
+        NSDictionary *teamBDict = _teamsData[1];
+        RacePointStatisticModel *teamAModel = [RacePointStatisticModel loadModelWithDict:teamADict];
+        RacePointStatisticModel *teamBModel = [RacePointStatisticModel loadModelWithDict:teamBDict];
+        PointStatisticCell *cell = [PointStatisticCell loadCellWithTeamModelA:teamAModel TeamModelB:teamBModel reuseID:cellID];
+        return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+        return cell;
     }
-    
-    return cell;
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RaceStateModel.h"
 @interface RaceStateCell : UITableViewCell
 
 @end

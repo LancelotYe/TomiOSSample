@@ -39,10 +39,31 @@ static NSString *const footerId = @"footerId";
     }
     return self;
 }
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+
++ (instancetype)loadCellWithModel:(id)model reuseID:(NSString *)reuseID{
+    RaceStateModel *modelX = (RaceStateModel *)model;
+    RaceStateCell *cell = [[RaceStateCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
+    switch (modelX.kind) {
+        case raceModelKindTeam:{
+            RaceTeamStatisticModel *teamModel = (RaceTeamStatisticModel *)modelX;
+            
+            break;
+        }
+        case raceModelKindPoint:{
+            RacePointStatisticModel *pointModel = (RacePointStatisticModel *)modelX;
+            break;
+        }
+        case raceModelKindPlayer:{
+            RacePlayersStatisticModel *playModel = (RacePlayersStatisticModel *)modelX;
+            break;
+        }
+        default:{
+            break;
+        }
+    }
+    return cell;
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
