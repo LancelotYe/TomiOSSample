@@ -36,25 +36,10 @@
 @implementation RaceTeamStatisticModel
 + (instancetype)loadModelWithDict:(NSDictionary *)dict{
     
-    RaceTeamStatisticModel *teamModel = (RaceTeamStatisticModel *)[super loadModelWithDict:dict];
-    teamModel.kind = raceModelKindTeam;
-    //篮板
-    teamModel.backboardNum = [dict objectForKey:@"backboardNum"];
-    //助攻
-    teamModel.assistingNum = [dict objectForKey:@"backboardNum"];
-    //抢断
-    teamModel.interceptNum = [dict objectForKey:@"backboardNum"];
-    //盖帽
-    teamModel.blockNum = [dict objectForKey:@"backboardNum"];
-    //失误
-    teamModel.faultNum = [dict objectForKey:@"backboardNum"];
-    //罚球
-    teamModel.penaltyShotNum = [dict objectForKey:@"backboardNum"];
-    //三分
-    teamModel.threePointNum = [dict objectForKey:@"backboardNum"];
-    //犯规
-    teamModel.foulNum = [dict objectForKey:@"backboardNum"];
-    return nil;
+    RaceTeamStatisticModel *teamModel = [[RaceTeamStatisticModel alloc] init];
+    teamModel.teamStatisticArray = [dict objectForKey:@"point"];
+
+    return teamModel;
 }
 @end
 

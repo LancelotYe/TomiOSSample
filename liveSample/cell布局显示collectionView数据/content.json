@@ -125,31 +125,31 @@
   "point": [
             {
             "name": "1st",
-            "score": "30"
+            "score": "40"
             },
             {
             "name": "2nd",
-            "score": "20"
+            "score": "60"
             },
             {
             "name": "3rd",
-            "score": "21"
+            "score": "11"
             },
             {
             "name": "4th",
-            "score": "21"
+            "score": "10"
             },
             {
             "name": "加时1",
-            "score": "12"
+            "score": "7"
             },
             {
             "name": "加时2",
-            "score": "15"
+            "score": "2"
             },
             {
             "name": "总分",
-            "score": "103"
+            "score": "200"
             }
             ],
   "backboardNum": "13",

@@ -7,6 +7,7 @@
 //
 
 #import "PointStatisticCell.h"
+#import "RaceStatisticCCell.h"
 #import "RaceStateModel.h"
 #define pointCellMargin 5
 #define pointCellW ([UIScreen mainScreen].bounds.size.width-7*pointCellMargin)/6
@@ -31,7 +32,7 @@ static NSString *const footerId = @"footerId";
         _collectionView.backgroundColor = [UIColor redColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellId];
+        [_collectionView registerClass:[RaceStatisticCCell class] forCellWithReuseIdentifier:cellId];
 
     }
     return _collectionView;
@@ -62,56 +63,55 @@ static NSString *const footerId = @"footerId";
     // Configure the view for the selected state
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
+    return _teamAModel.scoreArray.count + 1;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _teamAModel.scoreArray.count * 3 + 3;
+    return  3;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    UILabel *label = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-    label.textAlignment = NSTextAlignmentCenter;
-    [cell addSubview:label];
-    UILabel *scoreLbl = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-    scoreLbl.textAlignment = NSTextAlignmentCenter;
-    [cell addSubview:scoreLbl];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((pointCellW-20)*0.5, 0, 20, 20)];
-    [cell addSubview:imageView];
-    NSInteger column = floor(indexPath.row/3);
-    if (indexPath.row%3==0) {
-        if (column == 0) {
-            label.text = @"球队";
-        }else{
-            NSDictionary *columnDictA = _teamAModel.scoreArray[column-1];
-            label.text = [columnDictA objectForKey:@"name"];
-        }
-        label.hidden = NO;
-    }else{
-        label.hidden = YES;
-    }
+    RaceStatisticCCell *cell = (RaceStatisticCCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+//    UILabel *label = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.hidden = YES;
+//    [cell addSubview:label];
+//    UILabel *scoreLbl = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
+//    scoreLbl.textAlignment = NSTextAlignmentCenter;
+//    scoreLbl.hidden = YES;
+//    [cell addSubview:scoreLbl];
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((pointCellW-20)*0.5, 0, 20, 20)];
+//    imageView.hidden = YES;
+//    [cell addSubview:imageView];
+    NSInteger column = indexPath.section;
+    NSInteger row = indexPath.row;
     
-    if(indexPath.row%3==1){
-        if (column==0) {
-            [imageView setImage:[UIImage imageNamed:@"234"]];
-            scoreLbl.hidden = YES;
-            imageView.hidden = NO;
-        }else{
-            NSDictionary *columnDictA = _teamAModel.scoreArray[column-1];
-            scoreLbl.text = [columnDictA objectForKey:@"score"];
-            scoreLbl.hidden = NO;
-            imageView.hidden = YES;
+    if (row==0 && column==0) {
+        cell.desLabel.text = @"球队";
+        cell.desLabel.hidden = NO;
+        cell.teamLogView.hidden = YES;
+        cell.scoreLabel.hidden = YES;
+    }else if (row==0 && column>0){
+        NSDictionary *columnDictA = _teamAModel.scoreArray[column-1];
+        cell.desLabel.text = [columnDictA objectForKey:@"name"];
+        cell.desLabel.hidden = NO;
+        cell.teamLogView.hidden = YES;
+        cell.scoreLabel.hidden = YES;
+    }else if (row>0 && column==0){
+        if (row == 1) {
+            [cell.teamLogView setImage:[UIImage imageNamed:@"234"]];
+        }else if (row ==2){
+            [cell.teamLogView setImage:[UIImage imageNamed:@"234"]];
         }
+        cell.teamLogView.hidden = NO;
+        cell.desLabel.hidden = YES;
+        cell.scoreLabel.hidden = YES;
     }else{
-        if (column==0) {
-            [imageView setImage:[UIImage imageNamed:@"234"]];
-            scoreLbl.hidden = YES;
-            imageView.hidden = NO;
-        }else{
-            NSDictionary *columnDictB = _teamBModel.scoreArray[column-1];
-            scoreLbl.text = [columnDictB objectForKey:@"score"];
-            scoreLbl.hidden = NO;
-            imageView.hidden = YES;
-        }
+        NSDictionary *columnDictA = _teamAModel.scoreArray[column-1];
+        NSDictionary *columnDictB = _teamBModel.scoreArray[column-1];
+        cell.scoreLabel.text = row==1?[columnDictA objectForKey:@"score"]:[columnDictB objectForKey:@"score"];
+        cell.scoreLabel.hidden = NO;
+        cell.teamLogView.hidden = YES;
+        cell.desLabel.hidden = YES;
+    
     }
     return cell;
 }
@@ -138,12 +138,12 @@ static NSString *const footerId = @"footerId";
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 5.f;
 }
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-    return (CGSize){20, 20};
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return (CGSize){20, 20};
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+//    return (CGSize){20, 20};
+//}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+//    return (CGSize){20, 20};
+//}
 
 #pragma mark -- UICollectionViewDelegate
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{

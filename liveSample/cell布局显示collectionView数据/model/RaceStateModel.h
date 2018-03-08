@@ -32,22 +32,25 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 
 
 @interface RaceTeamStatisticModel : RaceStateModel
-//篮板
-@property(nonatomic, strong)NSString *backboardNum;
-//助攻
-@property(nonatomic, strong)NSString *assistingNum;
-//抢断
-@property(nonatomic, strong)NSString *interceptNum;
-//盖帽
-@property(nonatomic, strong)NSString *blockNum;
-//失误
-@property(nonatomic, strong)NSString *faultNum;
-//罚球
-@property(nonatomic, strong)NSString *penaltyShotNum;
-//三分
-@property(nonatomic, strong)NSString *threePointNum;
-//犯规
-@property(nonatomic, strong)NSString *foulNum;
+@property(nonatomic, strong)NSArray *teamStatisticArray;
+////篮板
+//@property(nonatomic, strong)NSString *backboardNum;
+////助攻
+//@property(nonatomic, strong)NSString *assistingNum;
+////抢断
+//@property(nonatomic, strong)NSString *interceptNum;
+////盖帽
+//@property(nonatomic, strong)NSString *blockNum;
+////失误
+//@property(nonatomic, strong)NSString *faultNum;
+////罚球
+//@property(nonatomic, strong)NSString *penaltyShotNum;
+////三分
+//@property(nonatomic, strong)NSString *threePointNum;
+////犯规
+//@property(nonatomic, strong)NSString *foulNum;
+////参数数量
+//@property(nonatomic, assign)NSInteger paramNum;
 
 + (instancetype)loadModelWithDict:(NSDictionary *)dict;
 @end
