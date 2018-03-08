@@ -33,22 +33,14 @@ static NSString *cellID = @"cellID";
     NSString *path = [[NSBundle mainBundle] pathForResource:@"contentes" ofType:@"json"];
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
     NSString *datastr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-     NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:[datastr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-//    datastr = [datastr stringByRemovingPercentEncoding];
+    datastr = [datastr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    data = [datastr dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     NSLog(@"%@",dict.description);
     
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
-//    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-////    NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//
-//    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict
-//                                                       options:NSJSONWritingPrettyPrinted
-//                                                         error:nil];
-//
-//    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-//                                                 encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", jsonString);
+    path = [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
+    NSData *dataa = [[NSData alloc] initWithContentsOfFile:path];
+    _teamsData = [NSJSONSerialization JSONObjectWithData:dataa options:NSJSONReadingMutableLeaves error:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
