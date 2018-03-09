@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "liveSample/cell&#x5e03;&#x5c40;&#x663e;&#x793a;collectionView&#x6570;&#x636e;/RaceStateViewController.m"
-            timestampString = "542196965.861533"
+            filePath = "liveSample/cell&#x5e03;&#x5c40;&#x663e;&#x793a;collectionView&#x6570;&#x636e;/view/player/PlayerStatisticCell.m"
+            timestampString = "542281134.9470921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "liveSample/cell&#x5e03;&#x5c40;&#x663e;&#x793a;collectionView&#x6570;&#x636e;/RaceStateViewController.m"
-            timestampString = "542196985.888055"
+            filePath = "liveSample/cell&#x5e03;&#x5c40;&#x663e;&#x793a;collectionView&#x6570;&#x636e;/model/RaceStateModel.m"
+            timestampString = "542281134.94787"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "+loadModelWithDict:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

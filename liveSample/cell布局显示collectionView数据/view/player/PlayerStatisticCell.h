@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class RacePlayersStatisticModel;
 @interface PlayerStatisticCell : UITableViewCell
-
++ (instancetype)loadCellWithPlayerModel:(RacePlayersStatisticModel *)playersModel reuseID:(NSString *)reuseID;
 @end

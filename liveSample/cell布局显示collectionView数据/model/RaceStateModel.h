@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 
 
 @interface RacePlayersStatisticModel :RaceStateModel
-@property(nonatomic, strong)NSArray *players;
+@property(nonatomic, copy)NSArray *players;
 + (instancetype)loadModelWithDict:(NSDictionary *)dict;
 
 @end

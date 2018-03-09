@@ -9,15 +9,7 @@
 #import "RaceStatisticCCell.h"
 
 @implementation RaceStatisticCCell
--(UIImageView *)teamLogView{
-    if (!_teamLogView) {
-        _teamLogView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _teamLogView.contentMode = UIViewContentModeScaleAspectFit;
-        _teamLogView.hidden = YES;
-        
-    }
-    return _teamLogView;
-}
+
 -(UILabel *)desLabel{
     if (!_desLabel) {
         _desLabel = [[UILabel alloc] initWithFrame:self.bounds];
@@ -37,7 +29,6 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:self.teamLogView];
         [self addSubview:self.desLabel];
         [self addSubview:self.scoreLabel];
     }

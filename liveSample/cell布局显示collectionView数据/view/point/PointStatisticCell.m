@@ -9,39 +9,47 @@
 #import "PointStatisticCell.h"
 #import "RaceStatisticCCell.h"
 #import "RaceStateModel.h"
+#import "PointIconView.h"
 #define pointCellMargin 5
 #define pointCellW ([UIScreen mainScreen].bounds.size.width-7*pointCellMargin)/6
 @interface PointStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property(nonatomic, strong)UICollectionView *collectionView;
+@property(nonatomic, strong)UICollectionView *pointCollectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
 @property(nonatomic, strong)NSMutableArray *dataArray;
 @property(nonatomic, strong)RacePointStatisticModel *teamAModel;
 @property(nonatomic, strong)RacePointStatisticModel *teamBModel;
+@property(nonatomic, strong)PointIconView *iconView;
 @end
 @implementation PointStatisticCell
 
 static NSString *const cellId = @"collcellId";
-static NSString *const headerId = @"headerId";
-static NSString *const footerId = @"footerId";
 -(UICollectionView *)collectionView{
-    if (!_collectionView) {
+    if (!_pointCollectionView) {
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100) collectionViewLayout:_customLayout];
-        _collectionView.backgroundColor = [UIColor redColor];
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        [_collectionView registerClass:[RaceStatisticCCell class] forCellWithReuseIdentifier:cellId];
-
+        _pointCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(70, 0, [UIScreen mainScreen].bounds.size.width-70, 100) collectionViewLayout:_customLayout];
+        _pointCollectionView.backgroundColor = [UIColor redColor];
+        _pointCollectionView.dataSource = self;
+        _pointCollectionView.delegate = self;
+        [_pointCollectionView registerClass:[RaceStatisticCCell class] forCellWithReuseIdentifier:cellId];
     }
-    return _collectionView;
+    return _pointCollectionView;
+}
+- (PointIconView *)iconView{
+    if(!_iconView){
+        _iconView = [[PointIconView alloc] initWithFrame:CGRectMake(0, 0, 70, 100)];
+    }
+    return _iconView;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _dataArray = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
         [self.contentView addSubview:self.collectionView];
+        [self.contentView addSubview:self.iconView];
+        _iconView.hostIconUrl = @"234";
+        _iconView.customiconUrl = @"123";
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 35, [UIScreen mainScreen].bounds.size.width - 20, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
@@ -63,53 +71,25 @@ static NSString *const footerId = @"footerId";
     // Configure the view for the selected state
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return _teamAModel.scoreArray.count + 1;
+    return _teamAModel.scoreArray.count;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return  3;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    RaceStatisticCCell *cell = (RaceStatisticCCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-//    UILabel *label = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.hidden = YES;
-//    [cell addSubview:label];
-//    UILabel *scoreLbl = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-//    scoreLbl.textAlignment = NSTextAlignmentCenter;
-//    scoreLbl.hidden = YES;
-//    [cell addSubview:scoreLbl];
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((pointCellW-20)*0.5, 0, 20, 20)];
-//    imageView.hidden = YES;
-//    [cell addSubview:imageView];
+    RaceStatisticCCell *cell = (RaceStatisticCCell *)[_pointCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     NSInteger column = indexPath.section;
     NSInteger row = indexPath.row;
-    
-    if (row==0 && column==0) {
-        cell.desLabel.text = @"球队";
-        cell.desLabel.hidden = NO;
-        cell.teamLogView.hidden = YES;
-        cell.scoreLabel.hidden = YES;
-    }else if (row==0 && column>0){
-        NSDictionary *columnDictA = _teamAModel.scoreArray[column-1];
+    if (row==0){
+        NSDictionary *columnDictA = _teamAModel.scoreArray[column];
         cell.desLabel.text = [columnDictA objectForKey:@"name"];
         cell.desLabel.hidden = NO;
-        cell.teamLogView.hidden = YES;
-        cell.scoreLabel.hidden = YES;
-    }else if (row>0 && column==0){
-        if (row == 1) {
-            [cell.teamLogView setImage:[UIImage imageNamed:@"234"]];
-        }else if (row ==2){
-            [cell.teamLogView setImage:[UIImage imageNamed:@"234"]];
-        }
-        cell.teamLogView.hidden = NO;
-        cell.desLabel.hidden = YES;
         cell.scoreLabel.hidden = YES;
     }else{
-        NSDictionary *columnDictA = _teamAModel.scoreArray[column-1];
-        NSDictionary *columnDictB = _teamBModel.scoreArray[column-1];
+        NSDictionary *columnDictA = _teamAModel.scoreArray[column];
+        NSDictionary *columnDictB = _teamBModel.scoreArray[column];
         cell.scoreLabel.text = row==1?[columnDictA objectForKey:@"score"]:[columnDictB objectForKey:@"score"];
         cell.scoreLabel.hidden = NO;
-        cell.teamLogView.hidden = YES;
         cell.desLabel.hidden = YES;
     
     }
@@ -138,12 +118,7 @@ static NSString *const footerId = @"footerId";
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     return 5.f;
 }
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-//    return (CGSize){20, 20};
-//}
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-//    return (CGSize){20, 20};
-//}
+
 
 #pragma mark -- UICollectionViewDelegate
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{

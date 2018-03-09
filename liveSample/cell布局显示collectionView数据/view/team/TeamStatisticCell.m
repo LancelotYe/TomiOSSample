@@ -9,15 +9,15 @@
 #import "TeamStatisticCell.h"
 #import "RaceStateModel.h"
 #import "RaceStatisticCCell.h"
+#import "TeamIconView.h"
 #define pointCellMargin 5
 #define pointCellW ([UIScreen mainScreen].bounds.size.width-7*pointCellMargin)/6
 @interface TeamStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
-@property(nonatomic, strong)NSMutableArray *dataArray;
 @property(nonatomic, strong)RaceTeamStatisticModel *teamAModel;
 @property(nonatomic, strong)RaceTeamStatisticModel *teamBModel;
-@property(nonatomic, strong)UIView *vsView;
+@property(nonatomic, strong)TeamIconView *iconView;
 @end
 @implementation TeamStatisticCell
 
@@ -25,20 +25,20 @@ static NSString *const cellId = @"collcellId";
 static NSString *const cellIdx = @"collcellIdx";
 static NSString *const headerId = @"headerId";
 static NSString *const footerId = @"footerId";
-- (UIView *)vsView{
-    if (!_vsView) {
-        _vsView = [[UIView alloc] init];
-        UIImageView *teamAView = [[UIImageView alloc] init];
-        
+- (TeamIconView *)iconView{
+    if(!_iconView){
+        _iconView = [[TeamIconView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
+        _iconView.hostIconUrl = @"234";
+        _iconView.customiconUrl = @"123";
     }
-    return nil;
+    return _iconView;
 }
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 400) collectionViewLayout:_customLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 400) collectionViewLayout:_customLayout];
         _collectionView.backgroundColor = [UIColor redColor];
         _collectionView.scrollEnabled = NO;
         _collectionView.dataSource = self;
@@ -52,7 +52,7 @@ static NSString *const footerId = @"footerId";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _dataArray = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
+        [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.collectionView];
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 35, [UIScreen mainScreen].bounds.size.width, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
@@ -90,7 +90,7 @@ static NSString *const footerId = @"footerId";
         }else{
             cell.scoreLabel.text = [_teamBModel.teamStatisticArray[row] objectForKey:@"score"];
         }
-        cell.teamLogView.hidden = YES;
+//        cell.teamLogView.hidden = YES;
         cell.scoreLabel.hidden = NO;
         cell.desLabel.hidden = YES;
         return cell;

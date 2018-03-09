@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */; };
 		28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CFC204ECEE000289238 /* StretchingNavBar.m */; };
+		E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D411D2052359F00BA5C76 /* PointIconView.m */; };
+		E20D41212052610400BA5C76 /* TeamIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D41202052610400BA5C76 /* TeamIconView.m */; };
 		E243C176204F8D3F00818967 /* RaceStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C175204F8D3F00818967 /* RaceStateModel.m */; };
 		E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C17A204FCE3600818967 /* TeamStatisticCell.m */; };
 		E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C17D204FCE5000818967 /* PlayerStatisticCell.m */; };
@@ -50,6 +52,10 @@
 		28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingableNavViewController.m; sourceTree = "<group>"; };
 		28018CFB204ECEE000289238 /* StretchingNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingNavBar.h; sourceTree = "<group>"; };
 		28018CFC204ECEE000289238 /* StretchingNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingNavBar.m; sourceTree = "<group>"; };
+		E20D411C2052359F00BA5C76 /* PointIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointIconView.h; sourceTree = "<group>"; };
+		E20D411D2052359F00BA5C76 /* PointIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointIconView.m; sourceTree = "<group>"; };
+		E20D411F2052610400BA5C76 /* TeamIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamIconView.h; sourceTree = "<group>"; };
+		E20D41202052610400BA5C76 /* TeamIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamIconView.m; sourceTree = "<group>"; };
 		E243C174204F8D3F00818967 /* RaceStateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateModel.h; sourceTree = "<group>"; };
 		E243C175204F8D3F00818967 /* RaceStateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateModel.m; sourceTree = "<group>"; };
 		E243C179204FCE3600818967 /* TeamStatisticCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticCell.h; sourceTree = "<group>"; };
@@ -146,6 +152,8 @@
 			children = (
 				E243C17F204FCE7300818967 /* PointStatisticCell.h */,
 				E243C180204FCE7400818967 /* PointStatisticCell.m */,
+				E20D411C2052359F00BA5C76 /* PointIconView.h */,
+				E20D411D2052359F00BA5C76 /* PointIconView.m */,
 			);
 			path = point;
 			sourceTree = "<group>";
@@ -155,6 +163,8 @@
 			children = (
 				E243C179204FCE3600818967 /* TeamStatisticCell.h */,
 				E243C17A204FCE3600818967 /* TeamStatisticCell.m */,
+				E20D411F2052610400BA5C76 /* TeamIconView.h */,
+				E20D41202052610400BA5C76 /* TeamIconView.m */,
 			);
 			path = team;
 			sourceTree = "<group>";
@@ -376,11 +386,13 @@
 			files = (
 				E243C176204F8D3F00818967 /* RaceStateModel.m in Sources */,
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
+				E20D41212052610400BA5C76 /* TeamIconView.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
+				E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */,
 				28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */,

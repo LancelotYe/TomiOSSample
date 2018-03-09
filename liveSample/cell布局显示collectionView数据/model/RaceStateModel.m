@@ -47,16 +47,22 @@
  player一支队伍的
  */
 @implementation RacePlayersStatisticModel
+//- (NSArray *)players{
+//    if(!_players){
+//        _players = [NSArray array];
+//    }
+//    return _players;
+//}
+
 + (instancetype)loadModelWithDict:(NSDictionary *)dict{
-    RacePlayersStatisticModel *playerModel = (RacePlayersStatisticModel *)[super loadModelWithDict:dict];
-    playerModel.kind = raceModelKindPlayer;
+    RacePlayersStatisticModel *playerModel = [[RacePlayersStatisticModel alloc] init];
     NSMutableArray *playerArrayM = [NSMutableArray array];
     NSArray *playerArray = [dict objectForKey:@"players"];
     for (NSDictionary *dict in playerArray) {
         RacePlayerModel *playerModelx = [RacePlayerModel loadModelWithDict:dict];
         [playerArrayM addObject:playerModelx];
     }
-    playerModel.players = playerArrayM;
+    playerModel.players = [playerArrayM copy];
     return playerModel;
 }
 @end
@@ -64,7 +70,7 @@
 + (instancetype)loadModelWithDict:(NSDictionary *)dict{
     RacePlayerModel *playerModel = [[RacePlayerModel alloc] init];
     //球员
-    playerModel.playerName = [dict objectForKey:@"playerName"];
+    playerModel.playerName = [dict objectForKey:@"playername"];
     //得分
     playerModel.point = [dict objectForKey:@"point"];
     //篮板

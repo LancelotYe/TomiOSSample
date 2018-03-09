@@ -1,243 +1,256 @@
- [{
-  "teamName": "森林狼",
-  "imgurl": "http://www.bejson.com",
-  "point": [
+[{
+ "teamName": "森林狼",
+ "imgurl": "http://www.bejson.com",
+ "point": [
+           {
+           "name": "1st",
+           "score": "30"
+           },
+           {
+           "name": "2nd",
+           "score": "20"
+           },
+           {
+           "name": "3rd",
+           "score": "21"
+           },
+           {
+           "name": "4th",
+           "score": "21"
+           },
+           {
+           "name": "加时1",
+           "score": "12"
+           },
+           {
+           "name": "加时2",
+           "score": "15"
+           },
+           {
+           "name": "总分",
+           "score": "103"
+           }
+           ],
+ "backboardNum": "13",
+ "assistingNum": "13",
+ "interceptNum": "13",
+ "blockNum": "13",
+ "faultNum": "13",
+ "penaltyShotNum": "13",
+ "threePointNum": "13",
+ "foulNum": "13",
+ "players": [
             {
-            "name": "1st",
-            "score": "30"
+            "playername": "乔丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "2nd",
-            "score": "20"
+            "playername": "乔丹2",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "3rd",
-            "score": "21"
+            "playername": "乔3丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "4th",
-            "score": "21"
+            "playername": "乔4丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "加时1",
-            "score": "12"
+            "playername": "乔22丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "加时2",
-            "score": "15"
-            },
-            {
-            "name": "总分",
-            "score": "103"
+            "playername": "乔11丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             }
-            ],
-  "backboardNum": "13",
-  "assistingNum": "13",
-  "interceptNum": "13",
-  "blockNum": "13",
-  "faultNum": "13",
-  "penaltyShotNum": "13",
-  "threePointNum": "13",
-  "foulNum": "13",
-  "player": [
-             {
-             "playername": "乔丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔丹2",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔3丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔4丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔22丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔11丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             }
-             ]
-  },{
-  "teamName": "火箭",
-  "imgurl": "http://www.bejson.com",
-  "point": [
+            ]
+ },{
+ "teamName": "火箭",
+ "imgurl": "http://www.bejson.com",
+ "point": [
+           {
+           "name": "1st",
+           "score": "40"
+           },
+           {
+           "name": "2nd",
+           "score": "60"
+           },
+           {
+           "name": "3rd",
+           "score": "11"
+           },
+           {
+           "name": "4th",
+           "score": "10"
+           },
+           {
+           "name": "加时1",
+           "score": "7"
+           },
+           {
+           "name": "加时2",
+           "score": "2"
+           },
+           {
+           "name": "总分",
+           "score": "200"
+           }
+           ],
+ "backboardNum": "13",
+ "assistingNum": "13",
+ "interceptNum": "13",
+ "blockNum": "13",
+ "faultNum": "13",
+ "penaltyShotNum": "13",
+ "threePointNum": "13",
+ "foulNum": "13",
+ "players": [
             {
-            "name": "1st",
-            "score": "40"
+            "playername": "乔丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "2nd",
-            "score": "60"
+            "playername": "乔丹2",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "3rd",
-            "score": "11"
+            "playername": "乔3丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "4th",
-            "score": "10"
+            "playername": "乔4丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "加时1",
-            "score": "7"
+            "playername": "乔22丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             },
             {
-            "name": "加时2",
-            "score": "2"
-            },
-            {
-            "name": "总分",
-            "score": "200"
+            "playername": "乔11丹",
+            "point": 20,
+            "first":"1",
+            "backboardNum": "13",
+            "assistingNum": "13",
+            "shotNum": "20/100",
+            "interceptNum": "13",
+            "blockNum": "13",
+            "faultNum": "13",
+            "penaltyShotNum": "13",
+            "threePointNum": "13",
+            "foulNum": "13"
             }
-            ],
-  "backboardNum": "13",
-  "assistingNum": "13",
-  "interceptNum": "13",
-  "blockNum": "13",
-  "faultNum": "13",
-  "penaltyShotNum": "13",
-  "threePointNum": "13",
-  "foulNum": "13",
-  "player": [
-             {
-             "playername": "乔丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔丹2",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔3丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔4丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔22丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             },
-             {
-             "playername": "乔11丹",
-             "point": 20,
-             "backboardNum": "13",
-             "assistingNum": "13",
-             "shotNum": "20/100",
-             "interceptNum": "13",
-             "blockNum": "13",
-             "faultNum": "13",
-             "penaltyShotNum": "13",
-             "threePointNum": "13",
-             "foulNum": "13"
-             }
-             ]
-  }]
+            ]
+ 
+ }]
