@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */; };
 		28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CFC204ECEE000289238 /* StretchingNavBar.m */; };
+		288B406A2052F62B005B9C38 /* transNBA.json in Resources */ = {isa = PBXBuildFile; fileRef = 288B40692052F62B005B9C38 /* transNBA.json */; };
+		E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D411D2052359F00BA5C76 /* PointIconView.m */; };
+		E20D41212052610400BA5C76 /* TeamIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D41202052610400BA5C76 /* TeamIconView.m */; };
 		E243C176204F8D3F00818967 /* RaceStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C175204F8D3F00818967 /* RaceStateModel.m */; };
 		E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C17A204FCE3600818967 /* TeamStatisticCell.m */; };
 		E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C17D204FCE5000818967 /* PlayerStatisticCell.m */; };
 		E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C180204FCE7400818967 /* PointStatisticCell.m */; };
-		E243C184204FE20A00818967 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = E243C183204FE20900818967 /* content.json */; };
+		E243C184204FE20A00818967 /* teamInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = E243C183204FE20900818967 /* teamInfo.json */; };
 		E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C186205113C900818967 /* RaceStatisticCCell.m */; };
-		E243C1922051387E00818967 /* contentes.json in Resources */ = {isa = PBXBuildFile; fileRef = E243C1912051387D00818967 /* contentes.json */; };
+		E243C1922051387E00818967 /* gameInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = E243C1912051387D00818967 /* gameInfo.json */; };
 		E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7237D204D1F5F00BD972F /* AppDelegate.m */; };
 		E2B72381204D1F5F00BD972F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72380204D1F5F00BD972F /* ViewController.m */; };
 		E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B72382204D1F5F00BD972F /* Main.storyboard */; };
@@ -50,6 +53,11 @@
 		28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingableNavViewController.m; sourceTree = "<group>"; };
 		28018CFB204ECEE000289238 /* StretchingNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingNavBar.h; sourceTree = "<group>"; };
 		28018CFC204ECEE000289238 /* StretchingNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingNavBar.m; sourceTree = "<group>"; };
+		288B40692052F62B005B9C38 /* transNBA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transNBA.json; sourceTree = "<group>"; };
+		E20D411C2052359F00BA5C76 /* PointIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointIconView.h; sourceTree = "<group>"; };
+		E20D411D2052359F00BA5C76 /* PointIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointIconView.m; sourceTree = "<group>"; };
+		E20D411F2052610400BA5C76 /* TeamIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamIconView.h; sourceTree = "<group>"; };
+		E20D41202052610400BA5C76 /* TeamIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamIconView.m; sourceTree = "<group>"; };
 		E243C174204F8D3F00818967 /* RaceStateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateModel.h; sourceTree = "<group>"; };
 		E243C175204F8D3F00818967 /* RaceStateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateModel.m; sourceTree = "<group>"; };
 		E243C179204FCE3600818967 /* TeamStatisticCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticCell.h; sourceTree = "<group>"; };
@@ -58,10 +66,10 @@
 		E243C17D204FCE5000818967 /* PlayerStatisticCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerStatisticCell.m; sourceTree = "<group>"; };
 		E243C17F204FCE7300818967 /* PointStatisticCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointStatisticCell.h; sourceTree = "<group>"; };
 		E243C180204FCE7400818967 /* PointStatisticCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointStatisticCell.m; sourceTree = "<group>"; };
-		E243C183204FE20900818967 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		E243C183204FE20900818967 /* teamInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teamInfo.json; sourceTree = "<group>"; };
 		E243C185205113C900818967 /* RaceStatisticCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStatisticCCell.h; sourceTree = "<group>"; };
 		E243C186205113C900818967 /* RaceStatisticCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStatisticCCell.m; sourceTree = "<group>"; };
-		E243C1912051387D00818967 /* contentes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contentes.json; sourceTree = "<group>"; };
+		E243C1912051387D00818967 /* gameInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameInfo.json; sourceTree = "<group>"; };
 		E2B72379204D1F5F00BD972F /* liveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B7237C204D1F5F00BD972F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E2B7237D204D1F5F00BD972F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -146,6 +154,8 @@
 			children = (
 				E243C17F204FCE7300818967 /* PointStatisticCell.h */,
 				E243C180204FCE7400818967 /* PointStatisticCell.m */,
+				E20D411C2052359F00BA5C76 /* PointIconView.h */,
+				E20D411D2052359F00BA5C76 /* PointIconView.m */,
 			);
 			path = point;
 			sourceTree = "<group>";
@@ -155,6 +165,8 @@
 			children = (
 				E243C179204FCE3600818967 /* TeamStatisticCell.h */,
 				E243C17A204FCE3600818967 /* TeamStatisticCell.m */,
+				E20D411F2052610400BA5C76 /* TeamIconView.h */,
+				E20D41202052610400BA5C76 /* TeamIconView.m */,
 			);
 			path = team;
 			sourceTree = "<group>";
@@ -228,8 +240,9 @@
 			isa = PBXGroup;
 			children = (
 				E243C1882051187D00818967 /* view */,
-				E243C183204FE20900818967 /* content.json */,
-				E243C1912051387D00818967 /* contentes.json */,
+				E243C183204FE20900818967 /* teamInfo.json */,
+				288B40692052F62B005B9C38 /* transNBA.json */,
+				E243C1912051387D00818967 /* gameInfo.json */,
 				E243C182204FCFB700818967 /* model */,
 				E2B723AE204D20E900BD972F /* RaceStateCell.h */,
 				E2B723AF204D20E900BD972F /* RaceStateCell.m */,
@@ -346,10 +359,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B72389204D1F5F00BD972F /* LaunchScreen.storyboard in Resources */,
-				E243C1922051387E00818967 /* contentes.json in Resources */,
+				E243C1922051387E00818967 /* gameInfo.json in Resources */,
+				288B406A2052F62B005B9C38 /* transNBA.json in Resources */,
 				E2B72386204D1F5F00BD972F /* Assets.xcassets in Resources */,
 				E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */,
-				E243C184204FE20A00818967 /* content.json in Resources */,
+				E243C184204FE20A00818967 /* teamInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,11 +390,13 @@
 			files = (
 				E243C176204F8D3F00818967 /* RaceStateModel.m in Sources */,
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
+				E20D41212052610400BA5C76 /* TeamIconView.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
+				E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */,
 				28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */,

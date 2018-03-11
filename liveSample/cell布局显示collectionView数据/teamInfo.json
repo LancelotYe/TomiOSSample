@@ -1,0 +1,247 @@
+{
+    "code": 0,
+    "error": "",
+    "total": 0,
+    "data": {
+        "Lineups": {
+            "Game_id": "0021700910",
+            "Period": "1",
+            "Home_forward_1_id": "203114",
+            "Home_forward_2_id": "203507",
+            "Home_center_id": "203089",
+            "Home_guard_1_id": "203503",
+            "Home_guard_2_id": "202339",
+            "Visitor_forward_1_id": "203490",
+            "Visitor_forward_2_id": "202693",
+            "Visitor_center_id": "101162",
+            "Visitor_guard_1_id": "203078",
+            "Visitor_guard_2_id": "203107"
+        },
+        "Players": [
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "204098",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1891",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1628391",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "202339",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1627748",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203521",
+                    "Team_id": "1610612749",
+                    "Player_status": "I",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203930",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203953",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1627763",
+                    "Team_id": "1610612749",
+                    "Player_status": "I",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203503",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203114",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1628425",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203089",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203507",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203141",
+                    "Team_id": "1610612749",
+                    "Player_status": "I",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1627850",
+                    "Team_id": "1610612749",
+                    "Player_status": "I",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203092",
+                    "Team_id": "1610612749",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1626191",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "202322",
+                    "Team_id": "1610612764",
+                    "Player_status": "I",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203078",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "202693",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1628421",
+                    "Team_id": "1610612764",
+                    "Player_status": "I",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "204025",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "201196",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "1626162",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "101162",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "201160",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "201975",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203490",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "101133",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203118",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    },
+                    {
+                    "Game_id": "0021700910",
+                    "Person_id": "203107",
+                    "Team_id": "1610612764",
+                    "Player_status": "A",
+                    "Person_type": "Player"
+                    }
+                    ]
+    }
+}

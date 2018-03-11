@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RaceStatisticCCell : UICollectionViewCell
-@property(nonatomic, strong)UIImageView *teamLogView;
 @property(nonatomic, strong)UILabel *desLabel;
 @property(nonatomic, strong)UILabel *scoreLabel;
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class RacePointStatisticModel;
+@class RacePointsStatisticModel;
 @interface PointStatisticCell : UITableViewCell
 + (instancetype)loadCellWithTeamModelA:(RacePointStatisticModel *)teamModelA TeamModelB: (RacePointStatisticModel *)teamModelB reuseID:(NSString *)reuseID;
+
++ (instancetype)loadCellWithPointsModel:(RacePointsStatisticModel *)pointsModel reuseID:(NSString *)reuseID;
 @end

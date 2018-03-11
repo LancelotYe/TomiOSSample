@@ -14,10 +14,13 @@
 #import "PlayerStatisticCell.h"
 @interface RaceStateViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
-@property(nonatomic, strong)NSArray *teamsData;
+@property(nonatomic, strong)NSDictionary *teamsData;
+@property(nonatomic, strong)NSDictionary *gameData;
 @end
 @implementation RaceStateViewController
-static NSString *cellID = @"cellID";
+static NSString *pointID = @"pointID";
+static NSString *teamID = @"teamID";
+static NSString *playerID = @"playerID";
 
 - (UITableView *)tableView{
     if (!_tableView) {
@@ -30,17 +33,12 @@ static NSString *cellID = @"cellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"contentes" ofType:@"json"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"teamInfo" ofType:@"json"];
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-    NSString *datastr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    datastr = [datastr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-    data = [datastr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    NSLog(@"%@",dict.description);
-    
-    path = [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
+    _teamsData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    path = [[NSBundle mainBundle] pathForResource:@"gameInfo" ofType:@"json"];
     NSData *dataa = [[NSData alloc] initWithContentsOfFile:path];
-    _teamsData = [NSJSONSerialization JSONObjectWithData:dataa options:NSJSONReadingMutableLeaves error:nil];
+    _gameData = [NSJSONSerialization JSONObjectWithData:dataa options:NSJSONReadingMutableLeaves error:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,43 +49,46 @@ static NSString *cellID = @"cellID";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 2) {
-        return 400;
+        return 600;
     }else if ( indexPath.row == 3 || indexPath.row == 4){
         return 600;
     }
     return 200;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *teamADict = _teamsData[0];
-    NSDictionary *teamBDict = _teamsData[1];
+//    NSDictionary *teamADict = _teamsData[0];
+//    NSDictionary *teamBDict = _teamsData[1];
+    
+    
     if (indexPath == 0) {
-        RaceStateCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        RaceStateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
         if (!cell) {
-            cell = [[RaceStateCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+            cell = [[RaceStateCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellID"];
         }
         return cell;
     }else if (indexPath.row ==1){
         
-        RacePointStatisticModel *teamAModel = [RacePointStatisticModel loadModelWithDict:teamADict];
-        RacePointStatisticModel *teamBModel = [RacePointStatisticModel loadModelWithDict:teamBDict];
-        PointStatisticCell *cell = [PointStatisticCell loadCellWithTeamModelA:teamAModel TeamModelB:teamBModel reuseID:cellID];
-        return cell;
-    }else if (indexPath.row == 2){
-        RaceTeamStatisticModel *teamAteamModel = [RaceTeamStatisticModel loadModelWithDict:teamADict];
-        RaceTeamStatisticModel *teamBteamModel = [RaceTeamStatisticModel loadModelWithDict:teamBDict];
-        TeamStatisticCell *cell = [TeamStatisticCell loadCellWithTeamModelA:teamAteamModel TeamModelB:teamBteamModel reuseID:cellID];
-        return cell;
-    }else if (indexPath.row == 3 || indexPath.row == 4){
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        RacePointsStatisticModel *pointsModel = [RacePointsStatisticModel loadModelWithGameData:_gameData];
+        PointStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:pointID];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell = [PointStatisticCell loadCellWithPointsModel:pointsModel reuseID:pointID];
         }
         return cell;
+    }else if (indexPath.row == 2){
+//        RaceTeamStatisticModel *teamAteamModel = [RaceTeamStatisticModel loadModelWithDict:teamADict];
+//        RaceTeamStatisticModel *teamBteamModel = [RaceTeamStatisticModel loadModelWithDict:teamBDict];
+//        TeamStatisticCell *cell = [TeamStatisticCell loadCellWithTeamModelA:teamAteamModel TeamModelB:teamBteamModel reuseID:teamID];
+//        return cell;
+        return nil;
+    }else if (indexPath.row == 3 || indexPath.row == 4){
+//        RacePlayersStatisticModel *model = [RacePlayersStatisticModel loadModelWithDict:teamADict];
+//        PlayerStatisticCell *cell = [PlayerStatisticCell loadCellWithPlayerModel:model reuseID:playerID];
+        return nil;
     }
     else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
         }
         return cell;
     }
