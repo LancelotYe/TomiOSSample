@@ -12,7 +12,7 @@
 
 -(UILabel *)desLabel{
     if (!_desLabel) {
-        _desLabel = [[UILabel alloc] initWithFrame:self.bounds];
+        _desLabel = [[UILabel alloc] init];
         _desLabel.textAlignment = NSTextAlignmentCenter;
         _desLabel.hidden = YES;
     }
@@ -20,7 +20,7 @@
 }
 - (UILabel *)scoreLabel{
     if (!_scoreLabel) {
-        _scoreLabel = [[UILabel alloc] initWithFrame:self.bounds];
+        _scoreLabel = [[UILabel alloc] init];
         _scoreLabel.textAlignment = NSTextAlignmentCenter;
         _scoreLabel.hidden = YES;
     }
@@ -33,6 +33,14 @@
         [self addSubview:self.scoreLabel];
     }
     return self;
+}
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    if (self.bounds.size.width == 150) {
+        NSLog(@"%@",NSStringFromCGRect(self.contentView.bounds));
+    }
+    self.desLabel.frame = self.contentView.bounds;
+    self.scoreLabel.frame = self.contentView.bounds;
 }
 @end
 
@@ -64,4 +72,5 @@
     }
     return self;
 }
+
 @end

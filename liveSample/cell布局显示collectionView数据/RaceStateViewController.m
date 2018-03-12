@@ -45,15 +45,18 @@ static NSString *playerID = @"playerID";
     // Dispose of any resources that can be recreated.
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 2) {
-        return 600;
-    }else if ( indexPath.row == 3 || indexPath.row == 4){
-        return 600;
+    if (indexPath.row == 0) {
+        return 10;
     }
-    return 200;
+    if (indexPath.row == 2) {
+        return 800;
+    }else if ( indexPath.row == 3 || indexPath.row == 4){
+        return 800;
+    }
+    return 800;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSDictionary *teamADict = _teamsData[0];
@@ -74,17 +77,39 @@ static NSString *playerID = @"playerID";
             cell = [PointStatisticCell loadCellWithPointsModel:pointsModel reuseID:pointID];
         }
         return cell;
-    }else if (indexPath.row == 2){
-//        RaceTeamStatisticModel *teamAteamModel = [RaceTeamStatisticModel loadModelWithDict:teamADict];
-//        RaceTeamStatisticModel *teamBteamModel = [RaceTeamStatisticModel loadModelWithDict:teamBDict];
-//        TeamStatisticCell *cell = [TeamStatisticCell loadCellWithTeamModelA:teamAteamModel TeamModelB:teamBteamModel reuseID:teamID];
-//        return cell;
-        return nil;
-    }else if (indexPath.row == 3 || indexPath.row == 4){
-//        RacePlayersStatisticModel *model = [RacePlayersStatisticModel loadModelWithDict:teamADict];
-//        PlayerStatisticCell *cell = [PlayerStatisticCell loadCellWithPlayerModel:model reuseID:playerID];
-        return nil;
+    }else if(indexPath.row == 2){
+        RaceTeamsStatisticModel *teamsModel = [RaceTeamsStatisticModel loadModelWithGameData:_gameData];
+        TeamStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:teamID];
+        if (!cell) {
+            cell = [TeamStatisticCell loadCellWithTeamsModel:teamsModel reuseID:teamID];
+        }
+        return cell;
+    }else if(indexPath.row == 3){
+        RacePlayersStatisticModel *model = [RacePlayersStatisticModel loadModelWithTeamData:_teamsData gameData:_gameData];
+        PlayerStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:playerID];
+        if (!cell) {
+            cell = [PlayerStatisticCell loadCellWithPlayerModel:model reuseID:playerID isHome:YES];
+        }
+        return cell;
+    }else if (indexPath.row == 4){
+        RacePlayersStatisticModel *model = [RacePlayersStatisticModel loadModelWithTeamData:_teamsData gameData:_gameData];
+        PlayerStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:playerID];
+        if (!cell) {
+            cell = [PlayerStatisticCell loadCellWithPlayerModel:model reuseID:playerID isHome:NO];
+        }
+        return cell;
     }
+//    else if (indexPath.row == 2){
+////        RaceTeamStatisticModel *teamAteamModel = [RaceTeamStatisticModel loadModelWithDict:teamADict];
+////        RaceTeamStatisticModel *teamBteamModel = [RaceTeamStatisticModel loadModelWithDict:teamBDict];
+////        TeamStatisticCell *cell = [TeamStatisticCell loadCellWithTeamModelA:teamAteamModel TeamModelB:teamBteamModel reuseID:teamID];
+////        return cell;
+//        return nil;
+//    }else if (indexPath.row == 3 || indexPath.row == 4){
+////        RacePlayersStatisticModel *model = [RacePlayersStatisticModel loadModelWithDict:teamADict];
+////        PlayerStatisticCell *cell = [PlayerStatisticCell loadCellWithPlayerModel:model reuseID:playerID];
+//        return nil;
+//    }
     else{
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
         if (!cell) {

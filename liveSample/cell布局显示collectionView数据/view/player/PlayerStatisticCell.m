@@ -14,15 +14,13 @@
 @property(nonatomic, strong)UICollectionView *playerListCollectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
 @property(nonatomic, strong)RacePlayersStatisticModel *playersModel;
-@property(nonatomic, strong)NSArray *itemArray;
+@property(nonatomic, copy)NSArray *players;
+//@property(nonatomic, strong)NSArray *itemArray;
+@property(nonatomic, assign)BOOL isHome;
 @end
 @implementation PlayerStatisticCell
 
 static NSString *const cellId = @"playcellId";
-static NSString *const listCellId = @"playListCellId";
--(NSArray *)itemArray{
-    return [NSArray arrayWithObjects:@"首发",@"得分",@"篮板",@"助攻",@"投篮",@"三分",@"罚球",@"抢断",@"盖帽",@"失误",@"犯规",nil];
-}
 - (UICollectionViewFlowLayout *)customLayout{
     if(!_customLayout){
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -35,7 +33,7 @@ static NSString *const listCellId = @"playListCellId";
     if(!_playerListCollectionView){
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _playerListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 70, 600) collectionViewLayout:layout];
+        _playerListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 150, 600) collectionViewLayout:layout];
         _playerListCollectionView.backgroundColor = [UIColor greenColor];
         _playerListCollectionView.delegate = self;
         _playerListCollectionView.dataSource = self;
@@ -45,7 +43,7 @@ static NSString *const listCellId = @"playListCellId";
 }
 -(UICollectionView *)playerCollectionView{
     if (!_playerCollectionView) {
-        _playerCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(70, 0, [UIScreen mainScreen].bounds.size.width-70, 600) collectionViewLayout:self.customLayout];
+        _playerCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(150, 0, [UIScreen mainScreen].bounds.size.width-150, 600) collectionViewLayout:self.customLayout];
         _playerCollectionView.backgroundColor = [UIColor redColor];
         _playerCollectionView.dataSource = self;
         _playerCollectionView.delegate = self;
@@ -59,7 +57,7 @@ static NSString *const listCellId = @"playListCellId";
     if (self) {
         [self.contentView addSubview:self.playerListCollectionView];
         [self.contentView addSubview:self.playerCollectionView];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 35, [UIScreen mainScreen].bounds.size.width - 20, 0.5)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 25, [UIScreen mainScreen].bounds.size.width - 20, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
     }
@@ -67,9 +65,15 @@ static NSString *const listCellId = @"playListCellId";
 }
 //构成这个cell需要两支队伍的模型数据
 
-+(instancetype)loadCellWithPlayerModel:(RacePlayersStatisticModel *)playersModel reuseID:(NSString *)reuseID{
++(instancetype)loadCellWithPlayerModel:(RacePlayersStatisticModel *)playersModel reuseID:(NSString *)reuseID isHome:(BOOL)isHome{
     PlayerStatisticCell *cell = [[PlayerStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
     cell.playersModel = playersModel;
+    cell.isHome = isHome;
+    if (isHome) {
+        cell.players = playersModel.homePlayers;
+    }else{
+        cell.players = playersModel.visitorPlayers;
+    }
     return cell;
 }
 
@@ -78,41 +82,45 @@ static NSString *const listCellId = @"playListCellId";
     if(collectionView == _playerListCollectionView){
         return 1;
     }
-    return self.itemArray.count;
+    return self.playersModel.itemNum-1;
     
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _playersModel.players.count + 1;
+    if (_isHome) {
+        return _playersModel.homePlayers.count;
+    }else{
+        return _playersModel.visitorPlayers.count;
+    }
+    
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    RaceStatisticCCell *cell = (RaceStatisticCCell *)[_playerCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     NSInteger column = indexPath.section;
     NSInteger row = indexPath.row;
-    
+    RaceStatisticCCell *cell = (RaceStatisticCCell *)[_playerCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     if(collectionView == _playerListCollectionView){
         if(row == 0){
             cell.desLabel.text = @"球员";
             cell.desLabel.hidden = NO;
             cell.scoreLabel.hidden = YES;
         }else{
-            RacePlayerModel *player = _playersModel.players[row-1];
-//            cell.scoreLabel.text = player.playerName;
+            RacePlayerModel *player = self.players[row-1];
+            cell.scoreLabel.text = [player valueForKey:self.playersModel.itemArray[0]];
             cell.scoreLabel.hidden = NO;
             cell.desLabel.hidden = YES;
         }
     }else{
         if(row == 0){
-            cell.desLabel.text = self.itemArray[column];
+            cell.desLabel.text = self.playersModel.itemArray[column+1];
             cell.desLabel.hidden = NO;
             cell.scoreLabel.hidden = YES;
         }else{
-            cell.scoreLabel.text = @"123";
+            RacePlayerModel *player = self.players[row-1];
+            NSString *playerKey = self.playersModel.itemArray[column+1];
+            cell.scoreLabel.text = [player valueForKey:playerKey];
             cell.scoreLabel.hidden = NO;
             cell.desLabel.hidden = YES;
         }
     }
-    
-    
     return cell;
 }
 
@@ -125,10 +133,14 @@ static NSString *const listCellId = @"playListCellId";
 }
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return (CGSize){70, 20};
+    if (collectionView == _playerListCollectionView) {
+        return (CGSize){150, 20};
+    }else{
+        return (CGSize){70, 20};
+    }
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(10, 0, 0, 0);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
@@ -136,7 +148,7 @@ static NSString *const listCellId = @"playListCellId";
 }
 //每个section之间最小间距设定
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 30.f;
+    return 10.f;
 }
 
 

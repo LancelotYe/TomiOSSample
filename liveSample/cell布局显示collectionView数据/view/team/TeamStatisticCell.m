@@ -17,6 +17,8 @@
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
 @property(nonatomic, strong)RaceTeamStatisticModel *teamAModel;
 @property(nonatomic, strong)RaceTeamStatisticModel *teamBModel;
+
+@property(nonatomic, strong)RaceTeamsStatisticModel *teamsModel;
 @property(nonatomic, strong)TeamIconView *iconView;
 @end
 @implementation TeamStatisticCell
@@ -38,7 +40,7 @@ static NSString *const footerId = @"footerId";
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 400) collectionViewLayout:_customLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 600) collectionViewLayout:_customLayout];
         _collectionView.backgroundColor = [UIColor redColor];
         _collectionView.scrollEnabled = NO;
         _collectionView.dataSource = self;
@@ -68,6 +70,12 @@ static NSString *const footerId = @"footerId";
     return cell;
 }
 
++ (instancetype)loadCellWithTeamsModel:(RaceTeamsStatisticModel *)teamsModel reuseID:(NSString *)reuseID{
+    TeamStatisticCell *cell = [[TeamStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
+    cell.teamsModel = teamsModel;
+    return cell;
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -79,24 +87,28 @@ static NSString *const footerId = @"footerId";
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 //    return  _teamAModel.teamStatisticArray.count;
-    return 1;
+    return self.teamsModel.itemNum;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger column = indexPath.section;
     NSInteger row = indexPath.row;
     if (column!=1) {
         RaceStatisticCCell *cell = (RaceStatisticCCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+        NSString *itemKey = self.teamsModel.itemTypeArray[row];
+        RaceTeamStatisticModel *model = column==0?self.teamsModel.homeTeamModel:self.teamsModel.visitorTeamModel;
+        cell.scoreLabel.text = [model valueForKey:itemKey];
+        cell.scoreLabel.hidden = NO;
+        cell.desLabel.hidden = YES;
 //        if (column == 0) {
 //            cell.scoreLabel.text = [_teamAModel.teamStatisticArray[row] objectForKey:@"score"];
 //        }else{
 //            cell.scoreLabel.text = [_teamBModel.teamStatisticArray[row] objectForKey:@"score"];
 //        }
 //        cell.teamLogView.hidden = YES;
-        cell.scoreLabel.hidden = NO;
-        cell.desLabel.hidden = YES;
         return cell;
     }else{
         RaceStatisticGraphCCell *cell = (RaceStatisticGraphCCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellIdx forIndexPath:indexPath];
+        cell.itemLbl.text = self.teamsModel.itemTypeArray[row];
 //        cell.itemLbl.text = [_teamAModel.teamStatisticArray[row] objectForKey:@"name"];
         return cell;
     }

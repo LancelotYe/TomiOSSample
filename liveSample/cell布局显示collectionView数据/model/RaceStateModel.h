@@ -20,12 +20,11 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 @class RacePointStatisticModel;
 @interface RacePointsStatisticModel: RaceStateModel
 //每节分数数组
-@property(nonatomic, strong)NSArray *pointStatisticArray;
 @property(nonatomic, strong)RacePointStatisticModel *homePointModel;
 @property(nonatomic, strong)RacePointStatisticModel *visitorPointModel;
 @property(nonatomic, assign)NSInteger itemNum;
 @property(nonatomic, assign)NSInteger OT_Num;
-@property(nonatomic, assign)NSArray *itemTypeAray;
+@property(nonatomic, strong)NSArray *itemTypeAray;
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData;
 @end
 
@@ -53,13 +52,16 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 @property(nonatomic, strong)NSString *OT_9_score;
 @property(nonatomic, strong)NSString *OT_10_score;
 
-+ (instancetype)loadModelWithOneTeamGameData:(NSDictionary *)oneTeamGameData;
++ (instancetype)loadModelWithOneTeamGameData:(NSDictionary *)oneTeamGameData isHome:(BOOL)isHome;
 @end
 
-
+@class RaceTeamStatisticModel;
 
 @interface RaceTeamsStatisticModel : RaceStateModel
-@property(nonatomic, strong)NSArray *teamStatisticArray;
+@property(nonatomic, assign)NSInteger itemNum;
+@property(nonatomic, strong)NSArray *itemTypeArray;
+@property(nonatomic, strong)RaceTeamStatisticModel *homeTeamModel;
+@property(nonatomic, strong)RaceTeamStatisticModel *visitorTeamModel;
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData;
 @end
 @interface RaceTeamStatisticModel : RaceStateModel
@@ -79,7 +81,10 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 
 
 @interface RacePlayersStatisticModel :RaceStateModel
-@property(nonatomic, copy)NSArray *players;
+@property(nonatomic, copy)NSArray *homePlayers;
+@property(nonatomic, copy)NSArray *visitorPlayers;
+@property(nonatomic, assign)NSInteger itemNum;
+@property(nonatomic, copy)NSArray *itemArray;
 + (instancetype)loadModelWithTeamData:(NSDictionary *)teamData gameData:(NSDictionary*)gameData;
 
 @end

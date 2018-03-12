@@ -17,80 +17,73 @@
  */
 @implementation RacePointsStatisticModel
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData{
-    NSDictionary *dict = [gameData objectForKey:@"Score"];
-    
-    
-    
-    NSMutableArray *arrayM = [NSMutableArray array];
-    for (int i = 0; i<2; i++) {
-        RacePointStatisticModel *model = nil;
-        switch (i) {
-            case 0:{
-                NSDictionary *oneTeamGameDate = [[dict objectForKey:@"Home"] objectForKey:@"Home_score"];
-                model = [RacePointStatisticModel loadModelWithOneTeamGameData:oneTeamGameDate];
-                model.isHome = YES;
-                break;
-            }
-            case 1:{
-                NSDictionary *oneTeamGameDate = [[dict objectForKey:@"Visitor"] objectForKey:@"Visitor_score"];
-                model = [RacePointStatisticModel loadModelWithOneTeamGameData:oneTeamGameDate];
-                model.isHome = NO;
-                break;
-            }
-        }
-        [arrayM addObject:model];
-    }
+    NSDictionary *dict = [[gameData objectForKey:@"data"] objectForKey:@"Score"];
     RacePointsStatisticModel *modelx = [[RacePointsStatisticModel alloc] init];
-    modelx.homePointModel = [RacePointStatisticModel loadModelWithOneTeamGameData:[[dict objectForKey:@"Home"] objectForKey:@"Home_score"]];
-    modelx.visitorPointModel = [RacePointStatisticModel loadModelWithOneTeamGameData:[[dict objectForKey:@"Visitor"] objectForKey:@"Visitor_score"]];
+    modelx.homePointModel = [RacePointStatisticModel loadModelWithOneTeamGameData:[[dict objectForKey:@"Home"] objectForKey:@"Home_score"] isHome:YES];
+    modelx.visitorPointModel = [RacePointStatisticModel loadModelWithOneTeamGameData:[[dict objectForKey:@"Visitor"] objectForKey:@"Visitor_score"] isHome:NO];
     NSInteger OT_Num = [self calOTNumWithPointModelx:modelx];
     modelx.OT_Num = OT_Num;
     modelx.itemNum = 4 + modelx.OT_Num + 1;
     NSMutableArray *itemArray = [NSMutableArray arrayWithObjects:@"Qtr_1_score",@"Qtr_2_score",@"Qtr_3_score",@"Qtr_4_score", nil];
-    for (int i = 0; i < OT_Num; i++) {
-        NSString *addItem = [NSString stringWithFormat:@"OT_%d_score",i];
-        [itemArray addObject:addItem];
+    if (OT_Num!=0) {
+        for (int i = 1; i <= OT_Num; i++) {
+            NSString *addItem = [NSString stringWithFormat:@"OT_%d_score",i];
+            [itemArray addObject:addItem];
+        }
     }
     [itemArray addObject:@"总分"];
+    modelx.itemTypeAray = [itemArray copy];
     return modelx;
 }
 
 + (NSInteger)calOTNumWithPointModelx:(RacePointsStatisticModel *)modelx{
-    if (modelx.homePointModel.OT_1_score == 0&&modelx.visitorPointModel.OT_1_score==0) {
+    if ([modelx.homePointModel.OT_1_score isEqualToString:@"0"] &&[modelx.visitorPointModel.OT_1_score isEqualToString:@"0"]) {
         return 0;
-    }else if (modelx.homePointModel.OT_2_score == 0&&modelx.visitorPointModel.OT_2_score==0){
+    }else if ([modelx.homePointModel.OT_2_score isEqualToString:@"0"] &&[modelx.visitorPointModel.OT_2_score isEqualToString:@"0"]){
         return 1;
-    }else if (modelx.homePointModel.OT_3_score == 0&&modelx.visitorPointModel.OT_3_score==0){
+    }else if ([modelx.homePointModel.OT_3_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_3_score isEqualToString:@"0"]){
         return 2;
-    }else if (modelx.homePointModel.OT_4_score == 0&&modelx.visitorPointModel.OT_4_score==0){
+    }else if ([modelx.homePointModel.OT_4_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_4_score isEqualToString:@"0"]){
         return 3;
-    }else if (modelx.homePointModel.OT_5_score == 0&&modelx.visitorPointModel.OT_5_score==0){
+    }else if ([modelx.homePointModel.OT_5_score isEqualToString:@"0"] &&[modelx.visitorPointModel.OT_5_score isEqualToString:@"0"]){
         return 4;
-    }else if (modelx.homePointModel.OT_6_score == 0&&modelx.visitorPointModel.OT_6_score==0){
+    }else if ([modelx.homePointModel.OT_6_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_6_score isEqualToString:@"0"]){
         return 5;
-    }else if (modelx.homePointModel.OT_7_score == 0&&modelx.visitorPointModel.OT_7_score==0){
+    }else if ([modelx.homePointModel.OT_7_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_7_score isEqualToString:@"0"]){
         return 6;
-    }else if (modelx.homePointModel.OT_8_score == 0&&modelx.visitorPointModel.OT_8_score==0){
+    }else if ([modelx.homePointModel.OT_8_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_8_score isEqualToString:@"0"]){
         return 7;
-    }else if (modelx.homePointModel.OT_9_score == 0&&modelx.visitorPointModel.OT_9_score==0){
+    }else if ([modelx.homePointModel.OT_9_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_9_score isEqualToString:@"0"]){
         return 8;
-    }else if (modelx.homePointModel.OT_10_score == 0&&modelx.visitorPointModel.OT_10_score==0){
+    }else if ([modelx.homePointModel.OT_10_score isEqualToString:@"0"]&&[modelx.visitorPointModel.OT_10_score isEqualToString:@"0"]){
         return 9;
     }else{
         return 10;
     }
 }
+
++ (NSString *)getHomeTeamIdWithGameData:(NSDictionary *)gameData{
+    RacePointsStatisticModel *pointModel = [RacePointsStatisticModel loadModelWithGameData:gameData];
+    return pointModel.homePointModel.Team_id;
+}
++ (NSString *)getVisitorTeamIdWithGameData:(NSDictionary *)gameData{
+    RacePointsStatisticModel *pointModel = [RacePointsStatisticModel loadModelWithGameData:gameData];
+    return pointModel.visitorPointModel.Team_id;
+}
 @end
 
 @implementation RacePointStatisticModel
-+(instancetype)loadModelWithOneTeamGameData:(NSDictionary *)oneTeamGameData{
++(instancetype)loadModelWithOneTeamGameData:(NSDictionary *)oneTeamGameData isHome:(BOOL)isHome{
     RacePointStatisticModel *pointModel = [[RacePointStatisticModel alloc] init];
     pointModel.Team_id = [oneTeamGameData objectForKey:@"Team_id"];
     pointModel.Team_city = [oneTeamGameData objectForKey:@"Team_city"];
     pointModel.Team_name = [oneTeamGameData objectForKey:@"Team_name"];
     pointModel.Team_abr = [oneTeamGameData objectForKey:@"Team_abr"];
-    pointModel.Home_score = [oneTeamGameData objectForKey:@"Home_score"];
-    pointModel.Visitor_score = [oneTeamGameData objectForKey:@"Visitor_score"];
+    if (isHome) {
+        pointModel.Home_score = [oneTeamGameData objectForKey:@"Home_score"];
+    }else{
+        pointModel.Visitor_score = [oneTeamGameData objectForKey:@"Visitor_score"];
+    }
     pointModel.Qtr_1_score = [oneTeamGameData objectForKey:@"Qtr_1_score"];
     pointModel.Qtr_2_score = [oneTeamGameData objectForKey:@"Qtr_2_score"];
     pointModel.Qtr_3_score = [oneTeamGameData objectForKey:@"Qtr_3_score"];
@@ -113,18 +106,21 @@
  */
 @implementation RaceTeamsStatisticModel
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData{
-    RacePointsStatisticModel *pointModel = [RacePointsStatisticModel loadModelWithGameData:gameData];
-    NSArray *pointModels = pointModel.pointStatisticArray;
-    NSMutableArray *arrayM = [NSMutableArray array];
+    
     RaceTeamsStatisticModel *teamsModel = [[RaceTeamsStatisticModel alloc] init];
-    NSDictionary *dict = [gameData objectForKey:@"TeamData"];
-    for (RacePointStatisticModel *pointModelx in pointModels) {
-        NSString *teamid = pointModelx.Team_id;
-        RaceTeamStatisticModel *teamModel = [RaceTeamStatisticModel loadModelWithOneTeamGameData:[dict objectForKey:teamid]];
-        teamModel.Team_id = teamid;
-        [arrayM addObject:teamModel];
-    }
-    teamsModel.teamStatisticArray = [arrayM copy];
+    NSDictionary *dict = [[gameData objectForKey:@"data"]objectForKey:@"TeamData"];
+    NSString *homeTeamid = [RacePointsStatisticModel getHomeTeamIdWithGameData:gameData];
+    RaceTeamStatisticModel *hometeamModel = [RaceTeamStatisticModel loadModelWithOneTeamGameData:[dict objectForKey:homeTeamid]];
+    hometeamModel.Team_id = homeTeamid;
+    teamsModel.homeTeamModel = hometeamModel;
+    
+    NSString *visitorTeamid = [RacePointsStatisticModel getVisitorTeamIdWithGameData:gameData];
+    RaceTeamStatisticModel *visitorteamModel = [RaceTeamStatisticModel loadModelWithOneTeamGameData:[dict objectForKey:visitorTeamid]];
+    visitorteamModel.Team_id = visitorTeamid;
+    teamsModel.visitorTeamModel = visitorteamModel;
+    
+    teamsModel.itemNum = 8;
+    teamsModel.itemTypeArray = @[@"Offensive_rebounds",@"Defensive_rebounds",@"Assists",@"Steals",@"Blocks",@"Turnovers",@"Three_made",@"Fouls"];
     return teamsModel;
 }
 @end
@@ -149,14 +145,24 @@
  */
 @implementation RacePlayersStatisticModel
 + (instancetype)loadModelWithTeamData:(NSDictionary *)teamData gameData:(NSDictionary *)gameData{
-    NSArray *array = [teamData objectForKey:@"Players"];
+    NSArray *array = [[teamData objectForKey:@"data"] objectForKey:@"Players"];
     RacePlayersStatisticModel *playerModel = [[RacePlayersStatisticModel alloc] init];
-    NSMutableArray *playerArrayM = [NSMutableArray array];
+    NSMutableArray *homePlayerArrayM = [NSMutableArray array];
+    NSMutableArray *visitorPlayerArrayM = [NSMutableArray array];
+    NSString *homeTeamId = [RacePointsStatisticModel getHomeTeamIdWithGameData:gameData];
+    NSString *visitorTeamId = [RacePointsStatisticModel getVisitorTeamIdWithGameData:gameData];
     for (NSDictionary *dict in array) {
         RacePlayerModel *playerModelx = [RacePlayerModel loadModelWithPersonTeamData:dict gameData:gameData];
-        [playerArrayM addObject:playerModelx];
+        if ([playerModelx.teamId isEqualToString:homeTeamId]) {
+            [homePlayerArrayM addObject:playerModelx];
+        }else if ([playerModelx.teamId isEqualToString:visitorTeamId]){
+            [visitorPlayerArrayM addObject:playerModelx];
+        }
     }
-    playerModel.players = playerArrayM;
+    playerModel.homePlayers = [homePlayerArrayM copy];
+    playerModel.visitorPlayers = [visitorPlayerArrayM copy];
+    playerModel.itemNum = 17;
+    playerModel.itemArray = @[@"name",@"minues",@"points",@"total_rebounds",@"assists",@"fg_ma",@"three_ma",@"ft_ma",@"offensive_rebounds",@"defensive_rebounds",@"steals",@"blocks",@"turnovers",@"blocks_against",@"fouls",@"plus_minus",@"on_crt"];
     return playerModel;
 }
 @end
@@ -165,7 +171,7 @@
     RacePlayerModel *playerModel = [[RacePlayerModel alloc] init];
     playerModel.playerId = [personTeamData objectForKey:@"Person_id"];
     playerModel.teamId = [personTeamData objectForKey:@"Team_id"];
-    NSDictionary *dict = [[gameData objectForKey:@"PlayerData"] objectForKey:playerModel.playerId];
+    NSDictionary *dict = [[[gameData objectForKey:@"data"] objectForKey:@"PlayerData"] objectForKey:playerModel.playerId];
     playerModel.name = [NSString stringWithFormat:@"%@ %@",[dict objectForKey:@"First_name"],[dict objectForKey:@"Last_name"]];
     playerModel.minues = [dict objectForKey:@"Minutes"];
     playerModel.points = [dict objectForKey:@"Points"];

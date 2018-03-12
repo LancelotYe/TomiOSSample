@@ -16,8 +16,7 @@
 @property(nonatomic, strong)UICollectionView *pointCollectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
 @property(nonatomic, strong)NSMutableArray *dataArray;
-@property(nonatomic, strong)RacePointStatisticModel *vistorPointModel;
-@property(nonatomic, strong)RacePointStatisticModel *homePointModel;
+@property(nonatomic, strong)RacePointsStatisticModel *pointsModel;
 @property(nonatomic, strong)PointIconView *iconView;
 @end
 @implementation PointStatisticCell
@@ -69,7 +68,7 @@ static NSString *const cellId = @"collcellId";
     PointStatisticCell *cell = [[PointStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
 //    cell.homePointModel =  pointsModel.pointStatisticArray[]
 //    cell.pointsModel  = pointsModel;
-    
+    cell.pointsModel = pointsModel;
     return cell;
 }
 
@@ -80,7 +79,7 @@ static NSString *const cellId = @"collcellId";
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return 4;
+    return self.pointsModel.itemTypeAray.count;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return  3;
@@ -89,19 +88,30 @@ static NSString *const cellId = @"collcellId";
     RaceStatisticCCell *cell = (RaceStatisticCCell *)[_pointCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     NSInteger column = indexPath.section;
     NSInteger row = indexPath.row;
-//    if (row==0){
-//        NSDictionary *columnDictA = _teamAModel.scoreArray[column];
-//        cell.desLabel.text = [columnDictA objectForKey:@"name"];
-//        cell.desLabel.hidden = NO;
-//        cell.scoreLabel.hidden = YES;
-//    }else{
-//        NSDictionary *columnDictA = _teamAModel.scoreArray[column];
-//        NSDictionary *columnDictB = _teamBModel.scoreArray[column];
-//        cell.scoreLabel.text = row==1?[columnDictA objectForKey:@"score"]:[columnDictB objectForKey:@"score"];
-//        cell.scoreLabel.hidden = NO;
-//        cell.desLabel.hidden = YES;
-//    
-//    }
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"transNBA" ofType:@"json"];
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSDictionary *tranDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    RacePointsStatisticModel *model = self.pointsModel;
+    if (row == 0) {
+        NSString *titleKey = model.itemTypeAray[column];
+        cell.desLabel.text = [tranDict objectForKey:titleKey];
+        cell.desLabel.hidden = NO;
+        cell.scoreLabel.hidden = YES;
+    }else{
+        //row==1主队
+        RacePointStatisticModel *modelX = row==1?model.homePointModel:model.visitorPointModel;
+        NSString *pointKey = model.itemTypeAray[column];
+        NSString *scoreText = nil;
+        if ([pointKey isEqualToString:@"总分"]){
+            scoreText = [modelX valueForKey:row==1?@"Home_score":@"Visitor_score"];
+        }
+        else{
+            scoreText = [modelX valueForKey:pointKey];
+        }
+        cell.scoreLabel.text = scoreText;
+        cell.scoreLabel.hidden = NO;
+        cell.desLabel.hidden = YES;
+    }
     return cell;
 }
 
