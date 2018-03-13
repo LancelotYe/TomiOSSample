@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */; };
 		28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CFC204ECEE000289238 /* StretchingNavBar.m */; };
+		285E31332058225B00E39916 /* StatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 285E31322058225B00E39916 /* StatisticModel.m */; };
 		288B406A2052F62B005B9C38 /* transNBA.json in Resources */ = {isa = PBXBuildFile; fileRef = 288B40692052F62B005B9C38 /* transNBA.json */; };
 		E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D411D2052359F00BA5C76 /* PointIconView.m */; };
 		E20D41212052610400BA5C76 /* TeamIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D41202052610400BA5C76 /* TeamIconView.m */; };
@@ -54,6 +55,8 @@
 		28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingableNavViewController.m; sourceTree = "<group>"; };
 		28018CFB204ECEE000289238 /* StretchingNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingNavBar.h; sourceTree = "<group>"; };
 		28018CFC204ECEE000289238 /* StretchingNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingNavBar.m; sourceTree = "<group>"; };
+		285E31312058225B00E39916 /* StatisticModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatisticModel.h; sourceTree = "<group>"; };
+		285E31322058225B00E39916 /* StatisticModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatisticModel.m; sourceTree = "<group>"; };
 		288B40692052F62B005B9C38 /* transNBA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transNBA.json; sourceTree = "<group>"; };
 		E20D411C2052359F00BA5C76 /* PointIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointIconView.h; sourceTree = "<group>"; };
 		E20D411D2052359F00BA5C76 /* PointIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointIconView.m; sourceTree = "<group>"; };
@@ -71,8 +74,8 @@
 		E243C185205113C900818967 /* RaceStatisticCCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStatisticCCell.h; sourceTree = "<group>"; };
 		E243C186205113C900818967 /* RaceStatisticCCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStatisticCCell.m; sourceTree = "<group>"; };
 		E243C1912051387D00818967 /* gameInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameInfo.json; sourceTree = "<group>"; };
-		E248B6832057A4AE006D551B /* TMCurtainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TMCurtainView.h; path = view/TMCurtainView.h; sourceTree = "<group>"; };
-		E248B6842057A4AE006D551B /* TMCurtainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TMCurtainView.m; path = view/TMCurtainView.m; sourceTree = "<group>"; };
+		E248B6832057A4AE006D551B /* TMCurtainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMCurtainView.h; sourceTree = "<group>"; };
+		E248B6842057A4AE006D551B /* TMCurtainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMCurtainView.m; sourceTree = "<group>"; };
 		E2B72379204D1F5F00BD972F /* liveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B7237C204D1F5F00BD972F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E2B7237D204D1F5F00BD972F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,11 +134,36 @@
 			path = "可拉伸导航栏";
 			sourceTree = "<group>";
 		};
+		285E312F2058215700E39916 /* fakeData */ = {
+			isa = PBXGroup;
+			children = (
+				E243C183204FE20900818967 /* teamInfo.json */,
+				288B40692052F62B005B9C38 /* transNBA.json */,
+				E243C1912051387D00818967 /* gameInfo.json */,
+			);
+			path = fakeData;
+			sourceTree = "<group>";
+		};
+		285E31302058218800E39916 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				E2B723AE204D20E900BD972F /* RaceStateCell.h */,
+				E2B723AF204D20E900BD972F /* RaceStateCell.m */,
+				E2C284C9204E9AC700FD3823 /* RaceStateViewController.h */,
+				E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */,
+				E248B6832057A4AE006D551B /* TMCurtainView.h */,
+				E248B6842057A4AE006D551B /* TMCurtainView.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 		E243C182204FCFB700818967 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				E243C174204F8D3F00818967 /* RaceStateModel.h */,
 				E243C175204F8D3F00818967 /* RaceStateModel.m */,
+				285E31312058225B00E39916 /* StatisticModel.h */,
+				285E31322058225B00E39916 /* StatisticModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -242,17 +270,10 @@
 		E2C284C8204E9A5B00FD3823 /* cell布局显示collectionView数据 */ = {
 			isa = PBXGroup;
 			children = (
+				285E31302058218800E39916 /* main */,
+				285E312F2058215700E39916 /* fakeData */,
 				E243C1882051187D00818967 /* view */,
-				E243C183204FE20900818967 /* teamInfo.json */,
-				288B40692052F62B005B9C38 /* transNBA.json */,
-				E243C1912051387D00818967 /* gameInfo.json */,
 				E243C182204FCFB700818967 /* model */,
-				E2B723AE204D20E900BD972F /* RaceStateCell.h */,
-				E2B723AF204D20E900BD972F /* RaceStateCell.m */,
-				E2C284C9204E9AC700FD3823 /* RaceStateViewController.h */,
-				E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */,
-				E248B6832057A4AE006D551B /* TMCurtainView.h */,
-				E248B6842057A4AE006D551B /* TMCurtainView.m */,
 			);
 			path = "cell布局显示collectionView数据";
 			sourceTree = "<group>";
@@ -397,6 +418,7 @@
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
 				E20D41212052610400BA5C76 /* TeamIconView.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
+				285E31332058225B00E39916 /* StatisticModel.m in Sources */,
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,

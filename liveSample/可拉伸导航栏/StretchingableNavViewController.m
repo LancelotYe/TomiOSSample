@@ -80,7 +80,6 @@ static NSString *cellID = @"cellID";
         CGFloat colorAlpha = (offset+headHeight)/headHeight;
         _navbar.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:colorAlpha];
     }
-    NSLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
     CGRect frame = self.originalBgFrame;
     if (offset > -headHeight) {
         frame.origin.y = self.originalBgFrame.origin.y-offset-headHeight;

@@ -23,7 +23,6 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self.view addSubview:self.testView];
-    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width);
     self.view.backgroundColor = [UIColor whiteColor];
     _curtainView = [TMCurtainView loadCurtainViewOnBaseView:self.testView];
     [self.view addSubview:_curtainView];

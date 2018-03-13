@@ -48,7 +48,7 @@ static NSString *const cellId = @"collcellId";
         [self.contentView addSubview:self.iconView];
         _iconView.homeIconUrl = @"234";
         _iconView.visitorIconUrl = @"123";
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, 44, tableViewW - 40, 0.5)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, pointCellH, tableViewW - 40, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
     }
@@ -119,9 +119,9 @@ static NSString *const cellId = @"collcellId";
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return (CGSize){collectionViewW/5, 44};
+        return (CGSize){collectionViewW/5, pointCellH};
     }
-    return (CGSize){collectionViewW/5, 44};
+    return (CGSize){collectionViewW/5, pointCellH};
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 0, 0, 0);

@@ -59,7 +59,7 @@ static NSString *const cellId = @"playcellId";
     if (self) {
         [self.contentView addSubview:self.playerListCollectionView];
         [self.contentView addSubview:self.playerCollectionView];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 25, [UIScreen mainScreen].bounds.size.width - 20, 0.5)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, playerCellH, tableViewW - 20, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
     }
@@ -77,13 +77,8 @@ static NSString *const cellId = @"playcellId";
     PlayerStatisticCell *cell = [[PlayerStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
     cell.playersModel = playersModel;
     cell.isHome = isHome;
-    
-    for (RacePlayerModel *dic in playersModel.visitorPlayers) {
-        NSLog(@"%@",dic.name);
-    }
     if (isHome) {
         cell.players = playersModel.homePlayers;
-        
     }else{
         cell.players = playersModel.visitorPlayers;
     }
@@ -112,8 +107,8 @@ static NSString *const cellId = @"playcellId";
     RaceStatisticCCell *cell = nil;
     if (collectionView == _playerListCollectionView) {
         cell = (RaceStatisticCCell *)[_playerListCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-        cell.desLabel.textAlignment = NSTextAlignmentLeft;
-        cell.scoreLabel.textAlignment = NSTextAlignmentLeft;
+//        cell.desLabel.textAlignment = NSTextAlignmentLeft;
+//        cell.scoreLabel.textAlignment = NSTextAlignmentLeft;
     }else{
         cell = (RaceStatisticCCell *)[_playerCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     }
@@ -154,9 +149,9 @@ static NSString *const cellId = @"playcellId";
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == _playerListCollectionView) {
-        return (CGSize){150, 20};
+        return (CGSize){tableViewW/3, 20};
     }else{
-        return (CGSize){70, 20};
+        return (CGSize){tableViewW/6, 20};
     }
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

@@ -70,7 +70,6 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
     return self;
 }
 + (instancetype)loadCurtainViewOnBaseView:(UIView *)baseView{
-    NSLog(@"%@",NSStringFromCGRect(baseView.frame));
     CGRect frame = baseView.frame;
     CGFloat curtainY = frame.origin.y;
     CGFloat curtainX = curtainW - curtainSwitchW;
@@ -137,9 +136,9 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
     else if (indexPath.section == 1){
         return self.stateModel.teamsModel.cellH;
     }else if(indexPath.section == 2){
-        return (self.stateModel.playersModel.homePlayers.count+1) * 20;
+        return (self.stateModel.playersModel.homePlayers.count+1) * playerCellH;
     }else if(indexPath.section == 3){
-        return (self.stateModel.playersModel.visitorPlayers.count+1) * 20;
+        return (self.stateModel.playersModel.visitorPlayers.count+1) * playerCellH;
     }
     return 0;
 }
@@ -170,11 +169,7 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
         return cell;
     }
     else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
-        }
-        return cell;
+        return nil;
     }
 }
 - (void)layoutSubviews{

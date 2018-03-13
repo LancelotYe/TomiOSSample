@@ -22,6 +22,7 @@
 - (UILabel *)scoreLabel{
     if (!_scoreLabel) {
         _scoreLabel = [[UILabel alloc] init];
+        _scoreLabel.font = [UIFont systemFontOfSize:15];
         _scoreLabel.textAlignment = NSTextAlignmentCenter;
         _scoreLabel.hidden = YES;
     }

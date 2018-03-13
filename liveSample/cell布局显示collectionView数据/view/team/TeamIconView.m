@@ -63,16 +63,12 @@
     CGFloat selfW = self.frame.size.width;
     CGFloat selfH = self.frame.size.height;
     
-    _desLbl.frame = CGRectMake(selfW/3, 0, selfW/3, selfH);
+    _desLbl.frame = CGRectMake(selfW/6, 0, selfW*2/3, selfH);
     _line.frame = CGRectMake(10, selfH-1, [UIScreen mainScreen].bounds.size.width-20, 0.5);
-    
-    
-    _visitorTeamImageView.frame = CGRectMake(selfW*2/3, 0, selfW/3, selfH);
-    _homeTeamImageView.frame = CGRectMake(0, 0, selfW/3, selfH);
     CGFloat h = selfH;
-    CGFloat imageW = selfW/3-17*2;
+    CGFloat imageW = selfW/6-17*2;
     imageW = imageW>h?h:imageW;
-    CGFloat marginX = (selfW/3-imageW)*0.5;
+    CGFloat marginX = 17;
     CGFloat marginY = (h-imageW)*0.5;
     
     
@@ -80,7 +76,7 @@
     _homeTeamImageView.layer.cornerRadius = imageW/2;
     _homeTeamImageView.clipsToBounds = YES;
     _homeTeamImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    _visitorTeamImageView.frame = CGRectMake(marginX+selfW*2/3, marginY, imageW, imageW);
+    _visitorTeamImageView.frame = CGRectMake(selfW-imageW-marginX, marginY, imageW, imageW);
     _visitorTeamImageView.layer.cornerRadius = imageW/2;
     _visitorTeamImageView.clipsToBounds = YES;
     _visitorTeamImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
