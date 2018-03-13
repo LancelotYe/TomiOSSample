@@ -22,7 +22,8 @@
 @implementation TMCurtainView
 static NSString *pointID = @"pointID";
 static NSString *teamID = @"teamID";
-static NSString *playerID = @"playerID";
+static NSString *homePlayerID = @"homePlayerID";
+static NSString *visitorPlayerID = @"visitorPlayerID";
 - (void)loadData{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"teamInfo" ofType:@"json"];
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
@@ -69,6 +70,7 @@ static NSString *playerID = @"playerID";
     return self;
 }
 + (instancetype)loadCurtainViewOnBaseView:(UIView *)baseView{
+    NSLog(@"%@",NSStringFromCGRect(baseView.frame));
     CGRect frame = baseView.frame;
     CGFloat curtainY = frame.origin.y;
     CGFloat curtainX = curtainW - curtainSwitchW;
@@ -135,9 +137,9 @@ static NSString *playerID = @"playerID";
     else if (indexPath.section == 1){
         return self.stateModel.teamsModel.cellH;
     }else if(indexPath.section == 2){
-        return (self.stateModel.playersModel.homePlayers.count+1) * 44;
+        return (self.stateModel.playersModel.homePlayers.count+1) * 20;
     }else if(indexPath.section == 3){
-        return (self.stateModel.playersModel.visitorPlayers.count+1) * 44;
+        return (self.stateModel.playersModel.visitorPlayers.count+1) * 20;
     }
     return 0;
 }
@@ -155,15 +157,15 @@ static NSString *playerID = @"playerID";
         }
         return cell;
     }else if(indexPath.section == 2){
-        PlayerStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:playerID];
+        PlayerStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:homePlayerID];
         if (!cell) {
-            cell = [PlayerStatisticCell loadCellWithPlayerModel:self.stateModel.playersModel reuseID:playerID isHome:YES];
+            cell = [PlayerStatisticCell loadCellWithPlayerModel:self.stateModel.playersModel reuseID:homePlayerID isHome:YES];
         }
         return cell;
     }else if (indexPath.section == 3){
-        PlayerStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:playerID];
+        PlayerStatisticCell *cell = [tableView dequeueReusableCellWithIdentifier:visitorPlayerID];
         if (!cell) {
-            cell = [PlayerStatisticCell loadCellWithPlayerModel:self.stateModel.playersModel reuseID:playerID isHome:NO];
+            cell = [PlayerStatisticCell loadCellWithPlayerModel:self.stateModel.playersModel reuseID:visitorPlayerID isHome:NO];
         }
         return cell;
     }

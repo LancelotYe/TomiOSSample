@@ -9,6 +9,7 @@
 #import "PlayerStatisticCell.h"
 #import "RaceStateModel.h"
 #import "RaceStatisticCCell.h"
+#define tableViewW ([UIScreen mainScreen].bounds.size.width-17)
 @interface PlayerStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *playerCollectionView;
 @property(nonatomic, strong)UICollectionView *playerListCollectionView;
@@ -21,6 +22,7 @@
 @implementation PlayerStatisticCell
 
 static NSString *const cellId = @"playcellId";
+
 - (UICollectionViewFlowLayout *)customLayout{
     if(!_customLayout){
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -63,14 +65,25 @@ static NSString *const cellId = @"playcellId";
     }
     return self;
 }
+- (void)setPlayers:(NSArray *)players{
+    _players = players;
+    CGFloat h = (self.players.count+1) * 20;
+    self.playerListCollectionView.frame = CGRectMake(0, 0, tableViewW/3, h);
+    self.playerCollectionView.frame = CGRectMake(tableViewW/3, 0, tableViewW*2/3, h);
+}
 //构成这个cell需要两支队伍的模型数据
 
 +(instancetype)loadCellWithPlayerModel:(RacePlayersStatisticModel *)playersModel reuseID:(NSString *)reuseID isHome:(BOOL)isHome{
     PlayerStatisticCell *cell = [[PlayerStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
     cell.playersModel = playersModel;
     cell.isHome = isHome;
+    
+    for (RacePlayerModel *dic in playersModel.visitorPlayers) {
+        NSLog(@"%@",dic.name);
+    }
     if (isHome) {
         cell.players = playersModel.homePlayers;
+        
     }else{
         cell.players = playersModel.visitorPlayers;
     }
@@ -87,9 +100,9 @@ static NSString *const cellId = @"playcellId";
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (_isHome) {
-        return _playersModel.homePlayers.count;
+        return _playersModel.homePlayers.count+1;
     }else{
-        return _playersModel.visitorPlayers.count;
+        return _playersModel.visitorPlayers.count+1;
     }
     
 }
@@ -151,11 +164,11 @@ static NSString *const cellId = @"playcellId";
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 5.f;
+    return 0.f;
 }
 //每个section之间最小间距设定
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 10.f;
+    return 0.f;
 }
 
 
