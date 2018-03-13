@@ -13,6 +13,7 @@
 -(UILabel *)desLabel{
     if (!_desLabel) {
         _desLabel = [[UILabel alloc] init];
+        _desLabel.font = [UIFont systemFontOfSize:10];
         _desLabel.textAlignment = NSTextAlignmentCenter;
         _desLabel.hidden = YES;
     }
@@ -36,9 +37,6 @@
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    if (self.bounds.size.width == 150) {
-        NSLog(@"%@",NSStringFromCGRect(self.contentView.bounds));
-    }
     self.desLabel.frame = self.contentView.bounds;
     self.scoreLabel.frame = self.contentView.bounds;
 }

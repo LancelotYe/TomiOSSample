@@ -10,8 +10,9 @@
 #import "RaceStatisticCCell.h"
 #import "RaceStateModel.h"
 #import "PointIconView.h"
-#define pointCellMargin 5
-#define pointCellW ([UIScreen mainScreen].bounds.size.width-7*pointCellMargin)/6
+#define tableViewW ([UIScreen mainScreen].bounds.size.width-17)
+#define iconViewW tableViewW/6
+#define collectionViewW (tableViewW-iconViewW)
 @interface PointStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *pointCollectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
@@ -25,9 +26,8 @@ static NSString *const cellId = @"collcellId";
 -(UICollectionView *)collectionView{
     if (!_pointCollectionView) {
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
-        //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _pointCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(70, 0, [UIScreen mainScreen].bounds.size.width-70, 100) collectionViewLayout:_customLayout];
+        _pointCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(iconViewW, 0, collectionViewW, 100) collectionViewLayout:_customLayout];
         _pointCollectionView.backgroundColor = [UIColor redColor];
         _pointCollectionView.dataSource = self;
         _pointCollectionView.delegate = self;
@@ -37,37 +37,31 @@ static NSString *const cellId = @"collcellId";
 }
 - (PointIconView *)iconView{
     if(!_iconView){
-        _iconView = [[PointIconView alloc] initWithFrame:CGRectMake(0, 0, 70, 100)];
+        _iconView = [[PointIconView alloc] initWithFrame:CGRectMake(0, 0, iconViewW, 100)];
     }
     return _iconView;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _dataArray = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
         [self.contentView addSubview:self.collectionView];
         [self.contentView addSubview:self.iconView];
-        _iconView.hostIconUrl = @"234";
-        _iconView.customiconUrl = @"123";
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 35, [UIScreen mainScreen].bounds.size.width - 20, 0.5)];
+        _iconView.homeIconUrl = @"234";
+        _iconView.visitorIconUrl = @"123";
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, 44, tableViewW - 40, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
     }
     return self;
 }
-//构成这个cell需要两支队伍的模型数据
-+ (instancetype)loadCellWithTeamModelA:(RacePointStatisticModel *)teamModelA TeamModelB: (RacePointStatisticModel *)teamModelB reuseID:(NSString *)reuseID{
-    PointStatisticCell *cell = [[PointStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
-    
-//    cell.teamAModel = teamModelA;
-//    cell.teamBModel = teamModelB;
-    
-    return cell;
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.iconView.frame = CGRectMake(0, 0, iconViewW, self.pointsModel.cellH);
+    self.pointCollectionView.frame = CGRectMake(iconViewW, 0, collectionViewW, self.pointsModel.cellH);
 }
+//构成这个cell需要两支队伍的模型数据
 +(instancetype)loadCellWithPointsModel:(RacePointsStatisticModel *)pointsModel reuseID:(NSString *)reuseID{
     PointStatisticCell *cell = [[PointStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
-//    cell.homePointModel =  pointsModel.pointStatisticArray[]
-//    cell.pointsModel  = pointsModel;
     cell.pointsModel = pointsModel;
     return cell;
 }
@@ -124,10 +118,13 @@ static NSString *const cellId = @"collcellId";
 }
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return (CGSize){pointCellW, 20};
+    if (indexPath.row == 0) {
+        return (CGSize){collectionViewW/5, 44};
+    }
+    return (CGSize){collectionViewW/5, 44};
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(pointCellMargin, pointCellMargin, pointCellMargin, pointCellMargin);
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
@@ -135,7 +132,7 @@ static NSString *const cellId = @"collcellId";
 }
 //每个section之间最小间距设定
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 5.f;
+    return 0.f;
 }
 
 

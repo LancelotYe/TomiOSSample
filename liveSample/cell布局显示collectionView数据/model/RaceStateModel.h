@@ -7,18 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef NS_ENUM(NSInteger, raceModelKind) {
-    raceModelKindPoint = 1,
-    raceModelKindTeam,
-    raceModelKindPlayer,
-};
+#import <UIKit/UIKit.h>
+@class RacePointsStatisticModel;
+@class RaceTeamsStatisticModel;
+@class RacePlayersStatisticModel;
 @interface RaceStateModel : NSObject
-
-
+@property(nonatomic, strong)RacePointsStatisticModel *pointsModel;
+@property(nonatomic, strong)RaceTeamsStatisticModel *teamsModel;
+@property(nonatomic, strong)RacePlayersStatisticModel *playersModel;
+@property(nonatomic, strong)NSString *homeName;
+@property(nonatomic, strong)NSString *visitorName;
++(instancetype)loadModelWithTeamData:(NSDictionary *)teamData GameData:(NSDictionary *)gameData;
 
 @end
+
 @class RacePointStatisticModel;
-@interface RacePointsStatisticModel: RaceStateModel
+@interface RacePointsStatisticModel: NSObject
+@property(nonatomic, assign)CGFloat cellH;
 //每节分数数组
 @property(nonatomic, strong)RacePointStatisticModel *homePointModel;
 @property(nonatomic, strong)RacePointStatisticModel *visitorPointModel;
@@ -28,7 +33,7 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData;
 @end
 
-@interface RacePointStatisticModel: RaceStateModel
+@interface RacePointStatisticModel: NSObject
 //每节分数数组
 @property(nonatomic, assign)BOOL isHome;
 @property(nonatomic, strong)NSString *Team_id;
@@ -57,14 +62,15 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 
 @class RaceTeamStatisticModel;
 
-@interface RaceTeamsStatisticModel : RaceStateModel
+@interface RaceTeamsStatisticModel : NSObject
+@property(nonatomic, assign)CGFloat cellH;
 @property(nonatomic, assign)NSInteger itemNum;
 @property(nonatomic, strong)NSArray *itemTypeArray;
 @property(nonatomic, strong)RaceTeamStatisticModel *homeTeamModel;
 @property(nonatomic, strong)RaceTeamStatisticModel *visitorTeamModel;
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData;
 @end
-@interface RaceTeamStatisticModel : RaceStateModel
+@interface RaceTeamStatisticModel : NSObject
 @property(nonatomic, strong)NSString *Team_id;
 @property(nonatomic, strong)NSString *Offensive_rebounds;
 @property(nonatomic, strong)NSString *Defensive_rebounds;
@@ -80,7 +86,7 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 
 
 
-@interface RacePlayersStatisticModel :RaceStateModel
+@interface RacePlayersStatisticModel :NSObject
 @property(nonatomic, copy)NSArray *homePlayers;
 @property(nonatomic, copy)NSArray *visitorPlayers;
 @property(nonatomic, assign)NSInteger itemNum;
@@ -89,6 +95,7 @@ typedef NS_ENUM(NSInteger, raceModelKind) {
 
 @end
 @interface RacePlayerModel : NSObject
+
 @property(nonatomic, strong)NSString *teamId;
 @property(nonatomic, strong)NSString *playerId;
 

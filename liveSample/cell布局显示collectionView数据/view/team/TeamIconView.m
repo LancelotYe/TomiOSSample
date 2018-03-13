@@ -9,52 +9,81 @@
 #import "TeamIconView.h"
 @interface TeamIconView()
 @property(nonatomic, strong)UILabel *desLbl;
-@property(nonatomic, strong)UIImageView *hostTeamImageView;
-@property(nonatomic, strong)UIImageView *customTeamImageView;
+@property(nonatomic, strong)UIImageView *homeTeamImageView;
+@property(nonatomic, strong)UIImageView *visitorTeamImageView;
+@property(nonatomic, strong)UIView *line;
 @end
 @implementation TeamIconView
-- (UIImageView *)hostTeamImageView{
-    CGFloat selfW = self.frame.size.width;
-    CGFloat selfH = self.frame.size.height;
-    if(!_hostTeamImageView){
-        _hostTeamImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, selfW/3, selfH)];
+- (UIImageView *)homeTeamImageView{
+    if(!_homeTeamImageView){
+        _homeTeamImageView = [[UIImageView alloc] init];
+        _homeTeamImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
-    return _hostTeamImageView;
+    return _homeTeamImageView;
+}
+- (UIImageView *)visitorTeamImageView{
+    if(!_visitorTeamImageView){
+        _visitorTeamImageView = [[UIImageView alloc] init];
+        _visitorTeamImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _visitorTeamImageView;
 }
 - (UILabel *)desLbl{
     if(!_desLbl){
-        CGFloat selfW = self.frame.size.width;
-        CGFloat selfH = self.frame.size.height;
-        _desLbl = [[UILabel alloc] initWithFrame:CGRectMake(selfW/3, 0, selfW/3, selfH)];
+        _desLbl = [[UILabel alloc] init];
         _desLbl.textAlignment = NSTextAlignmentCenter;
         _desLbl.text =@"VS";
     }
     return _desLbl;
 }
-- (UIImageView *)customTeamImageView{
-    CGFloat selfW = self.frame.size.width;
-    CGFloat selfH = self.frame.size.height;
-    if(!_customTeamImageView){
-        _customTeamImageView = [[UIImageView alloc] initWithFrame:CGRectMake(selfW*2/3, 0, selfW/3, selfH)];
-    }
-    return _customTeamImageView;
+
+-(void)setHomeIconUrl:(NSString *)homeIconUrl{
+    _homeIconUrl = homeIconUrl;
+    _homeTeamImageView.image = [UIImage imageNamed:_homeIconUrl];
 }
-- (void)setHostIconUrl:(NSString *)hostIconUrl{
-    _hostIconUrl = hostIconUrl;
-    _hostTeamImageView.image = [UIImage imageNamed:_hostIconUrl];
-}
--(void)setCustomiconUrl:(NSString *)customiconUrl{
-    _customiconUrl = customiconUrl;
-    _customTeamImageView.image = [UIImage imageNamed:_customiconUrl];
+-(void)setVisitorIconUrl:(NSString *)visitorIconUrl{
+    _visitorIconUrl = visitorIconUrl;
+    _visitorTeamImageView.image = [UIImage imageNamed:_visitorIconUrl];
 }
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
         [self addSubview:self.desLbl];
-        [self addSubview:self.hostTeamImageView];
-        [self addSubview:self.customTeamImageView];
+        [self addSubview:self.homeTeamImageView];
+        [self addSubview:self.visitorTeamImageView];
+        _line = [[UIView alloc] init];
+        [_line setBackgroundColor:[UIColor grayColor]];
+        [self addSubview:_line];
     }
     return self;
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    CGFloat selfW = self.frame.size.width;
+    CGFloat selfH = self.frame.size.height;
+    
+    _desLbl.frame = CGRectMake(selfW/3, 0, selfW/3, selfH);
+    _line.frame = CGRectMake(10, selfH-1, [UIScreen mainScreen].bounds.size.width-20, 0.5);
+    
+    
+    _visitorTeamImageView.frame = CGRectMake(selfW*2/3, 0, selfW/3, selfH);
+    _homeTeamImageView.frame = CGRectMake(0, 0, selfW/3, selfH);
+    CGFloat h = selfH;
+    CGFloat imageW = selfW/3-17*2;
+    imageW = imageW>h?h:imageW;
+    CGFloat marginX = (selfW/3-imageW)*0.5;
+    CGFloat marginY = (h-imageW)*0.5;
+    
+    
+    _homeTeamImageView.frame = CGRectMake(marginX, marginY, imageW, imageW);
+    _homeTeamImageView.layer.cornerRadius = imageW/2;
+    _homeTeamImageView.clipsToBounds = YES;
+    _homeTeamImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    _visitorTeamImageView.frame = CGRectMake(marginX+selfW*2/3, marginY, imageW, imageW);
+    _visitorTeamImageView.layer.cornerRadius = imageW/2;
+    _visitorTeamImageView.clipsToBounds = YES;
+    _visitorTeamImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    
+}
 @end

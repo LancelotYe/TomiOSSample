@@ -96,7 +96,14 @@ static NSString *const cellId = @"playcellId";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger column = indexPath.section;
     NSInteger row = indexPath.row;
-    RaceStatisticCCell *cell = (RaceStatisticCCell *)[_playerCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    RaceStatisticCCell *cell = nil;
+    if (collectionView == _playerListCollectionView) {
+        cell = (RaceStatisticCCell *)[_playerListCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+        cell.desLabel.textAlignment = NSTextAlignmentLeft;
+        cell.scoreLabel.textAlignment = NSTextAlignmentLeft;
+    }else{
+        cell = (RaceStatisticCCell *)[_playerCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    }
     if(collectionView == _playerListCollectionView){
         if(row == 0){
             cell.desLabel.text = @"球员";

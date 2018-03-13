@@ -10,7 +10,15 @@
 
 @implementation RaceStateModel
 
-
++ (instancetype)loadModelWithTeamData:(NSDictionary *)teamData GameData:(NSDictionary *)gameData{
+    RaceStateModel *model = [[RaceStateModel alloc] init];
+    model.pointsModel = [RacePointsStatisticModel loadModelWithGameData:gameData];
+    model.teamsModel = [RaceTeamsStatisticModel loadModelWithGameData:gameData];
+    model.playersModel = [RacePlayersStatisticModel loadModelWithTeamData:teamData gameData:gameData];
+    model.homeName = model.pointsModel.homePointModel.Team_name;
+    model.visitorName = model.pointsModel.visitorPointModel.Team_name;
+    return model;
+}
 @end
 /**
  point统计
@@ -33,6 +41,7 @@
     }
     [itemArray addObject:@"总分"];
     modelx.itemTypeAray = [itemArray copy];
+    modelx.cellH = 44 * 3;
     return modelx;
 }
 
@@ -121,6 +130,7 @@
     
     teamsModel.itemNum = 8;
     teamsModel.itemTypeArray = @[@"Offensive_rebounds",@"Defensive_rebounds",@"Assists",@"Steals",@"Blocks",@"Turnovers",@"Three_made",@"Fouls"];
+    teamsModel.cellH = (teamsModel.itemNum + 1) * 44;
     return teamsModel;
 }
 @end
@@ -163,6 +173,8 @@
     playerModel.visitorPlayers = [visitorPlayerArrayM copy];
     playerModel.itemNum = 17;
     playerModel.itemArray = @[@"name",@"minues",@"points",@"total_rebounds",@"assists",@"fg_ma",@"three_ma",@"ft_ma",@"offensive_rebounds",@"defensive_rebounds",@"steals",@"blocks",@"turnovers",@"blocks_against",@"fouls",@"plus_minus",@"on_crt"];
+    
+    
     return playerModel;
 }
 @end

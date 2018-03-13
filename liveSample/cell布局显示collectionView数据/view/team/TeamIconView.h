@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TeamIconView : UIView
-@property(nonatomic, strong)NSString *hostIconUrl;
-@property(nonatomic, strong)NSString *customiconUrl;
+@property(nonatomic, strong)NSString *homeIconUrl;
+@property(nonatomic, strong)NSString *visitorIconUrl;
 @end

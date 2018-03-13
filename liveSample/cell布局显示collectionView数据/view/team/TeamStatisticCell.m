@@ -12,11 +12,10 @@
 #import "TeamIconView.h"
 #define pointCellMargin 5
 #define pointCellW ([UIScreen mainScreen].bounds.size.width-7*pointCellMargin)/6
+#define tableViewW ([UIScreen mainScreen].bounds.size.width-17)
 @interface TeamStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
-@property(nonatomic, strong)RaceTeamStatisticModel *teamAModel;
-@property(nonatomic, strong)RaceTeamStatisticModel *teamBModel;
 
 @property(nonatomic, strong)RaceTeamsStatisticModel *teamsModel;
 @property(nonatomic, strong)TeamIconView *iconView;
@@ -29,9 +28,9 @@ static NSString *const headerId = @"headerId";
 static NSString *const footerId = @"footerId";
 - (TeamIconView *)iconView{
     if(!_iconView){
-        _iconView = [[TeamIconView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40)];
-        _iconView.hostIconUrl = @"234";
-        _iconView.customiconUrl = @"123";
+        _iconView = [[TeamIconView alloc] initWithFrame:CGRectMake(0, 0, tableViewW, 66)];
+        _iconView.homeIconUrl = @"234";
+        _iconView.visitorIconUrl = @"123";
     }
     return _iconView;
 }
@@ -40,8 +39,8 @@ static NSString *const footerId = @"footerId";
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40, [UIScreen mainScreen].bounds.size.width, 600) collectionViewLayout:_customLayout];
-        _collectionView.backgroundColor = [UIColor redColor];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 66, tableViewW, 600) collectionViewLayout:_customLayout];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollEnabled = NO;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
@@ -56,19 +55,10 @@ static NSString *const footerId = @"footerId";
     if (self) {
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.collectionView];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, 35, [UIScreen mainScreen].bounds.size.width, 0.5)];
-        [line setBackgroundColor:[UIColor grayColor]];
-        [self.contentView addSubview:line];
     }
     return self;
 }
 //构成这个cell需要两支队伍的模型数据
-+ (instancetype)loadCellWithTeamModelA:(RaceTeamStatisticModel *)teamModelA TeamModelB: (RaceTeamStatisticModel *)teamModelB reuseID:(NSString *)reuseID{
-    TeamStatisticCell *cell = [[TeamStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
-    cell.teamAModel = teamModelA;
-    cell.teamBModel = teamModelB;
-    return cell;
-}
 
 + (instancetype)loadCellWithTeamsModel:(RaceTeamsStatisticModel *)teamsModel reuseID:(NSString *)reuseID{
     TeamStatisticCell *cell = [[TeamStatisticCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseID];
@@ -113,7 +103,11 @@ static NSString *const footerId = @"footerId";
         return cell;
     }
 }
-
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    _iconView.frame = CGRectMake(0, 0, tableViewW, 66);
+    _collectionView.frame = CGRectMake(0, 66, tableViewW, self.teamsModel.cellH-66);
+}
 
 -(BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
@@ -124,9 +118,9 @@ static NSString *const footerId = @"footerId";
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
-        return (CGSize){[UIScreen mainScreen].bounds.size.width*2/3,20};
+        return (CGSize){tableViewW*2/3,66};
     }
-    return (CGSize){[UIScreen mainScreen].bounds.size.width/6, 20};
+    return (CGSize){tableViewW/6, 66};
     
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -138,7 +132,7 @@ static NSString *const footerId = @"footerId";
 }
 //section每个row之间最小间距设定
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 30.f;
+    return 0;
 }
 
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
