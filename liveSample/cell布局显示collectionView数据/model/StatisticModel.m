@@ -9,7 +9,12 @@
 #import "StatisticModel.h"
 
 @implementation StatisticModel
-
++ (NSDictionary *)loadTransDict{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"transNBA" ofType:@"json"];
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSDictionary *tranDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    return tranDict;
+}
 @end
 /**
  point统计
@@ -32,7 +37,7 @@
     }
     [itemArray addObject:@"总分"];
     modelx.itemTypeAray = [itemArray copy];
-    modelx.cellH = pointCellH * 3;
+    modelx.cellH = pointCellH * 2 + pointItemH;
     return modelx;
 }
 
@@ -121,31 +126,31 @@
     NSDictionary *dict = [[gameData objectForKey:@"data"]objectForKey:@"TeamData"];
     NSString *homeTeamid = [RacePointsStatisticModel getHomeTeamIdWithGameData:gameData];
     RaceTeamStatisticModel *hometeamModel = [RaceTeamStatisticModel loadModelWithOneTeamGameData:[dict objectForKey:homeTeamid]];
-    hometeamModel.Team_id = homeTeamid;
+    hometeamModel.team_id = homeTeamid;
     teamsModel.homeTeamModel = hometeamModel;
     
     NSString *visitorTeamid = [RacePointsStatisticModel getVisitorTeamIdWithGameData:gameData];
     RaceTeamStatisticModel *visitorteamModel = [RaceTeamStatisticModel loadModelWithOneTeamGameData:[dict objectForKey:visitorTeamid]];
-    visitorteamModel.Team_id = visitorTeamid;
+    visitorteamModel.team_id = visitorTeamid;
     teamsModel.visitorTeamModel = visitorteamModel;
     
     teamsModel.itemNum = 8;
-    teamsModel.itemTypeArray = @[@"Offensive_rebounds",@"Defensive_rebounds",@"Assists",@"Steals",@"Blocks",@"Turnovers",@"Three_made",@"Fouls"];
-    teamsModel.cellH = (teamsModel.itemNum + 1) * teamCellH;
+    teamsModel.itemTypeArray = @[@"offensive_rebounds",@"defensive_rebounds",@"assists",@"steals",@"blocks",@"turnovers",@"three_made",@"fouls"];
+    teamsModel.cellH = (teamsModel.itemNum * teamCellH) + teamIconH;
     return teamsModel;
 }
 @end
 @implementation RaceTeamStatisticModel
 +(instancetype)loadModelWithOneTeamGameData:(NSDictionary *)oneTeamGameData{
     RaceTeamStatisticModel *model = [[RaceTeamStatisticModel alloc] init];
-    model.Offensive_rebounds = [oneTeamGameData objectForKey:@"Offensive_rebounds"];
-    model.Defensive_rebounds = [oneTeamGameData objectForKey:@"Defensive_rebounds"];
-    model.Assists = [oneTeamGameData objectForKey:@"Assists"];
-    model.Steals = [oneTeamGameData objectForKey:@"Steals"];
-    model.Blocks = [oneTeamGameData objectForKey:@"Blocks"];
-    model.Turnovers = [oneTeamGameData objectForKey:@"Turnovers"];
-    model.Three_made = [oneTeamGameData objectForKey:@"Three_made"];
-    model.Fouls = [oneTeamGameData objectForKey:@"Fouls"];
+    model.offensive_rebounds = [oneTeamGameData objectForKey:@"Offensive_rebounds"];
+    model.defensive_rebounds = [oneTeamGameData objectForKey:@"Defensive_rebounds"];
+    model.assists = [oneTeamGameData objectForKey:@"Assists"];
+    model.steals = [oneTeamGameData objectForKey:@"Steals"];
+    model.blocks = [oneTeamGameData objectForKey:@"Blocks"];
+    model.turnovers = [oneTeamGameData objectForKey:@"Turnovers"];
+    model.three_made = [oneTeamGameData objectForKey:@"Three_made"];
+    model.fouls = [oneTeamGameData objectForKey:@"Fouls"];
     return model;
 }
 
@@ -173,7 +178,7 @@
     playerModel.homePlayers = [homePlayerArrayM copy];
     playerModel.visitorPlayers = [visitorPlayerArrayM copy];
     playerModel.itemNum = 17;
-    playerModel.itemArray = @[@"name",@"minues",@"points",@"total_rebounds",@"assists",@"fg_ma",@"three_ma",@"ft_ma",@"offensive_rebounds",@"defensive_rebounds",@"steals",@"blocks",@"turnovers",@"blocks_against",@"fouls",@"plus_minus",@"on_crt"];
+    playerModel.itemArray = @[@"name",@"minutes",@"points",@"total_rebounds",@"assists",@"fg_ma",@"three_ma",@"ft_ma",@"offensive_rebounds",@"defensive_rebounds",@"steals",@"blocks",@"turnovers",@"blocks_against",@"fouls",@"plus_minus",@"on_crt"];
     
     
     return playerModel;
@@ -186,7 +191,7 @@
     playerModel.teamId = [personTeamData objectForKey:@"Team_id"];
     NSDictionary *dict = [[[gameData objectForKey:@"data"] objectForKey:@"PlayerData"] objectForKey:playerModel.playerId];
     playerModel.name = [NSString stringWithFormat:@"%@ %@",[dict objectForKey:@"First_name"],[dict objectForKey:@"Last_name"]];
-    playerModel.minues = [dict objectForKey:@"Minutes"];
+    playerModel.minutes = [dict objectForKey:@"Minutes"];
     playerModel.points = [dict objectForKey:@"Points"];
     playerModel.total_rebounds = [dict objectForKey:@"Total_rebounds"];
     playerModel.assists = [dict objectForKey:@"Assists"];

@@ -7,7 +7,9 @@
 //
 
 #import "TeamIconView.h"
+#import "StatisticModel.h"
 @interface TeamIconView()
+
 @property(nonatomic, strong)UILabel *desLbl;
 @property(nonatomic, strong)UIImageView *homeTeamImageView;
 @property(nonatomic, strong)UIImageView *visitorTeamImageView;
@@ -62,16 +64,12 @@
     [super layoutSubviews];
     CGFloat selfW = self.frame.size.width;
     CGFloat selfH = self.frame.size.height;
-    
     _desLbl.frame = CGRectMake(selfW/6, 0, selfW*2/3, selfH);
-    _line.frame = CGRectMake(10, selfH-1, [UIScreen mainScreen].bounds.size.width-20, 0.5);
+    _line.frame = CGRectMake(10, selfH-1, selfW-20, 0.5);
     CGFloat h = selfH;
-    CGFloat imageW = selfW/6-17*2;
-    imageW = imageW>h?h:imageW;
-    CGFloat marginX = 17;
+    CGFloat imageW = teamImgW;
+    CGFloat marginX = 19;
     CGFloat marginY = (h-imageW)*0.5;
-    
-    
     _homeTeamImageView.frame = CGRectMake(marginX, marginY, imageW, imageW);
     _homeTeamImageView.layer.cornerRadius = imageW/2;
     _homeTeamImageView.clipsToBounds = YES;

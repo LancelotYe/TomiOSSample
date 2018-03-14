@@ -11,9 +11,9 @@
 #import "PointStatisticCell.h"
 #import "TeamStatisticCell.h"
 #import "PlayerStatisticCell.h"
-#define curtainSwitchW 26
-#define curtainSwitchH 100
-#define curtainW [UIScreen mainScreen].bounds.size.width
+//#define curtainSwitchW 26
+//#define curtainSwitchH 100
+//#define curtainW [UIScreen mainScreen].bounds.size.width
 @interface TMCurtainView()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @property(nonatomic, strong)UIView *contentView;
@@ -44,7 +44,6 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
 - (UIView *)contentView{
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
-        _contentView.backgroundColor = [UIColor greenColor];
     }
     return _contentView;
 }
@@ -131,14 +130,13 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return self.stateModel.pointsModel.cellH;
-    }
-    else if (indexPath.section == 1){
-        return self.stateModel.teamsModel.cellH;
+        return self.stateModel.pointsModel.cellH+8;
+    }else if (indexPath.section == 1){
+        return self.stateModel.teamsModel.cellH+8;
     }else if(indexPath.section == 2){
-        return (self.stateModel.playersModel.homePlayers.count+1) * playerCellH;
+        return self.stateModel.playersModel.homePlayers.count * playerCellH + playerItemH + 8;
     }else if(indexPath.section == 3){
-        return (self.stateModel.playersModel.visitorPlayers.count+1) * playerCellH;
+        return self.stateModel.playersModel.visitorPlayers.count * playerCellH + playerItemH + 8;
     }
     return 0;
 }

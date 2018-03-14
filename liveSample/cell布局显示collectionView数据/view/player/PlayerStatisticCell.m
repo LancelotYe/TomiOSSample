@@ -9,7 +9,7 @@
 #import "PlayerStatisticCell.h"
 #import "RaceStateModel.h"
 #import "RaceStatisticCCell.h"
-#define tableViewW ([UIScreen mainScreen].bounds.size.width-17)
+
 @interface PlayerStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *playerCollectionView;
 @property(nonatomic, strong)UICollectionView *playerListCollectionView;
@@ -35,7 +35,7 @@ static NSString *const cellId = @"playcellId";
     if(!_playerListCollectionView){
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _playerListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 150, 600) collectionViewLayout:layout];
+        _playerListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 0, 130, 600) collectionViewLayout:layout];
         _playerListCollectionView.backgroundColor = [UIColor greenColor];
         _playerListCollectionView.delegate = self;
         _playerListCollectionView.dataSource = self;
@@ -57,9 +57,10 @@ static NSString *const cellId = @"playcellId";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.backgroundColor = [UIColor darkGrayColor];
         [self.contentView addSubview:self.playerListCollectionView];
         [self.contentView addSubview:self.playerCollectionView];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, playerCellH, tableViewW - 20, 0.5)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, playerItemH, tableViewW - 20, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
     }
@@ -67,8 +68,8 @@ static NSString *const cellId = @"playcellId";
 }
 - (void)setPlayers:(NSArray *)players{
     _players = players;
-    CGFloat h = (self.players.count+1) * 20;
-    self.playerListCollectionView.frame = CGRectMake(0, 0, tableViewW/3, h);
+    CGFloat h = self.players.count * playerCellH + playerItemH;
+    self.playerListCollectionView.frame = CGRectMake(20, 0, tableViewW/3-20, h);
     self.playerCollectionView.frame = CGRectMake(tableViewW/3, 0, tableViewW*2/3, h);
 }
 //构成这个cell需要两支队伍的模型数据
@@ -107,8 +108,9 @@ static NSString *const cellId = @"playcellId";
     RaceStatisticCCell *cell = nil;
     if (collectionView == _playerListCollectionView) {
         cell = (RaceStatisticCCell *)[_playerListCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-//        cell.desLabel.textAlignment = NSTextAlignmentLeft;
-//        cell.scoreLabel.textAlignment = NSTextAlignmentLeft;
+        
+        cell.desLabel.textAlignment = NSTextAlignmentLeft;
+        cell.scoreLabel.textAlignment = NSTextAlignmentLeft;
     }else{
         cell = (RaceStatisticCCell *)[_playerCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     }
@@ -125,7 +127,11 @@ static NSString *const cellId = @"playcellId";
         }
     }else{
         if(row == 0){
-            cell.desLabel.text = self.playersModel.itemArray[column+1];
+            NSDictionary *tranDict = [StatisticModel loadTransDict];
+            NSString *englishItem = self.playersModel.itemArray[column+1];
+            
+            NSString *chinese = [tranDict objectForKey:englishItem];
+            cell.desLabel.text = chinese;
             cell.desLabel.hidden = NO;
             cell.scoreLabel.hidden = YES;
         }else{
@@ -149,9 +155,15 @@ static NSString *const cellId = @"playcellId";
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == _playerListCollectionView) {
-        return (CGSize){tableViewW/3, 20};
+        if (indexPath.row == 0) {
+            return (CGSize){tableViewW/3, playerItemH};
+        }
+        return (CGSize){tableViewW/3, playerCellH};
     }else{
-        return (CGSize){tableViewW/6, 20};
+        if (indexPath.row == 0) {
+            return (CGSize){tableViewW/6, playerItemH};
+        }
+        return (CGSize){tableViewW/6, playerCellH};
     }
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PointIconView : UIView
++ (instancetype)loadPointIconView;
 @property(nonatomic, strong)NSString *homeIconUrl;
 @property(nonatomic, strong)NSString *visitorIconUrl;
 @end

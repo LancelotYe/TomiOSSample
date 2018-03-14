@@ -8,11 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#define teamCellH 44
-#define pointCellH 44
-#define playerCellH 20
-@interface StatisticModel : NSObject
+#define curtainSwitchW 26
+#define curtainSwitchH 100
+#define curtainW [UIScreen mainScreen].bounds.size.width
+#define tableViewW ([UIScreen mainScreen].bounds.size.width-curtainSwitchW)
 
+#define teamImgW 24
+#define teamIconH 30
+#define teamCellH 44
+
+#define pointIconW tableViewW/6
+#define pointCellH 44
+#define pointItemH 20
+#define pointIconImgW 24
+
+#define playerCellH 30
+#define playerItemH 20
+
+@interface StatisticModel : NSObject
++ (NSDictionary *)loadTransDict;
 @end
 @class RacePointStatisticModel;
 @interface RacePointsStatisticModel: NSObject
@@ -64,15 +78,15 @@
 + (instancetype)loadModelWithGameData:(NSDictionary *)gameData;
 @end
 @interface RaceTeamStatisticModel : NSObject
-@property(nonatomic, strong)NSString *Team_id;
-@property(nonatomic, strong)NSString *Offensive_rebounds;
-@property(nonatomic, strong)NSString *Defensive_rebounds;
-@property(nonatomic, strong)NSString *Assists;
-@property(nonatomic, strong)NSString *Steals;
-@property(nonatomic, strong)NSString *Blocks;
-@property(nonatomic, strong)NSString *Turnovers;
-@property(nonatomic, strong)NSString *Three_made;
-@property(nonatomic, strong)NSString *Fouls;
+@property(nonatomic, strong)NSString *team_id;
+@property(nonatomic, strong)NSString *offensive_rebounds;
+@property(nonatomic, strong)NSString *defensive_rebounds;
+@property(nonatomic, strong)NSString *assists;
+@property(nonatomic, strong)NSString *steals;
+@property(nonatomic, strong)NSString *blocks;
+@property(nonatomic, strong)NSString *turnovers;
+@property(nonatomic, strong)NSString *three_made;
+@property(nonatomic, strong)NSString *fouls;
 + (instancetype)loadModelWithOneTeamGameData:(NSDictionary *)oneTeamGameData;
 @end
 
@@ -93,7 +107,7 @@
 @property(nonatomic, strong)NSString *playerId;
 
 @property(nonatomic, strong)NSString *name;
-@property(nonatomic, strong)NSString *minues;
+@property(nonatomic, strong)NSString *minutes;
 @property(nonatomic, strong)NSString *points;
 @property(nonatomic, strong)NSString *total_rebounds;
 @property(nonatomic, strong)NSString *assists;

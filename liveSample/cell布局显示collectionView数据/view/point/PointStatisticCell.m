@@ -10,9 +10,9 @@
 #import "RaceStatisticCCell.h"
 #import "RaceStateModel.h"
 #import "PointIconView.h"
-#define tableViewW ([UIScreen mainScreen].bounds.size.width-17)
-#define iconViewW tableViewW/6
-#define collectionViewW (tableViewW-iconViewW)
+//#define tableViewW ([UIScreen mainScreen].bounds.size.width-26)
+
+#define collectionViewW (tableViewW-pointIconW)
 @interface PointStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *pointCollectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
@@ -27,7 +27,7 @@ static NSString *const cellId = @"collcellId";
     if (!_pointCollectionView) {
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _pointCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(iconViewW, 0, collectionViewW, 100) collectionViewLayout:_customLayout];
+        _pointCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(pointIconW, 0, collectionViewW, 100) collectionViewLayout:_customLayout];
         _pointCollectionView.backgroundColor = [UIColor redColor];
         _pointCollectionView.dataSource = self;
         _pointCollectionView.delegate = self;
@@ -37,18 +37,19 @@ static NSString *const cellId = @"collcellId";
 }
 - (PointIconView *)iconView{
     if(!_iconView){
-        _iconView = [[PointIconView alloc] initWithFrame:CGRectMake(0, 0, iconViewW, 100)];
+        _iconView = [PointIconView loadPointIconView];
     }
     return _iconView;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.backgroundColor = [UIColor darkGrayColor];
         [self.contentView addSubview:self.collectionView];
         [self.contentView addSubview:self.iconView];
         _iconView.homeIconUrl = @"234";
         _iconView.visitorIconUrl = @"123";
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, pointCellH, tableViewW - 40, 0.5)];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, pointItemH, tableViewW - 40, 0.5)];
         [line setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:line];
     }
@@ -56,8 +57,8 @@ static NSString *const cellId = @"collcellId";
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    self.iconView.frame = CGRectMake(0, 0, iconViewW, self.pointsModel.cellH);
-    self.pointCollectionView.frame = CGRectMake(iconViewW, 0, collectionViewW, self.pointsModel.cellH);
+    self.iconView.frame = CGRectMake(0, 0, pointIconW, self.pointsModel.cellH);
+    self.pointCollectionView.frame = CGRectMake(pointIconW, 0, collectionViewW, self.pointsModel.cellH);
 }
 //构成这个cell需要两支队伍的模型数据
 +(instancetype)loadCellWithPointsModel:(RacePointsStatisticModel *)pointsModel reuseID:(NSString *)reuseID{
@@ -82,9 +83,9 @@ static NSString *const cellId = @"collcellId";
     RaceStatisticCCell *cell = (RaceStatisticCCell *)[_pointCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     NSInteger column = indexPath.section;
     NSInteger row = indexPath.row;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"transNBA" ofType:@"json"];
-    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-    NSDictionary *tranDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"transNBA" ofType:@"json"];
+//    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    NSDictionary *tranDict = [StatisticModel loadTransDict];
     RacePointsStatisticModel *model = self.pointsModel;
     if (row == 0) {
         NSString *titleKey = model.itemTypeAray[column];
@@ -119,7 +120,7 @@ static NSString *const cellId = @"collcellId";
 #pragma mark -- UICollectionViewDelegateFlowLayout
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        return (CGSize){collectionViewW/5, pointCellH};
+        return (CGSize){collectionViewW/5, pointItemH};
     }
     return (CGSize){collectionViewW/5, pointCellH};
 }
@@ -128,7 +129,7 @@ static NSString *const cellId = @"collcellId";
 }
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 5.f;
+    return 0.f;
 }
 //每个section之间最小间距设定
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{

@@ -24,7 +24,7 @@
     [super viewDidLoad];
     [self.view addSubview:self.testView];
     self.view.backgroundColor = [UIColor whiteColor];
-    _curtainView = [TMCurtainView loadCurtainViewOnBaseView:self.testView];
+    _curtainView = [TMCurtainView loadCurtainViewOnBaseView:self.view];
     [self.view addSubview:_curtainView];
 }
 

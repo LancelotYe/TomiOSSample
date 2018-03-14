@@ -7,6 +7,7 @@
 //
 
 #import "PointIconView.h"
+#import "StatisticModel.h"
 @interface PointIconView()
 @property(nonatomic, strong)UILabel *desLbl;
 @property(nonatomic, strong)UIImageView *homeTeamImageView;
@@ -18,6 +19,7 @@
     if(!_desLbl){
         _desLbl = [[UILabel alloc] init];
         _desLbl.font = [UIFont systemFontOfSize:10];
+        _desLbl.textAlignment = NSTextAlignmentCenter;
         _desLbl.text = @"球队";
     }
     return _desLbl;
@@ -45,9 +47,15 @@
     _visitorIconUrl = visitorIconUrl;
     _visitorTeamImageView.image = [UIImage imageNamed:_visitorIconUrl];
 }
++ (instancetype)loadPointIconView{
+    PointIconView *iconView = [[PointIconView alloc] initWithFrame:CGRectMake(0, 0, pointIconW, pointItemH+pointCellH*2)];
+    return iconView;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.desLbl];
         [self addSubview:self.homeTeamImageView];
         [self addSubview:self.visitorTeamImageView];
@@ -56,22 +64,24 @@
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    CGFloat selfW = self.frame.size.width;
-    CGFloat selfH = self.frame.size.height;
-    CGFloat h = selfH/3;
-    CGFloat imageW = selfW-17*2;
-    imageW = imageW>h?h:imageW;
-    CGFloat marginX = (selfW - imageW)*0.5;
-    CGFloat marginY = (h-imageW)*0.5;
+    CGFloat w = pointIconW;
+    CGFloat lblH = pointItemH;
+    CGFloat imgH = pointCellH;
+    _desLbl.frame = CGRectMake(0, 0, w, lblH);
+    CGFloat deltaY = pointItemH;
+    CGFloat centerX = w*0.5;
+    CGFloat imgW = pointIconImgW;
+    CGFloat imgX = centerX - imgW*0.5;
+    CGFloat imgY = (imgH - imgW) * 0.5;
     
-    
-    _desLbl.frame = CGRectMake(20, 0, selfW, selfH/3);
-    _homeTeamImageView.frame = CGRectMake(marginX,selfH/3+ marginY, imageW, imageW);
-    _homeTeamImageView.layer.cornerRadius = imageW/2;
+    _homeTeamImageView.frame = CGRectMake(imgX,imgY+deltaY,imgW,imgW);
+    _homeTeamImageView.layer.cornerRadius = imgW*0.5;
     _homeTeamImageView.clipsToBounds = YES;
     _homeTeamImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    _visitorTeamImageView.frame = CGRectMake(marginX, selfH*2/3+marginY, imageW, imageW);
-    _visitorTeamImageView.layer.cornerRadius = imageW/2;
+    
+    deltaY = pointItemH + pointCellH;
+    _visitorTeamImageView.frame = CGRectMake(imgX, deltaY+imgY, imgW, imgW);
+    _visitorTeamImageView.layer.cornerRadius = imgW * 0.5;
     _visitorTeamImageView.clipsToBounds = YES;
     _visitorTeamImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
 }

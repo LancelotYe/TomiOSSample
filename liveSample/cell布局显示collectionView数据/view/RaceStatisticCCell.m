@@ -22,7 +22,7 @@
 - (UILabel *)scoreLabel{
     if (!_scoreLabel) {
         _scoreLabel = [[UILabel alloc] init];
-        _scoreLabel.font = [UIFont systemFontOfSize:15];
+        _scoreLabel.font = [UIFont systemFontOfSize:12];
         _scoreLabel.textAlignment = NSTextAlignmentCenter;
         _scoreLabel.hidden = YES;
     }
@@ -43,26 +43,28 @@
 }
 @end
 
-
+#import "TeamStatisticLine.h"
 @implementation RaceStatisticGraphCCell
 - (UILabel *)itemLbl{
     if (!_itemLbl) {
         CGFloat w = self.bounds.size.width;
-        CGFloat h = self.bounds.size.height;
-        _itemLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, w, h*0.7)];
+//        CGFloat h = self.bounds.size.height;
+        _itemLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, w, 10)];
         _itemLbl.textAlignment = NSTextAlignmentCenter;
+        _itemLbl.font = [UIFont systemFontOfSize:10];
     }
     return _itemLbl;
 }
-- (UIView *)graphicLine{
-    if (!_graphicLine) {
+- (TeamStatisticLine *)graphicLine{
+    if (!_graphicLine){
         CGFloat w = self.bounds.size.width;
-        CGFloat h = self.bounds.size.height;
-        _graphicLine = [[UIView alloc] initWithFrame:CGRectMake(0, h*0.8, w, 10)];
-        [_graphicLine setBackgroundColor:[UIColor blueColor]];
+        _graphicLine = [TeamStatisticLine loadTeamStatisticLineWithFrame:CGRectMake(0, 25.5, w, 2)];
+//        [_graphicLine setBackgroundColor:[UIColor blueColor]];
     }
     return _graphicLine;
 }
+
+
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -71,5 +73,14 @@
     }
     return self;
 }
+- (void)setHomeItemScore:(CGFloat)homeItemScore VisitorItemScore:(CGFloat)visItemScore{
+    _homeItemScore = homeItemScore;
+    _visitorItemScore = visItemScore;
+    [self.graphicLine setHomeItemScore:_homeItemScore VisitorItemScore:_visitorItemScore];
+}
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+}
 @end

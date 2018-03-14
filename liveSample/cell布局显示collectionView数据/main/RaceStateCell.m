@@ -124,6 +124,7 @@ static NSString *const footerId = @"footerId";
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor orangeColor];
+    cell.contentView.backgroundColor = [UIColor darkGrayColor];
 }
 
 //选中某个cell

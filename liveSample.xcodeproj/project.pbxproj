@@ -31,6 +31,7 @@
 		E2B723A1204D1F5F00BD972F /* liveSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723A0204D1F5F00BD972F /* liveSampleUITests.m */; };
 		E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723AF204D20E900BD972F /* RaceStateCell.m */; };
 		E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */; };
+		E2DCB0982058FBEE002EDBCD /* TeamStatisticLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		E2B723AF204D20E900BD972F /* RaceStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateCell.m; sourceTree = "<group>"; };
 		E2C284C9204E9AC700FD3823 /* RaceStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateViewController.h; sourceTree = "<group>"; };
 		E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateViewController.m; sourceTree = "<group>"; };
+		E2DCB0962058FBEE002EDBCD /* TeamStatisticLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticLine.h; sourceTree = "<group>"; };
+		E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamStatisticLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 			children = (
 				E243C185205113C900818967 /* RaceStatisticCCell.h */,
 				E243C186205113C900818967 /* RaceStatisticCCell.m */,
+				E2DCB0962058FBEE002EDBCD /* TeamStatisticLine.h */,
+				E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */,
 				E243C18B205118B400818967 /* player */,
 				E243C18A205118A600818967 /* team */,
 				E243C1892051189600818967 /* point */,
@@ -419,6 +424,7 @@
 				E20D41212052610400BA5C76 /* TeamIconView.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				285E31332058225B00E39916 /* StatisticModel.m in Sources */,
+				E2DCB0982058FBEE002EDBCD /* TeamStatisticLine.m in Sources */,
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,

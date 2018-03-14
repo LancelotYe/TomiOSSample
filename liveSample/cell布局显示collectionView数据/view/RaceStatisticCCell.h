@@ -12,7 +12,11 @@
 @property(nonatomic, strong)UILabel *desLabel;
 @property(nonatomic, strong)UILabel *scoreLabel;
 @end
+@class TeamStatisticLine;
 @interface RaceStatisticGraphCCell : UICollectionViewCell
+@property(nonatomic,assign)CGFloat homeItemScore;
+@property(nonatomic,assign)CGFloat visitorItemScore;
+- (void)setHomeItemScore:(CGFloat)homeItemScore VisitorItemScore:(CGFloat)visItemScore;
 @property(nonatomic, strong)UILabel *itemLbl;
-@property(nonatomic, strong)UIView *graphicLine;
+@property(nonatomic, strong)TeamStatisticLine *graphicLine;
 @end

@@ -12,7 +12,7 @@
 #import "TeamIconView.h"
 
 //#define pointCellW ([UIScreen mainScreen].bounds.size.width-7*pointCellMargin)/6
-#define tableViewW ([UIScreen mainScreen].bounds.size.width-17)
+//#define tableViewW ([UIScreen mainScreen].bounds.size.width-26)
 @interface TeamStatisticCell()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
@@ -28,7 +28,7 @@ static NSString *const headerId = @"headerId";
 static NSString *const footerId = @"footerId";
 - (TeamIconView *)iconView{
     if(!_iconView){
-        _iconView = [[TeamIconView alloc] initWithFrame:CGRectMake(0, 0, tableViewW, teamCellH)];
+        _iconView = [[TeamIconView alloc] initWithFrame:CGRectMake(0, 0, tableViewW, teamIconH)];
         [_iconView setBackgroundColor:[UIColor grayColor]];
         _iconView.homeIconUrl = @"234";
         _iconView.visitorIconUrl = @"123";
@@ -40,7 +40,7 @@ static NSString *const footerId = @"footerId";
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, teamCellH, tableViewW, 300) collectionViewLayout:_customLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, teamIconH, tableViewW, 300) collectionViewLayout:_customLayout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.scrollEnabled = NO;
         _collectionView.dataSource = self;
@@ -54,6 +54,7 @@ static NSString *const footerId = @"footerId";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.contentView.backgroundColor = [UIColor darkGrayColor];
         [self.contentView addSubview:self.iconView];
         [self.contentView addSubview:self.collectionView];
     }
@@ -77,7 +78,6 @@ static NSString *const footerId = @"footerId";
     return 3;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    return  _teamAModel.teamStatisticArray.count;
     return self.teamsModel.itemNum;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,24 +90,26 @@ static NSString *const footerId = @"footerId";
         cell.scoreLabel.text = [model valueForKey:itemKey];
         cell.scoreLabel.hidden = NO;
         cell.desLabel.hidden = YES;
-//        if (column == 0) {
-//            cell.scoreLabel.text = [_teamAModel.teamStatisticArray[row] objectForKey:@"score"];
-//        }else{
-//            cell.scoreLabel.text = [_teamBModel.teamStatisticArray[row] objectForKey:@"score"];
-//        }
-//        cell.teamLogView.hidden = YES;
         return cell;
     }else{
         RaceStatisticGraphCCell *cell = (RaceStatisticGraphCCell *)[_collectionView dequeueReusableCellWithReuseIdentifier:cellIdx forIndexPath:indexPath];
-        cell.itemLbl.text = self.teamsModel.itemTypeArray[row];
-//        cell.itemLbl.text = [_teamAModel.teamStatisticArray[row] objectForKey:@"name"];
+        NSDictionary *transDict = [StatisticModel loadTransDict];
+        NSString *englishName = self.teamsModel.itemTypeArray[row];
+        NSString *chinese = [transDict objectForKey:englishName];
+        cell.itemLbl.text = chinese;
+        NSString *itemKey = self.teamsModel.itemTypeArray[row];
+        RaceTeamStatisticModel *homeModel = self.teamsModel.homeTeamModel;
+        RaceTeamStatisticModel *visitorModel = self.teamsModel.visitorTeamModel;
+        CGFloat homeValue = [[homeModel valueForKey:itemKey] floatValue];
+        CGFloat visitorValue = [[visitorModel valueForKey:itemKey] floatValue];
+        [cell setHomeItemScore:homeValue VisitorItemScore:visitorValue];
         return cell;
     }
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
-    _iconView.frame = CGRectMake(0, 0, tableViewW, teamCellH);
-    _collectionView.frame = CGRectMake(0, teamCellH, tableViewW, self.teamsModel.cellH-teamCellH);
+    _iconView.frame = CGRectMake(0, 0, tableViewW, teamIconH);
+    _collectionView.frame = CGRectMake(0, teamIconH, tableViewW, self.teamsModel.cellH-teamIconH);
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
