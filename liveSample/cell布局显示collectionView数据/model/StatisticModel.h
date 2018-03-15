@@ -105,8 +105,8 @@
 
 @property(nonatomic, strong)NSString *teamId;
 @property(nonatomic, strong)NSString *playerId;
-
 @property(nonatomic, strong)NSString *name;
+@property(nonatomic, strong)NSString *period;
 @property(nonatomic, strong)NSString *minutes;
 @property(nonatomic, strong)NSString *points;
 @property(nonatomic, strong)NSString *total_rebounds;

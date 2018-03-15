@@ -21,7 +21,7 @@
                     "Qtr_2_score": "28",
                     "Qtr_3_score": "31",
                     "Qtr_4_score": "23",
-                    "OT_1_score": "20",
+                    "OT_1_score": "0",
                     "OT_2_score": "0",
                     "OT_3_score": "0",
                     "OT_4_score": "0",
@@ -30,7 +30,8 @@
                     "OT_7_score": "0",
                     "OT_8_score": "0",
                     "OT_9_score": "0",
-                    "OT_10_score": "0"
+                    "OT_10_score": "0",
+                    "CN_name": "雄鹿"
                 }
             },
             "Visitor": {
@@ -53,12 +54,14 @@
                     "OT_7_score": "0",
                     "OT_8_score": "0",
                     "OT_9_score": "0",
-                    "OT_10_score": "0"
+                    "OT_10_score": "0",
+                    "CN_name": "奇才"
                 }
             }
         },
         "TeamData": {
             "1610612749": {
+                "CN_name": "雄鹿",
                 "Offensive_rebounds": "8",
                 "Defensive_rebounds": "32",
                 "Assists": "20",
@@ -69,6 +72,7 @@
                 "Fouls": "20"
             },
             "1610612764": {
+                "CN_name": "奇才",
                 "Offensive_rebounds": "9",
                 "Defensive_rebounds": "31",
                 "Assists": "30",
@@ -81,6 +85,7 @@
         },
         "PlayerData": {
             "1891": {
+                "CN_name": "杰森·特里",
                 "First_name": "Jason",
                 "Last_name": "Terry",
                 "Minutes": "18",
@@ -104,6 +109,7 @@
                 "OnCrt": "1"
             },
             "101133": {
+                "CN_name": "伊恩·马辛米",
                 "First_name": "Ian",
                 "Last_name": "Mahinmi",
                 "Minutes": "18",
@@ -127,6 +133,7 @@
                 "OnCrt": "0"
             },
             "101162": {
+                "CN_name": "马尔钦·戈塔特",
                 "First_name": "Marcin",
                 "Last_name": "Gortat",
                 "Minutes": "26",
@@ -150,6 +157,7 @@
                 "OnCrt": "0"
             },
             "201160": {
+                "CN_name": "杰森·史密斯 ",
                 "First_name": "Jason",
                 "Last_name": "Smith",
                 "Minutes": "0",
@@ -173,6 +181,7 @@
                 "OnCrt": "0"
             },
             "201196": {
+                "CN_name": "拉蒙·塞申斯",
                 "First_name": "Ramon",
                 "Last_name": "Sessions",
                 "Minutes": "0",
@@ -196,6 +205,7 @@
                 "OnCrt": "0"
             },
             "201975": {
+                "CN_name": "乔迪·米克斯",
                 "First_name": "Jodie",
                 "Last_name": "Meeks",
                 "Minutes": "16",
@@ -219,6 +229,7 @@
                 "OnCrt": "0"
             },
             "202322": {
+                "CN_name": "约翰·沃尔 ",
                 "First_name": "John",
                 "Last_name": "Wall",
                 "Minutes": "0",
@@ -242,6 +253,7 @@
                 "OnCrt": "0"
             },
             "202339": {
+                "CN_name": "埃里克·布莱德索",
                 "First_name": "Eric",
                 "Last_name": "Bledsoe",
                 "Minutes": "35",
@@ -265,6 +277,7 @@
                 "OnCrt": "1"
             },
             "202693": {
+                "CN_name": "马基夫·莫里斯 ",
                 "First_name": "Markieff",
                 "Last_name": "Morris",
                 "Minutes": "32",
@@ -288,6 +301,7 @@
                 "OnCrt": "1"
             },
             "203078": {
+                "CN_name": "布拉德利·比尔",
                 "First_name": "Bradley",
                 "Last_name": "Beal",
                 "Minutes": "34",
@@ -311,6 +325,7 @@
                 "OnCrt": "1"
             },
             "203089": {
+                "CN_name": "约翰·亨森",
                 "First_name": "John",
                 "Last_name": "Henson",
                 "Minutes": "25",
@@ -334,6 +349,7 @@
                 "OnCrt": "0"
             },
             "203092": {
+                "CN_name": "泰勒·泽勒",
                 "First_name": "Tyler",
                 "Last_name": "Zeller",
                 "Minutes": "7",
@@ -357,6 +373,7 @@
                 "OnCrt": "0"
             },
             "203107": {
+                "CN_name": "托马什·萨托兰斯基",
                 "First_name": "Tomas",
                 "Last_name": "Satoransky",
                 "Minutes": "20",
@@ -380,6 +397,7 @@
                 "OnCrt": "1"
             },
             "203114": {
+                "CN_name": "克里斯·米德尔顿",
                 "First_name": "Khris",
                 "Last_name": "Middleton",
                 "Minutes": "33",
@@ -403,6 +421,7 @@
                 "OnCrt": "1"
             },
             "203118": {
+                "CN_name": "麦克·斯科特",
                 "First_name": "Mike",
                 "Last_name": "Scott",
                 "Minutes": "14",
@@ -426,6 +445,7 @@
                 "OnCrt": "0"
             },
             "203141": {
+                "CN_name": "米尔扎·特莱托维奇",
                 "First_name": "Mirza",
                 "Last_name": "Teletovic",
                 "Minutes": "0",
@@ -449,6 +469,7 @@
                 "OnCrt": "0"
             },
             "203490": {
+                "CN_name": "奥托·波特",
                 "First_name": "Otto",
                 "Last_name": "Porter Jr.",
                 "Minutes": "33",
@@ -472,6 +493,7 @@
                 "OnCrt": "1"
             },
             "203503": {
+                "CN_name": "托尼·斯内尔",
                 "First_name": "Tony",
                 "Last_name": "Snell",
                 "Minutes": "22",
@@ -495,6 +517,7 @@
                 "OnCrt": "0"
             },
             "203507": {
+                "CN_name": "扬尼斯·阿德托昆博",
                 "First_name": "Giannis",
                 "Last_name": "Antetokounmpo",
                 "Minutes": "39",
@@ -518,6 +541,7 @@
                 "OnCrt": "1"
             },
             "203521": {
+                "CN_name": "马修·德拉维多瓦 ",
                 "First_name": "Matthew",
                 "Last_name": "Dellavedova",
                 "Minutes": "0",
@@ -541,6 +565,7 @@
                 "OnCrt": "0"
             },
             "203930": {
+                "CN_name": "肖恩·基尔帕特里克",
                 "First_name": "Sean",
                 "Last_name": "Kilpatrick",
                 "Minutes": "3",
@@ -564,6 +589,7 @@
                 "OnCrt": "0"
             },
             "203953": {
+                "CN_name": "贾巴里·帕克",
                 "First_name": "Jabari",
                 "Last_name": "Parker",
                 "Minutes": "26",
@@ -587,6 +613,7 @@
                 "OnCrt": "1"
             },
             "204025": {
+                "CN_name": "蒂姆·弗雷泽",
                 "First_name": "Tim",
                 "Last_name": "Frazier",
                 "Minutes": "20",
@@ -610,6 +637,7 @@
                 "OnCrt": "0"
             },
             "204098": {
+                "CN_name": "夏维尔·芒福德",
                 "First_name": "Xavier",
                 "Last_name": "Munford",
                 "Minutes": "0",
@@ -633,6 +661,7 @@
                 "OnCrt": "0"
             },
             "1626162": {
+                "CN_name": "凯利·乌布雷",
                 "First_name": "Kelly",
                 "Last_name": "Oubre Jr.",
                 "Minutes": "23",
@@ -656,6 +685,7 @@
                 "OnCrt": "1"
             },
             "1626191": {
+                "CN_name": "克里斯·麦卡洛",
                 "First_name": "Chris",
                 "Last_name": "McCullough",
                 "Minutes": "0",
@@ -679,6 +709,7 @@
                 "OnCrt": "0"
             },
             "1627748": {
+                "CN_name": "索恩·梅克",
                 "First_name": "Thon",
                 "Last_name": "Maker",
                 "Minutes": "13",
@@ -702,6 +733,7 @@
                 "OnCrt": "0"
             },
             "1627763": {
+                "CN_name": "马尔科姆·布罗格顿",
                 "First_name": "Malcolm",
                 "Last_name": "Brogdon",
                 "Minutes": "0",
@@ -725,6 +757,7 @@
                 "OnCrt": "0"
             },
             "1627850": {
+                "CN_name": "马绍尔·普拉姆利",
                 "First_name": "Marshall",
                 "Last_name": "Plumlee",
                 "Minutes": "0",
@@ -748,6 +781,7 @@
                 "OnCrt": "0"
             },
             "1628391": {
+                "CN_name": "D.J.·威尔逊",
                 "First_name": "D.J.",
                 "Last_name": "Wilson",
                 "Minutes": "0",
@@ -771,6 +805,7 @@
                 "OnCrt": "0"
             },
             "1628421": {
+                "CN_name": "德文·罗宾逊",
                 "First_name": "Devin",
                 "Last_name": "Robinson",
                 "Minutes": "0",
@@ -794,6 +829,7 @@
                 "OnCrt": "0"
             },
             "1628425": {
+                "CN_name": "斯特林·布朗",
                 "First_name": "Sterling",
                 "Last_name": "Brown",
                 "Minutes": "14",

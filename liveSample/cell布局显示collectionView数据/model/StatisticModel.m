@@ -81,9 +81,15 @@
     RacePointsStatisticModel *pointModel = [RacePointsStatisticModel loadModelWithGameData:gameData];
     return pointModel.homePointModel.Team_id;
 }
++ (NSString *)getHomeIconURLWithGameData:(NSDictionary *)gameData{
+    return [NSString stringWithFormat:@"https://bestvapp.bestv.cn/qa/yehui/nba/%@.jpg",[self getHomeTeamIdWithGameData:gameData]];
+}
 + (NSString *)getVisitorTeamIdWithGameData:(NSDictionary *)gameData{
     RacePointsStatisticModel *pointModel = [RacePointsStatisticModel loadModelWithGameData:gameData];
     return pointModel.visitorPointModel.Team_id;
+}
++ (NSString *)getVisitorIconURLWithGameData:(NSDictionary *)gameData{
+    return [NSString stringWithFormat:@"https://bestvapp.bestv.cn/qa/yehui/nba/%@.jpg",[self getVisitorTeamIdWithGameData:gameData]];
 }
 @end
 
@@ -92,7 +98,7 @@
     RacePointStatisticModel *pointModel = [[RacePointStatisticModel alloc] init];
     pointModel.Team_id = [oneTeamGameData objectForKey:@"Team_id"];
     pointModel.Team_city = [oneTeamGameData objectForKey:@"Team_city"];
-    pointModel.Team_name = [oneTeamGameData objectForKey:@"Team_name"];
+    pointModel.Team_name = [oneTeamGameData objectForKey:@"CN_name"];
     pointModel.Team_abr = [oneTeamGameData objectForKey:@"Team_abr"];
     if (isHome) {
         pointModel.Home_score = [oneTeamGameData objectForKey:@"Home_score"];
@@ -155,18 +161,42 @@
 }
 
 @end
-
 /**
  player一支队伍的
  */
 @implementation RacePlayersStatisticModel
++ (NSArray*)getHomePeriodPlayersWithLineups:(NSDictionary *)lineups{
+    NSString *hf1_id = [lineups objectForKey:@"Home_forward_1_id"];
+    NSString *hf2_id = [lineups objectForKey:@"Home_forward_2_id"];
+    NSString *hc_id = [lineups objectForKey:@"Home_center_id"];
+    NSString *hg1_id = [lineups objectForKey:@"Home_guard_1_id"];
+    NSString *hg2_id = [lineups objectForKey:@"Home_guard_2_id"];
+    return @[hf1_id,hf2_id,hc_id,hg1_id,hg2_id];
+}
++ (NSArray*)getVisitorPeriodPlayersWithLineups:(NSDictionary *)lineups{
+    NSString *vf1_id = [lineups objectForKey:@"Visitor_forward_1_id"];
+    NSString *vf2_id = [lineups objectForKey:@"Visitor_forward_2_id"];
+    NSString *vc_id = [lineups objectForKey:@"Visitor_center_id"];
+    NSString *vg1_id = [lineups objectForKey:@"Visitor_guard_1_id"];
+    NSString *vg2_id = [lineups objectForKey:@"Visitor_guard_2_id"];
+    
+    return  @[vf1_id,vf2_id,vc_id,vg1_id,vg2_id];
+}
 + (instancetype)loadModelWithTeamData:(NSDictionary *)teamData gameData:(NSDictionary *)gameData{
-    NSArray *array = [[teamData objectForKey:@"data"] objectForKey:@"Players"];
-    RacePlayersStatisticModel *playerModel = [[RacePlayersStatisticModel alloc] init];
+    NSDictionary *data = [teamData objectForKey:@"data"];
+    NSDictionary *lineups = [data objectForKey:@"Lineups"];
+    //获取首发球员数组
+    NSArray *homePeriodPlayers = [self getHomePeriodPlayersWithLineups:lineups];
+    NSArray *visitorPeriodPlayers = [self getVisitorPeriodPlayersWithLineups:lineups];
+    
+    NSArray *array = [data objectForKey:@"Players"];
+    
     NSMutableArray *homePlayerArrayM = [NSMutableArray array];
     NSMutableArray *visitorPlayerArrayM = [NSMutableArray array];
+    
     NSString *homeTeamId = [RacePointsStatisticModel getHomeTeamIdWithGameData:gameData];
     NSString *visitorTeamId = [RacePointsStatisticModel getVisitorTeamIdWithGameData:gameData];
+    //拆分主队和客队球员
     for (NSDictionary *dict in array) {
         RacePlayerModel *playerModelx = [RacePlayerModel loadModelWithPersonTeamData:dict gameData:gameData];
         if ([playerModelx.teamId isEqualToString:homeTeamId]) {
@@ -175,12 +205,51 @@
             [visitorPlayerArrayM addObject:playerModelx];
         }
     }
+    //排序主队
+    NSArray *homeCopy = [homePlayerArrayM copy];
+    for (NSString *playID in homePeriodPlayers) {
+        NSInteger targetIndex = [homePeriodPlayers indexOfObject:playID];
+        for (RacePlayerModel *playerModel in homeCopy) {
+            if ([playID isEqualToString:playerModel.playerId]) {
+                NSInteger originIndex = [homePlayerArrayM indexOfObject:playerModel];
+                [homePlayerArrayM exchangeObjectAtIndex:targetIndex withObjectAtIndex:originIndex];
+            }
+        }
+    }
+    for (RacePlayerModel *playerModel in homePlayerArrayM) {
+        NSInteger index = [homePlayerArrayM indexOfObject:playerModel];
+        if(index<5){
+            playerModel.period = @"是";
+        }else{
+            playerModel.period = @"否";
+        }
+    }
+    
+    //排序客队
+    NSArray *visitorCopy = [visitorPlayerArrayM copy];
+    for (NSString *playID in [visitorPeriodPlayers mutableCopy]) {
+        NSInteger targetIndex = [visitorPeriodPlayers indexOfObject:playID];
+        for (RacePlayerModel *playerModel in visitorCopy) {
+            if ([playID isEqualToString:playerModel.playerId]) {
+                NSInteger originIndex = [visitorPlayerArrayM indexOfObject:playerModel];
+                [visitorPlayerArrayM exchangeObjectAtIndex:targetIndex withObjectAtIndex:originIndex];
+            }
+        }
+    }
+    for (RacePlayerModel *playerModel in visitorPlayerArrayM) {
+        NSInteger index = [visitorPlayerArrayM indexOfObject:playerModel];
+        if(index<5){
+            playerModel.period = @"是";
+        }else{
+            playerModel.period = @"否";
+        }
+    }
+    
+    RacePlayersStatisticModel *playerModel = [[RacePlayersStatisticModel alloc] init];
     playerModel.homePlayers = [homePlayerArrayM copy];
     playerModel.visitorPlayers = [visitorPlayerArrayM copy];
-    playerModel.itemNum = 17;
-    playerModel.itemArray = @[@"name",@"minutes",@"points",@"total_rebounds",@"assists",@"fg_ma",@"three_ma",@"ft_ma",@"offensive_rebounds",@"defensive_rebounds",@"steals",@"blocks",@"turnovers",@"blocks_against",@"fouls",@"plus_minus",@"on_crt"];
-    
-    
+    playerModel.itemNum = 18;
+    playerModel.itemArray = @[@"name",@"period",@"minutes",@"points",@"total_rebounds",@"assists",@"fg_ma",@"three_ma",@"ft_ma",@"offensive_rebounds",@"defensive_rebounds",@"steals",@"blocks",@"turnovers",@"blocks_against",@"fouls",@"plus_minus",@"on_crt"];
     return playerModel;
 }
 @end
@@ -188,9 +257,16 @@
 + (instancetype)loadModelWithPersonTeamData:(NSDictionary *)personTeamData gameData:(NSDictionary *)gameData{
     RacePlayerModel *playerModel = [[RacePlayerModel alloc] init];
     playerModel.playerId = [personTeamData objectForKey:@"Person_id"];
+/**
+图片地址
+https://bestvapp.bestv.cn/qa/yehui/nba/1610612742.jpg
+ */
+
+    
     playerModel.teamId = [personTeamData objectForKey:@"Team_id"];
     NSDictionary *dict = [[[gameData objectForKey:@"data"] objectForKey:@"PlayerData"] objectForKey:playerModel.playerId];
-    playerModel.name = [NSString stringWithFormat:@"%@ %@",[dict objectForKey:@"First_name"],[dict objectForKey:@"Last_name"]];
+//    playerModel.name = [NSString stringWithFormat:@"%@ %@",[dict objectForKey:@"First_name"],[dict objectForKey:@"Last_name"]];
+    playerModel.name = [dict objectForKey:@"CN_name"];
     playerModel.minutes = [dict objectForKey:@"Minutes"];
     playerModel.points = [dict objectForKey:@"Points"];
     playerModel.total_rebounds = [dict objectForKey:@"Total_rebounds"];
@@ -206,7 +282,7 @@
     playerModel.blocks_against = [dict objectForKey:@"BlocksAgainst"];
     playerModel.fouls = [dict objectForKey:@"Fouls"];
     playerModel.plus_minus = [dict objectForKey:@"PlusMinus"];
-    playerModel.on_crt = [dict objectForKey:@"OnCrt"];
+    playerModel.on_crt = [[dict objectForKey:@"OnCrt"]isEqualToString:@"1"]?@"是":@"否";
     return playerModel;
 }
 @end

@@ -19,6 +19,8 @@
 
 @property(nonatomic, strong)RaceTeamsStatisticModel *teamsModel;
 @property(nonatomic, strong)TeamIconView *iconView;
+@property(nonatomic, strong)UIView *bgView;
+@property(nonatomic, strong)UIView *line;
 @end
 @implementation TeamStatisticCell
 
@@ -29,7 +31,6 @@ static NSString *const footerId = @"footerId";
 - (TeamIconView *)iconView{
     if(!_iconView){
         _iconView = [[TeamIconView alloc] initWithFrame:CGRectMake(0, 0, tableViewW, teamIconH)];
-        [_iconView setBackgroundColor:[UIColor grayColor]];
         _iconView.homeIconUrl = @"234";
         _iconView.visitorIconUrl = @"123";
     }
@@ -41,7 +42,7 @@ static NSString *const footerId = @"footerId";
         //        _customLayout.itemSize = []
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, teamIconH, tableViewW, 300) collectionViewLayout:_customLayout];
-        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.scrollEnabled = NO;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
@@ -51,12 +52,30 @@ static NSString *const footerId = @"footerId";
     }
     return _collectionView;
 }
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] init];
+#warning skin
+        [_bgView setBackgroundColor:[UIColor blackColor]];
+    }
+    return _bgView;
+}
+- (UIView *)line{
+    if (!_line) {
+        _line = [[UIView alloc] init];
+#warning skin
+        [_line setBackgroundColor:[UIColor whiteColor]];
+    }
+    return _line;
+}
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.contentView.backgroundColor = [UIColor darkGrayColor];
-        [self.contentView addSubview:self.iconView];
-        [self.contentView addSubview:self.collectionView];
+        [self.contentView addSubview:self.bgView];
+        [self.bgView addSubview:self.iconView];
+        [self.bgView addSubview:self.collectionView];
+        [self.bgView addSubview:self.line];
     }
     return self;
 }
@@ -108,6 +127,8 @@ static NSString *const footerId = @"footerId";
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
+    _bgView.frame = CGRectMake(0, 0, tableViewW, self.teamsModel.cellH);
+    _line.frame = CGRectMake(20, teamIconH-1, tableViewW-40, 0.5);
     _iconView.frame = CGRectMake(0, 0, tableViewW, teamIconH);
     _collectionView.frame = CGRectMake(0, teamIconH, tableViewW, self.teamsModel.cellH-teamIconH);
 }

@@ -16,7 +16,8 @@
 @property(nonatomic, strong)UICollectionViewFlowLayout *customLayout;
 @property(nonatomic, strong)RacePlayersStatisticModel *playersModel;
 @property(nonatomic, copy)NSArray *players;
-//@property(nonatomic, strong)NSArray *itemArray;
+@property(nonatomic, strong)UIView *bgView;
+@property(nonatomic, strong)UIView *line;
 @property(nonatomic, assign)BOOL isHome;
 @end
 @implementation PlayerStatisticCell
@@ -31,12 +32,29 @@ static NSString *const cellId = @"playcellId";
     }
     return _customLayout;
 }
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableViewW, 600)];
+#warning skin
+        _bgView.backgroundColor = [UIColor blackColor];
+    }
+    return _bgView;
+}
+- (UIView *)line{
+    if (!_line) {
+        _line = [[UIView alloc] init];
+#warning skin
+        [_line setBackgroundColor:[UIColor whiteColor]];
+    }
+    return _line;
+}
+
 - (UICollectionView *)playerListCollectionView{
     if(!_playerListCollectionView){
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _playerListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(20, 0, 130, 600) collectionViewLayout:layout];
-        _playerListCollectionView.backgroundColor = [UIColor greenColor];
+        _playerListCollectionView.backgroundColor = [UIColor clearColor];
         _playerListCollectionView.delegate = self;
         _playerListCollectionView.dataSource = self;
         [_playerListCollectionView registerClass:[RaceStatisticCCell class] forCellWithReuseIdentifier:cellId];
@@ -46,7 +64,7 @@ static NSString *const cellId = @"playcellId";
 -(UICollectionView *)playerCollectionView{
     if (!_playerCollectionView) {
         _playerCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(150, 0, [UIScreen mainScreen].bounds.size.width-150, 600) collectionViewLayout:self.customLayout];
-        _playerCollectionView.backgroundColor = [UIColor redColor];
+        _playerCollectionView.backgroundColor = [UIColor clearColor];
         _playerCollectionView.dataSource = self;
         _playerCollectionView.delegate = self;
         [_playerCollectionView registerClass:[RaceStatisticCCell class] forCellWithReuseIdentifier:cellId];
@@ -57,18 +75,20 @@ static NSString *const cellId = @"playcellId";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+#warning skin
         self.contentView.backgroundColor = [UIColor darkGrayColor];
-        [self.contentView addSubview:self.playerListCollectionView];
-        [self.contentView addSubview:self.playerCollectionView];
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, playerItemH, tableViewW - 20, 0.5)];
-        [line setBackgroundColor:[UIColor grayColor]];
-        [self.contentView addSubview:line];
+        [self.contentView addSubview:self.bgView];
+        [self.bgView addSubview:self.playerListCollectionView];
+        [self.bgView addSubview:self.playerCollectionView];
+        [self.bgView addSubview:self.line];
     }
     return self;
 }
 - (void)setPlayers:(NSArray *)players{
     _players = players;
     CGFloat h = self.players.count * playerCellH + playerItemH;
+    self.bgView.frame = CGRectMake(0, 0, tableViewW, h);
+    self.line.frame = CGRectMake(10, playerItemH, tableViewW - 20, 0.5);
     self.playerListCollectionView.frame = CGRectMake(20, 0, tableViewW/3-20, h);
     self.playerCollectionView.frame = CGRectMake(tableViewW/3, 0, tableViewW*2/3, h);
 }
@@ -108,7 +128,6 @@ static NSString *const cellId = @"playcellId";
     RaceStatisticCCell *cell = nil;
     if (collectionView == _playerListCollectionView) {
         cell = (RaceStatisticCCell *)[_playerListCollectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-        
         cell.desLabel.textAlignment = NSTextAlignmentLeft;
         cell.scoreLabel.textAlignment = NSTextAlignmentLeft;
     }else{

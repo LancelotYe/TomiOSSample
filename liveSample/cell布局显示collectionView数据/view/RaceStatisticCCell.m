@@ -15,6 +15,8 @@
         _desLabel = [[UILabel alloc] init];
         _desLabel.font = [UIFont systemFontOfSize:10];
         _desLabel.textAlignment = NSTextAlignmentCenter;
+#warning skin
+        [_desLabel setTextColor:[UIColor grayColor]];
         _desLabel.hidden = YES;
     }
     return _desLabel;
@@ -24,13 +26,17 @@
         _scoreLabel = [[UILabel alloc] init];
         _scoreLabel.font = [UIFont systemFontOfSize:12];
         _scoreLabel.textAlignment = NSTextAlignmentCenter;
+#warning skin
+        [_scoreLabel setTextColor:[UIColor whiteColor]];
         _scoreLabel.hidden = YES;
+        
     }
     return _scoreLabel;
 }
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        [self setBackgroundColor:[UIColor clearColor]];
         [self addSubview:self.desLabel];
         [self addSubview:self.scoreLabel];
     }
@@ -52,6 +58,8 @@
         _itemLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, w, 10)];
         _itemLbl.textAlignment = NSTextAlignmentCenter;
         _itemLbl.font = [UIFont systemFontOfSize:10];
+#warning skin
+        [_itemLbl setTextColor:[UIColor lightGrayColor]];
     }
     return _itemLbl;
 }
@@ -59,7 +67,6 @@
     if (!_graphicLine){
         CGFloat w = self.bounds.size.width;
         _graphicLine = [TeamStatisticLine loadTeamStatisticLineWithFrame:CGRectMake(0, 25.5, w, 2)];
-//        [_graphicLine setBackgroundColor:[UIColor blueColor]];
     }
     return _graphicLine;
 }

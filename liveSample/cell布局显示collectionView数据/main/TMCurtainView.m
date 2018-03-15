@@ -50,9 +50,7 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
 -(UIButton *)curtainSwitch{
     if (!_curtainSwitch) {
         _curtainSwitch = [[UIButton alloc] init];
-        _curtainSwitch.backgroundColor = [UIColor purpleColor];
-        _curtainSwitch.titleLabel.text = @"更多数据";
-        _curtainSwitch.titleLabel.numberOfLines = 0;
+        [_curtainSwitch setBackgroundImage:[UIImage imageNamed:@"moreData.png"] forState:UIControlStateNormal];
         [_curtainSwitch addTarget:self action:@selector(curtainSwitchClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _curtainSwitch;
@@ -99,9 +97,12 @@ static NSString *visitorPlayerID = @"visitorPlayerID";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 50)];
-    view.backgroundColor = [UIColor whiteColor];
+
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 18, self.tableView.bounds.size.width, 12)];
     label.font = [UIFont systemFontOfSize:15];
+#warning skin
+    view.backgroundColor = [UIColor blackColor];
+    [label setTextColor:[UIColor whiteColor]];
     [view addSubview:label];
     switch (section) {
         case 0:{

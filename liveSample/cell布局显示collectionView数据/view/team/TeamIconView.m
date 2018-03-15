@@ -34,6 +34,8 @@
     if(!_desLbl){
         _desLbl = [[UILabel alloc] init];
         _desLbl.textAlignment = NSTextAlignmentCenter;
+#warning skin
+        _desLbl.textColor = [UIColor whiteColor];
         _desLbl.text =@"VS";
     }
     return _desLbl;
@@ -50,12 +52,10 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
+        self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.desLbl];
         [self addSubview:self.homeTeamImageView];
         [self addSubview:self.visitorTeamImageView];
-        _line = [[UIView alloc] init];
-        [_line setBackgroundColor:[UIColor grayColor]];
-        [self addSubview:_line];
     }
     return self;
 }
@@ -65,7 +65,6 @@
     CGFloat selfW = self.frame.size.width;
     CGFloat selfH = self.frame.size.height;
     _desLbl.frame = CGRectMake(selfW/6, 0, selfW*2/3, selfH);
-    _line.frame = CGRectMake(10, selfH-1, selfW-20, 0.5);
     CGFloat h = selfH;
     CGFloat imageW = teamImgW;
     CGFloat marginX = 19;

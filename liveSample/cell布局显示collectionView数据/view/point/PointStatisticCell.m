@@ -19,6 +19,8 @@
 @property(nonatomic, strong)NSMutableArray *dataArray;
 @property(nonatomic, strong)RacePointsStatisticModel *pointsModel;
 @property(nonatomic, strong)PointIconView *iconView;
+@property(nonatomic, strong)UIView *bgView;
+@property(nonatomic, strong)UIView *line;
 @end
 @implementation PointStatisticCell
 
@@ -28,7 +30,7 @@ static NSString *const cellId = @"collcellId";
         _customLayout = [[UICollectionViewFlowLayout alloc] init];
         _customLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _pointCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(pointIconW, 0, collectionViewW, 100) collectionViewLayout:_customLayout];
-        _pointCollectionView.backgroundColor = [UIColor redColor];
+        _pointCollectionView.backgroundColor = [UIColor clearColor];
         _pointCollectionView.dataSource = self;
         _pointCollectionView.delegate = self;
         [_pointCollectionView registerClass:[RaceStatisticCCell class] forCellWithReuseIdentifier:cellId];
@@ -41,22 +43,40 @@ static NSString *const cellId = @"collcellId";
     }
     return _iconView;
 }
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] init];
+#warning skin
+        [_bgView setBackgroundColor:[UIColor blackColor]];
+    }
+    return _bgView;
+}
+- (UIView *)line{
+    if (!_line) {
+        _line = [[UIView alloc] init];
+#warning skin
+        [_line setBackgroundColor:[UIColor whiteColor]];
+    }
+    return _line;
+}
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+#warning skin
         self.contentView.backgroundColor = [UIColor darkGrayColor];
-        [self.contentView addSubview:self.collectionView];
-        [self.contentView addSubview:self.iconView];
+        [self.contentView addSubview:self.bgView];
+        [self.bgView addSubview:self.collectionView];
+        [self.bgView addSubview:self.iconView];
+        [self.bgView addSubview:self.line];
         _iconView.homeIconUrl = @"234";
         _iconView.visitorIconUrl = @"123";
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(20, pointItemH, tableViewW - 40, 0.5)];
-        [line setBackgroundColor:[UIColor grayColor]];
-        [self.contentView addSubview:line];
     }
     return self;
 }
 - (void)layoutSubviews{
     [super layoutSubviews];
+    self.bgView.frame = CGRectMake(0, 0, tableViewW, self.pointsModel.cellH);
+    self.line.frame = CGRectMake(20, pointItemH, tableViewW - 40, 0.5);
     self.iconView.frame = CGRectMake(0, 0, pointIconW, self.pointsModel.cellH);
     self.pointCollectionView.frame = CGRectMake(pointIconW, 0, collectionViewW, self.pointsModel.cellH);
 }

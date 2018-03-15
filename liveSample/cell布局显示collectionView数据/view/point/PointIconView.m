@@ -20,6 +20,8 @@
         _desLbl = [[UILabel alloc] init];
         _desLbl.font = [UIFont systemFontOfSize:10];
         _desLbl.textAlignment = NSTextAlignmentCenter;
+#warning skin
+        [_desLbl setTextColor:[UIColor whiteColor]];
         _desLbl.text = @"球队";
     }
     return _desLbl;
@@ -49,13 +51,15 @@
 }
 + (instancetype)loadPointIconView{
     PointIconView *iconView = [[PointIconView alloc] initWithFrame:CGRectMake(0, 0, pointIconW, pointItemH+pointCellH*2)];
+    
     return iconView;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
-        self.backgroundColor = [UIColor whiteColor];
+#warning skin
+        self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.desLbl];
         [self addSubview:self.homeTeamImageView];
         [self addSubview:self.visitorTeamImageView];

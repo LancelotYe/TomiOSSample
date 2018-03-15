@@ -13,6 +13,7 @@
 		288B406A2052F62B005B9C38 /* transNBA.json in Resources */ = {isa = PBXBuildFile; fileRef = 288B40692052F62B005B9C38 /* transNBA.json */; };
 		E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D411D2052359F00BA5C76 /* PointIconView.m */; };
 		E20D41212052610400BA5C76 /* TeamIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D41202052610400BA5C76 /* TeamIconView.m */; };
+		E2128D35205A586700823F3B /* moreData.png in Resources */ = {isa = PBXBuildFile; fileRef = E2128D34205A586700823F3B /* moreData.png */; };
 		E243C176204F8D3F00818967 /* RaceStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C175204F8D3F00818967 /* RaceStateModel.m */; };
 		E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C17A204FCE3600818967 /* TeamStatisticCell.m */; };
 		E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C17D204FCE5000818967 /* PlayerStatisticCell.m */; };
@@ -63,6 +64,7 @@
 		E20D411D2052359F00BA5C76 /* PointIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointIconView.m; sourceTree = "<group>"; };
 		E20D411F2052610400BA5C76 /* TeamIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamIconView.h; sourceTree = "<group>"; };
 		E20D41202052610400BA5C76 /* TeamIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamIconView.m; sourceTree = "<group>"; };
+		E2128D34205A586700823F3B /* moreData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moreData.png; sourceTree = "<group>"; };
 		E243C174204F8D3F00818967 /* RaceStateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateModel.h; sourceTree = "<group>"; };
 		E243C175204F8D3F00818967 /* RaceStateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateModel.m; sourceTree = "<group>"; };
 		E243C179204FCE3600818967 /* TeamStatisticCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticCell.h; sourceTree = "<group>"; };
@@ -160,6 +162,14 @@
 			path = main;
 			sourceTree = "<group>";
 		};
+		E2128D36205A587200823F3B /* img */ = {
+			isa = PBXGroup;
+			children = (
+				E2128D34205A586700823F3B /* moreData.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
 		E243C182204FCFB700818967 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +186,9 @@
 			children = (
 				E243C185205113C900818967 /* RaceStatisticCCell.h */,
 				E243C186205113C900818967 /* RaceStatisticCCell.m */,
-				E2DCB0962058FBEE002EDBCD /* TeamStatisticLine.h */,
-				E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */,
-				E243C18B205118B400818967 /* player */,
-				E243C18A205118A600818967 /* team */,
 				E243C1892051189600818967 /* point */,
+				E243C18A205118A600818967 /* team */,
+				E243C18B205118B400818967 /* player */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -203,6 +211,8 @@
 				E243C17A204FCE3600818967 /* TeamStatisticCell.m */,
 				E20D411F2052610400BA5C76 /* TeamIconView.h */,
 				E20D41202052610400BA5C76 /* TeamIconView.m */,
+				E2DCB0962058FBEE002EDBCD /* TeamStatisticLine.h */,
+				E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */,
 			);
 			path = team;
 			sourceTree = "<group>";
@@ -275,6 +285,7 @@
 		E2C284C8204E9A5B00FD3823 /* cell布局显示collectionView数据 */ = {
 			isa = PBXGroup;
 			children = (
+				E2128D36205A587200823F3B /* img */,
 				285E31302058218800E39916 /* main */,
 				285E312F2058215700E39916 /* fakeData */,
 				E243C1882051187D00818967 /* view */,
@@ -391,6 +402,7 @@
 			files = (
 				E2B72389204D1F5F00BD972F /* LaunchScreen.storyboard in Resources */,
 				E243C1922051387E00818967 /* gameInfo.json in Resources */,
+				E2128D35205A586700823F3B /* moreData.png in Resources */,
 				288B406A2052F62B005B9C38 /* transNBA.json in Resources */,
 				E2B72386204D1F5F00BD972F /* Assets.xcassets in Resources */,
 				E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */,
