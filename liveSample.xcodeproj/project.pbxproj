@@ -22,6 +22,7 @@
 		E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C186205113C900818967 /* RaceStatisticCCell.m */; };
 		E243C1922051387E00818967 /* gameInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = E243C1912051387D00818967 /* gameInfo.json */; };
 		E248B6852057A4AE006D551B /* TMCurtainView.m in Sources */ = {isa = PBXBuildFile; fileRef = E248B6842057A4AE006D551B /* TMCurtainView.m */; };
+		E26561F1205BC40900BF08DA /* SpeechGetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26561F0205BC40900BF08DA /* SpeechGetViewController.m */; };
 		E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7237D204D1F5F00BD972F /* AppDelegate.m */; };
 		E2B72381204D1F5F00BD972F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72380204D1F5F00BD972F /* ViewController.m */; };
 		E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B72382204D1F5F00BD972F /* Main.storyboard */; };
@@ -79,6 +80,8 @@
 		E243C1912051387D00818967 /* gameInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameInfo.json; sourceTree = "<group>"; };
 		E248B6832057A4AE006D551B /* TMCurtainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMCurtainView.h; sourceTree = "<group>"; };
 		E248B6842057A4AE006D551B /* TMCurtainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMCurtainView.m; sourceTree = "<group>"; };
+		E26561EF205BC40900BF08DA /* SpeechGetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechGetViewController.h; sourceTree = "<group>"; };
+		E26561F0205BC40900BF08DA /* SpeechGetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechGetViewController.m; sourceTree = "<group>"; };
 		E2B72379204D1F5F00BD972F /* liveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B7237C204D1F5F00BD972F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E2B7237D204D1F5F00BD972F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -226,6 +229,15 @@
 			path = player;
 			sourceTree = "<group>";
 		};
+		E26561EE205BC3DE00BF08DA /* 语音识别 */ = {
+			isa = PBXGroup;
+			children = (
+				E26561EF205BC40900BF08DA /* SpeechGetViewController.h */,
+				E26561F0205BC40900BF08DA /* SpeechGetViewController.m */,
+			);
+			path = "语音识别";
+			sourceTree = "<group>";
+		};
 		E2B72370204D1F5E00BD972F = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +265,7 @@
 				E2B7237D204D1F5F00BD972F /* AppDelegate.m */,
 				E2B7237F204D1F5F00BD972F /* ViewController.h */,
 				E2B72380204D1F5F00BD972F /* ViewController.m */,
+				E26561EE205BC3DE00BF08DA /* 语音识别 */,
 				28018CF7204EC8A800289238 /* 可拉伸导航栏 */,
 				E2C284C8204E9A5B00FD3823 /* cell布局显示collectionView数据 */,
 				E2B72382204D1F5F00BD972F /* Main.storyboard */,
@@ -438,6 +451,7 @@
 				285E31332058225B00E39916 /* StatisticModel.m in Sources */,
 				E2DCB0982058FBEE002EDBCD /* TeamStatisticLine.m in Sources */,
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
+				E26561F1205BC40900BF08DA /* SpeechGetViewController.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,

@@ -48,6 +48,8 @@ static NSString *cellID = @"cellID";
         cell.textLabel.text = @"cell布局collectionView用于直播数据";
     }else if (indexPath.row == 1){
         cell.textLabel.text = @"可拉伸导航栏";
+    }else if (indexPath.row == 2){
+        cell.textLabel.text = @"语音识别";
     }
     return cell;
 }
