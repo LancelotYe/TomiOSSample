@@ -22,6 +22,8 @@
 		E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E243C186205113C900818967 /* RaceStatisticCCell.m */; };
 		E243C1922051387E00818967 /* gameInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = E243C1912051387D00818967 /* gameInfo.json */; };
 		E248B6852057A4AE006D551B /* TMCurtainView.m in Sources */ = {isa = PBXBuildFile; fileRef = E248B6842057A4AE006D551B /* TMCurtainView.m */; };
+		E24D86272060A73B004666F5 /* TMPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24D86262060A73B004666F5 /* TMPlayViewController.m */; };
+		E24D8A742060EA18004666F5 /* playerURL.json in Resources */ = {isa = PBXBuildFile; fileRef = E24D8A732060EA17004666F5 /* playerURL.json */; };
 		E26561F1205BC40900BF08DA /* SpeechGetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26561F0205BC40900BF08DA /* SpeechGetViewController.m */; };
 		E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7237D204D1F5F00BD972F /* AppDelegate.m */; };
 		E2B72381204D1F5F00BD972F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72380204D1F5F00BD972F /* ViewController.m */; };
@@ -80,6 +82,9 @@
 		E243C1912051387D00818967 /* gameInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gameInfo.json; sourceTree = "<group>"; };
 		E248B6832057A4AE006D551B /* TMCurtainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMCurtainView.h; sourceTree = "<group>"; };
 		E248B6842057A4AE006D551B /* TMCurtainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMCurtainView.m; sourceTree = "<group>"; };
+		E24D86252060A73B004666F5 /* TMPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMPlayViewController.h; sourceTree = "<group>"; };
+		E24D86262060A73B004666F5 /* TMPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMPlayViewController.m; sourceTree = "<group>"; };
+		E24D8A732060EA17004666F5 /* playerURL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = playerURL.json; sourceTree = "<group>"; };
 		E26561EF205BC40900BF08DA /* SpeechGetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechGetViewController.h; sourceTree = "<group>"; };
 		E26561F0205BC40900BF08DA /* SpeechGetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechGetViewController.m; sourceTree = "<group>"; };
 		E2B72379204D1F5F00BD972F /* liveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +234,24 @@
 			path = player;
 			sourceTree = "<group>";
 		};
+		E24D86242060A711004666F5 /* 播放器 */ = {
+			isa = PBXGroup;
+			children = (
+				E24D8A722060EA17004666F5 /* fakeData */,
+				E24D86252060A73B004666F5 /* TMPlayViewController.h */,
+				E24D86262060A73B004666F5 /* TMPlayViewController.m */,
+			);
+			path = "播放器";
+			sourceTree = "<group>";
+		};
+		E24D8A722060EA17004666F5 /* fakeData */ = {
+			isa = PBXGroup;
+			children = (
+				E24D8A732060EA17004666F5 /* playerURL.json */,
+			);
+			path = fakeData;
+			sourceTree = "<group>";
+		};
 		E26561EE205BC3DE00BF08DA /* 语音识别 */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +284,7 @@
 		E2B7237B204D1F5F00BD972F /* liveSample */ = {
 			isa = PBXGroup;
 			children = (
+				E24D86242060A711004666F5 /* 播放器 */,
 				E2B7237C204D1F5F00BD972F /* AppDelegate.h */,
 				E2B7237D204D1F5F00BD972F /* AppDelegate.m */,
 				E2B7237F204D1F5F00BD972F /* ViewController.h */,
@@ -419,6 +443,7 @@
 				288B406A2052F62B005B9C38 /* transNBA.json in Resources */,
 				E2B72386204D1F5F00BD972F /* Assets.xcassets in Resources */,
 				E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */,
+				E24D8A742060EA18004666F5 /* playerURL.json in Resources */,
 				E243C184204FE20A00818967 /* teamInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +485,7 @@
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E248B6852057A4AE006D551B /* TMCurtainView.m in Sources */,
 				E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */,
+				E24D86272060A73B004666F5 /* TMPlayViewController.m in Sources */,
 				E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */,
 				28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */,
 			);

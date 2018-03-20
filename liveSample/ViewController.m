@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "RaceStateViewController.h"
 #import "StretchingableNavViewController.h"
+#import "TMPlayViewController.h"
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @end
@@ -34,7 +35,7 @@ static NSString *cellID = @"cellID";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
@@ -50,6 +51,8 @@ static NSString *cellID = @"cellID";
         cell.textLabel.text = @"可拉伸导航栏";
     }else if (indexPath.row == 2){
         cell.textLabel.text = @"语音识别";
+    }else if(indexPath.row == 3){
+        cell.textLabel.text = @"播放器";
     }
     return cell;
 }
@@ -62,6 +65,9 @@ static NSString *cellID = @"cellID";
     }else if(indexPath.row == 1){
         StretchingableNavViewController *stretch = [[StretchingableNavViewController alloc] init];
         [self.navigationController pushViewController:stretch animated:YES];
+    }else if (indexPath.row == 3){
+        TMPlayViewController *ctr = [[TMPlayViewController alloc] init];
+        [self.navigationController pushViewController:ctr animated:YES];
     }
 }
 @end
