@@ -25,6 +25,9 @@
 		E24D86272060A73B004666F5 /* TMPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24D86262060A73B004666F5 /* TMPlayViewController.m */; };
 		E24D8A742060EA18004666F5 /* playerURL.json in Resources */ = {isa = PBXBuildFile; fileRef = E24D8A732060EA17004666F5 /* playerURL.json */; };
 		E26561F1205BC40900BF08DA /* SpeechGetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26561F0205BC40900BF08DA /* SpeechGetViewController.m */; };
+		E2710F7D20634FFB00A1E96C /* TMIconImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2710F7C20634FFB00A1E96C /* TMIconImageView.m */; };
+		E2710F7F20637F4300A1E96C /* SelVideoPlayer.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2710F7E20637F4300A1E96C /* SelVideoPlayer.gif */; };
+		E2710F81206389E700A1E96C /* minion_02.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E2710F80206389E700A1E96C /* minion_02.mp4 */; };
 		E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7237D204D1F5F00BD972F /* AppDelegate.m */; };
 		E2B72381204D1F5F00BD972F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B72380204D1F5F00BD972F /* ViewController.m */; };
 		E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2B72382204D1F5F00BD972F /* Main.storyboard */; };
@@ -87,6 +90,10 @@
 		E24D8A732060EA17004666F5 /* playerURL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = playerURL.json; sourceTree = "<group>"; };
 		E26561EF205BC40900BF08DA /* SpeechGetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechGetViewController.h; sourceTree = "<group>"; };
 		E26561F0205BC40900BF08DA /* SpeechGetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechGetViewController.m; sourceTree = "<group>"; };
+		E2710F7B20634FFB00A1E96C /* TMIconImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMIconImageView.h; sourceTree = "<group>"; };
+		E2710F7C20634FFB00A1E96C /* TMIconImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMIconImageView.m; sourceTree = "<group>"; };
+		E2710F7E20637F4300A1E96C /* SelVideoPlayer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SelVideoPlayer.gif; sourceTree = "<group>"; };
+		E2710F80206389E700A1E96C /* minion_02.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = minion_02.mp4; sourceTree = "<group>"; };
 		E2B72379204D1F5F00BD972F /* liveSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2B7237C204D1F5F00BD972F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E2B7237D204D1F5F00BD972F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -240,6 +247,8 @@
 				E24D8A722060EA17004666F5 /* fakeData */,
 				E24D86252060A73B004666F5 /* TMPlayViewController.h */,
 				E24D86262060A73B004666F5 /* TMPlayViewController.m */,
+				E2710F7B20634FFB00A1E96C /* TMIconImageView.h */,
+				E2710F7C20634FFB00A1E96C /* TMIconImageView.m */,
 			);
 			path = "播放器";
 			sourceTree = "<group>";
@@ -247,6 +256,8 @@
 		E24D8A722060EA17004666F5 /* fakeData */ = {
 			isa = PBXGroup;
 			children = (
+				E2710F7E20637F4300A1E96C /* SelVideoPlayer.gif */,
+				E2710F80206389E700A1E96C /* minion_02.mp4 */,
 				E24D8A732060EA17004666F5 /* playerURL.json */,
 			);
 			path = fakeData;
@@ -442,6 +453,8 @@
 				E2128D35205A586700823F3B /* moreData.png in Resources */,
 				288B406A2052F62B005B9C38 /* transNBA.json in Resources */,
 				E2B72386204D1F5F00BD972F /* Assets.xcassets in Resources */,
+				E2710F81206389E700A1E96C /* minion_02.mp4 in Resources */,
+				E2710F7F20637F4300A1E96C /* SelVideoPlayer.gif in Resources */,
 				E2B72384204D1F5F00BD972F /* Main.storyboard in Resources */,
 				E24D8A742060EA18004666F5 /* playerURL.json in Resources */,
 				E243C184204FE20A00818967 /* teamInfo.json in Resources */,
@@ -481,6 +494,7 @@
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
 				E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */,
+				E2710F7D20634FFB00A1E96C /* TMIconImageView.m in Sources */,
 				28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E248B6852057A4AE006D551B /* TMCurtainView.m in Sources */,

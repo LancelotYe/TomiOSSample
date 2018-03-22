@@ -8,35 +8,66 @@
 
 #import "TMPlayViewController.h"
 #import <AVKit/AVKit.h>
+//#import <AVFoundation/AVFoundation.h>
+#import "TMIconImageView.h"
 
 @interface TMPlayViewController ()
 
 @end
 
 @implementation TMPlayViewController
-- (NSDictionary *)loadData{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"playerURL" ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-    return dict;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    NSDictionary *movieDict = [self loadData];
-    NSString *url = [movieDict objectForKey:@"url"];
-    NSLog(@"%@",url);
-    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]];
-    AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
-    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:player];
-    layer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view.layer addSublayer:layer];
     
+    
+
+}
+- (void)watchRemoteVideo{
+    UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*0.6)];
+    [playerView setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:playerView];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"http://120.25.226.186:32812/resources/videos/minion_02.mp4"]];
+    AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
+    AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
+    vc.player = player;
+    vc.view.frame = playerView.bounds;
+    [self addChildViewController:vc];
+    [playerView addSubview:vc.view];
+    [vc.player play];
+}
+- (void)watchLocalVideo{
+    UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*0.6)];
+    [playerView setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:playerView];
+    NSString *url = [[NSBundle mainBundle]pathForResource:@"minion_02.mp4" ofType:nil];
+    NSURL *sourceUrl = [NSURL fileURLWithPath:url];
+    AVAsset *movieAsset = [AVURLAsset URLAssetWithURL:sourceUrl options:nil];
+    AVPlayerItem *playItem = [AVPlayerItem playerItemWithAsset:movieAsset];
+    AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
+    vc.player = [AVPlayer playerWithPlayerItem:playItem];
+    vc.view.frame = playerView.bounds;
+    [self addChildViewController:vc];
+    [playerView addSubview:vc.view];
+    [vc.player play];
+}
+- (void)watchLocalVideoPlus{
+    UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*0.6)];
+    [playerView setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:playerView];
+    NSString *url = [[NSBundle mainBundle]pathForResource:@"minion_02.mp4" ofType:nil];
+    NSURL *sourceUrl = [NSURL fileURLWithPath:url];
+    AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
+    vc.player = [[AVPlayer alloc] initWithURL:sourceUrl];
+    vc.view.frame = playerView.bounds;
+    [self addChildViewController:vc];
+    [playerView addSubview:vc.view];
+    [vc.player play];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 
