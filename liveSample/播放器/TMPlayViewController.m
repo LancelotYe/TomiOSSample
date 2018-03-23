@@ -10,25 +10,49 @@
 #import <AVKit/AVKit.h>
 //#import <AVFoundation/AVFoundation.h>
 #import "TMIconImageView.h"
+#import "TMVideoPlayer.h"
+#import "TMPlayerConfiguration.h"
 
 @interface TMPlayViewController ()
-
+@property(nonatomic, strong)TMVideoPlayer *player;
 @end
 
 @implementation TMPlayViewController
+- (TMVideoPlayer *)player{
+    if (!_player) {
+        TMPlayerConfiguration *config = [[TMPlayerConfiguration alloc] init];
+        
+        config.sourceUrl = [NSURL URLWithString:@"ftp://ygdy8:ygdy8@yg90.dydytt.net:3037/[阳光电影www.ygdy8.com]我是僵尸第四季第01集[中英双字].rmvb"];
+        config.videoGravity = TMVideoGravityResizeAspect;
+        _player = [[TMVideoPlayer alloc] initWithFrame:CGRectMake(0, 60, 400, 200) configuration:config];
+    }
+    return _player;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    
-    
-
+    [self watchRemoteVideo];
 }
+
+- (void)playCustomPlayer{
+    [self.view addSubview:self.player];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(40, 270, 100, 60)];
+    [btn setTitle:@"bofang" forState:UIControlStateNormal];
+    [btn setBackgroundColor:[UIColor greenColor]];
+    [btn addTarget:self action:@selector(playme) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+- (void)playme{
+    [_player playVideo];
+}
+
 - (void)watchRemoteVideo{
     UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*0.6)];
     [playerView setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:playerView];
-    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:@"http://120.25.226.186:32812/resources/videos/minion_02.mp4"]];
+    NSString *ftp = @"ftp://ygdy8:ygdy8@yg90.dydytt.net:3037/[阳光电影www.ygdy8.com]我是僵尸第四季第01集[中英双字].rmvb";
+    NSString *http = @"http://120.25.226.186:32812/resources/videos/minion_02.mp4";
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:ftp]];
     AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
     AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
     vc.player = player;

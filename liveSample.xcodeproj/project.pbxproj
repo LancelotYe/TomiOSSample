@@ -38,6 +38,8 @@
 		E2B723A1204D1F5F00BD972F /* liveSampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723A0204D1F5F00BD972F /* liveSampleUITests.m */; };
 		E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B723AF204D20E900BD972F /* RaceStateCell.m */; };
 		E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */; };
+		E2C5FB1A2064DE41008B9EA2 /* TMVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C5FB192064DE41008B9EA2 /* TMVideoPlayer.m */; };
+		E2C5FB1D2064DE90008B9EA2 /* TMPlayerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C5FB1C2064DE90008B9EA2 /* TMPlayerConfiguration.m */; };
 		E2DCB0982058FBEE002EDBCD /* TeamStatisticLine.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +116,10 @@
 		E2B723AF204D20E900BD972F /* RaceStateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateCell.m; sourceTree = "<group>"; };
 		E2C284C9204E9AC700FD3823 /* RaceStateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceStateViewController.h; sourceTree = "<group>"; };
 		E2C284CA204E9AC700FD3823 /* RaceStateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceStateViewController.m; sourceTree = "<group>"; };
+		E2C5FB182064DE41008B9EA2 /* TMVideoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMVideoPlayer.h; sourceTree = "<group>"; };
+		E2C5FB192064DE41008B9EA2 /* TMVideoPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMVideoPlayer.m; sourceTree = "<group>"; };
+		E2C5FB1B2064DE90008B9EA2 /* TMPlayerConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMPlayerConfiguration.h; sourceTree = "<group>"; };
+		E2C5FB1C2064DE90008B9EA2 /* TMPlayerConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMPlayerConfiguration.m; sourceTree = "<group>"; };
 		E2DCB0962058FBEE002EDBCD /* TeamStatisticLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticLine.h; sourceTree = "<group>"; };
 		E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamStatisticLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +250,8 @@
 		E24D86242060A711004666F5 /* 播放器 */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5FB1F2064F8E0008B9EA2 /* 播放器 */,
+				E2C5FB1E2064DE96008B9EA2 /* conf */,
 				E24D8A722060EA17004666F5 /* fakeData */,
 				E24D86252060A73B004666F5 /* TMPlayViewController.h */,
 				E24D86262060A73B004666F5 /* TMPlayViewController.m */,
@@ -340,6 +348,24 @@
 				E243C182204FCFB700818967 /* model */,
 			);
 			path = "cell布局显示collectionView数据";
+			sourceTree = "<group>";
+		};
+		E2C5FB1E2064DE96008B9EA2 /* conf */ = {
+			isa = PBXGroup;
+			children = (
+				E2C5FB1B2064DE90008B9EA2 /* TMPlayerConfiguration.h */,
+				E2C5FB1C2064DE90008B9EA2 /* TMPlayerConfiguration.m */,
+			);
+			path = conf;
+			sourceTree = "<group>";
+		};
+		E2C5FB1F2064F8E0008B9EA2 /* 播放器 */ = {
+			isa = PBXGroup;
+			children = (
+				E2C5FB182064DE41008B9EA2 /* TMVideoPlayer.h */,
+				E2C5FB192064DE41008B9EA2 /* TMVideoPlayer.m */,
+			);
+			path = "播放器";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,6 +510,7 @@
 			files = (
 				E243C176204F8D3F00818967 /* RaceStateModel.m in Sources */,
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
+				E2C5FB1D2064DE90008B9EA2 /* TMPlayerConfiguration.m in Sources */,
 				E20D41212052610400BA5C76 /* TeamIconView.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				285E31332058225B00E39916 /* StatisticModel.m in Sources */,
@@ -499,6 +526,7 @@
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E248B6852057A4AE006D551B /* TMCurtainView.m in Sources */,
 				E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */,
+				E2C5FB1A2064DE41008B9EA2 /* TMVideoPlayer.m in Sources */,
 				E24D86272060A73B004666F5 /* TMPlayViewController.m in Sources */,
 				E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */,
 				28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */,
