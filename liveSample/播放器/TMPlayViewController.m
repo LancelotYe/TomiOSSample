@@ -18,19 +18,37 @@
 @end
 
 @implementation TMPlayViewController
+NSString *http = @"http://120.25.226.186:32812/resources/videos/minion_02.mp4";
+NSString *ftp = @"ftp://ygdy8:ygdy8@yg90.dydytt.net:3037/[阳光电影www.ygdy8.com]我是僵尸第四季第01集[中英双字].rmvb";
 - (TMVideoPlayer *)player{
     if (!_player) {
         TMPlayerConfiguration *config = [[TMPlayerConfiguration alloc] init];
         
-        config.sourceUrl = [NSURL URLWithString:@"ftp://ygdy8:ygdy8@yg90.dydytt.net:3037/[阳光电影www.ygdy8.com]我是僵尸第四季第01集[中英双字].rmvb"];
+        config.sourceUrl = [NSURL URLWithString:http];
         config.videoGravity = TMVideoGravityResizeAspect;
+        config.shouldAutorotate = YES;
         _player = [[TMVideoPlayer alloc] initWithFrame:CGRectMake(0, 60, 400, 200) configuration:config];
     }
     return _player;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self watchRemoteVideo];
+    self.view.backgroundColor = [UIColor whiteColor];
+    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    TMPlayerConfiguration *config = [[TMPlayerConfiguration alloc] init];
+    config.shouldAutoPlay = YES;
+    config.supportedDoubleTap = YES;
+    config.shouldAutorotate = YES;
+    config.repeatPlay = YES;
+    config.statusBarHideState = TMStatusBarHideStateFollowControls;
+    config.sourceUrl = [NSURL URLWithString:http];
+    config.videoGravity = TMVideoGravityResizeAspect;
+    CGFloat width = self.view.frame.size.width;
+    _player = [[TMVideoPlayer alloc] initWithFrame:CGRectMake(0, 100, width, 300) configuration:config];
+    [self.view addSubview:_player];
+//    [self watchRemoteVideo];
 }
 
 - (void)playCustomPlayer{
@@ -50,9 +68,9 @@
     UIView *playerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width*0.6)];
     [playerView setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:playerView];
-    NSString *ftp = @"ftp://ygdy8:ygdy8@yg90.dydytt.net:3037/[阳光电影www.ygdy8.com]我是僵尸第四季第01集[中英双字].rmvb";
-    NSString *http = @"http://120.25.226.186:32812/resources/videos/minion_02.mp4";
-    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:ftp]];
+    
+    
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:http]];
     AVPlayer *player = [AVPlayer playerWithPlayerItem:item];
     AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
     vc.player = player;

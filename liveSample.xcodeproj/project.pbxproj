@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090E73BA979576EF5F7BAF3F /* libPods-liveSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F53422EC858D5C33E5668F6B /* libPods-liveSample.a */; };
 		28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */; };
 		28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28018CFC204ECEE000289238 /* StretchingNavBar.m */; };
+		281233E32066917600DA323D /* TMPlayerbackControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 281233E22066917600DA323D /* TMPlayerbackControl.m */; };
+		281233E6206691A600DA323D /* TMVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 281233E5206691A600DA323D /* TMVideoSlider.m */; };
+		281233EA2067859D00DA323D /* UIViewController+PlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 281233E92067859D00DA323D /* UIViewController+PlayerRotation.m */; };
 		285E31332058225B00E39916 /* StatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 285E31322058225B00E39916 /* StatisticModel.m */; };
 		288B406A2052F62B005B9C38 /* transNBA.json in Resources */ = {isa = PBXBuildFile; fileRef = 288B40692052F62B005B9C38 /* transNBA.json */; };
 		E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D411D2052359F00BA5C76 /* PointIconView.m */; };
@@ -61,13 +65,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D034CB5026CC715C94DA9C2 /* Pods-liveSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liveSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-liveSample/Pods-liveSample.release.xcconfig"; sourceTree = "<group>"; };
 		28018CF8204EC8FF00289238 /* StretchingableNavViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingableNavViewController.h; sourceTree = "<group>"; };
 		28018CF9204EC8FF00289238 /* StretchingableNavViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingableNavViewController.m; sourceTree = "<group>"; };
 		28018CFB204ECEE000289238 /* StretchingNavBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StretchingNavBar.h; sourceTree = "<group>"; };
 		28018CFC204ECEE000289238 /* StretchingNavBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StretchingNavBar.m; sourceTree = "<group>"; };
+		281233E12066917600DA323D /* TMPlayerbackControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMPlayerbackControl.h; sourceTree = "<group>"; };
+		281233E22066917600DA323D /* TMPlayerbackControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMPlayerbackControl.m; sourceTree = "<group>"; };
+		281233E4206691A600DA323D /* TMVideoSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMVideoSlider.h; sourceTree = "<group>"; };
+		281233E5206691A600DA323D /* TMVideoSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMVideoSlider.m; sourceTree = "<group>"; };
+		281233E82067859D00DA323D /* UIViewController+PlayerRotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PlayerRotation.h"; sourceTree = "<group>"; };
+		281233E92067859D00DA323D /* UIViewController+PlayerRotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PlayerRotation.m"; sourceTree = "<group>"; };
 		285E31312058225B00E39916 /* StatisticModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatisticModel.h; sourceTree = "<group>"; };
 		285E31322058225B00E39916 /* StatisticModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatisticModel.m; sourceTree = "<group>"; };
 		288B40692052F62B005B9C38 /* transNBA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transNBA.json; sourceTree = "<group>"; };
+		9461FFC93CC8578BADE4424F /* Pods-liveSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liveSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-liveSample/Pods-liveSample.debug.xcconfig"; sourceTree = "<group>"; };
 		E20D411C2052359F00BA5C76 /* PointIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointIconView.h; sourceTree = "<group>"; };
 		E20D411D2052359F00BA5C76 /* PointIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointIconView.m; sourceTree = "<group>"; };
 		E20D411F2052610400BA5C76 /* TeamIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamIconView.h; sourceTree = "<group>"; };
@@ -122,6 +134,7 @@
 		E2C5FB1C2064DE90008B9EA2 /* TMPlayerConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMPlayerConfiguration.m; sourceTree = "<group>"; };
 		E2DCB0962058FBEE002EDBCD /* TeamStatisticLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamStatisticLine.h; sourceTree = "<group>"; };
 		E2DCB0972058FBEE002EDBCD /* TeamStatisticLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamStatisticLine.m; sourceTree = "<group>"; };
+		F53422EC858D5C33E5668F6B /* libPods-liveSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-liveSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090E73BA979576EF5F7BAF3F /* libPods-liveSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +174,15 @@
 			path = "可拉伸导航栏";
 			sourceTree = "<group>";
 		};
+		281233E72067856400DA323D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				281233E82067859D00DA323D /* UIViewController+PlayerRotation.h */,
+				281233E92067859D00DA323D /* UIViewController+PlayerRotation.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		285E312F2058215700E39916 /* fakeData */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +204,23 @@
 				E248B6842057A4AE006D551B /* TMCurtainView.m */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		7F8D75681700132606F514C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9461FFC93CC8578BADE4424F /* Pods-liveSample.debug.xcconfig */,
+				1D034CB5026CC715C94DA9C2 /* Pods-liveSample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		90CC92890EA66F4F6C0D60AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F53422EC858D5C33E5668F6B /* libPods-liveSample.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E2128D36205A587200823F3B /* img */ = {
@@ -250,6 +290,7 @@
 		E24D86242060A711004666F5 /* 播放器 */ = {
 			isa = PBXGroup;
 			children = (
+				281233E72067856400DA323D /* Category */,
 				E2C5FB1F2064F8E0008B9EA2 /* 播放器 */,
 				E2C5FB1E2064DE96008B9EA2 /* conf */,
 				E24D8A722060EA17004666F5 /* fakeData */,
@@ -287,6 +328,8 @@
 				E2B72394204D1F5F00BD972F /* liveSampleTests */,
 				E2B7239F204D1F5F00BD972F /* liveSampleUITests */,
 				E2B7237A204D1F5F00BD972F /* Products */,
+				7F8D75681700132606F514C1 /* Pods */,
+				90CC92890EA66F4F6C0D60AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -364,6 +407,10 @@
 			children = (
 				E2C5FB182064DE41008B9EA2 /* TMVideoPlayer.h */,
 				E2C5FB192064DE41008B9EA2 /* TMVideoPlayer.m */,
+				281233E12066917600DA323D /* TMPlayerbackControl.h */,
+				281233E22066917600DA323D /* TMPlayerbackControl.m */,
+				281233E4206691A600DA323D /* TMVideoSlider.h */,
+				281233E5206691A600DA323D /* TMVideoSlider.m */,
 			);
 			path = "播放器";
 			sourceTree = "<group>";
@@ -375,9 +422,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2B723A5204D1F5F00BD972F /* Build configuration list for PBXNativeTarget "liveSample" */;
 			buildPhases = (
+				A231B819AF64BEBA7E508EE7 /* [CP] Check Pods Manifest.lock */,
 				E2B72375204D1F5E00BD972F /* Sources */,
 				E2B72376204D1F5E00BD972F /* Frameworks */,
 				E2B72377204D1F5E00BD972F /* Resources */,
+				B798224A31A1BF6897168929 /* [CP] Embed Pods Frameworks */,
+				DFEB7C6F89BEA962515BA5FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -503,6 +553,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A231B819AF64BEBA7E508EE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-liveSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B798224A31A1BF6897168929 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-liveSample/Pods-liveSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFEB7C6F89BEA962515BA5FB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-liveSample/Pods-liveSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E2B72375204D1F5E00BD972F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -512,10 +613,13 @@
 				E2B72381204D1F5F00BD972F /* ViewController.m in Sources */,
 				E2C5FB1D2064DE90008B9EA2 /* TMPlayerConfiguration.m in Sources */,
 				E20D41212052610400BA5C76 /* TeamIconView.m in Sources */,
+				281233E32066917600DA323D /* TMPlayerbackControl.m in Sources */,
+				281233E6206691A600DA323D /* TMVideoSlider.m in Sources */,
 				E2B7238C204D1F5F00BD972F /* main.m in Sources */,
 				285E31332058225B00E39916 /* StatisticModel.m in Sources */,
 				E2DCB0982058FBEE002EDBCD /* TeamStatisticLine.m in Sources */,
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
+				281233EA2067859D00DA323D /* UIViewController+PlayerRotation.m in Sources */,
 				E26561F1205BC40900BF08DA /* SpeechGetViewController.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,
@@ -690,6 +794,7 @@
 		};
 		E2B723A6204D1F5F00BD972F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9461FFC93CC8578BADE4424F /* Pods-liveSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -706,6 +811,7 @@
 		};
 		E2B723A7204D1F5F00BD972F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D034CB5026CC715C94DA9C2 /* Pods-liveSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
