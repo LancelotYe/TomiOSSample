@@ -10,6 +10,7 @@
 #import "RaceStateViewController.h"
 #import "StretchingableNavViewController.h"
 #import "TMPlayViewController.h"
+#import "Man.h"
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
 @end
@@ -25,6 +26,8 @@ static NSString *cellID = @"cellID";
     return _tableView;
 }
 - (void)viewDidLoad {
+//    Man *m = [[Man alloc] init];
+//    [m function];
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     self.navigationItem.title = @"首页";

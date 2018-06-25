@@ -15,6 +15,12 @@
 		281233EA2067859D00DA323D /* UIViewController+PlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 281233E92067859D00DA323D /* UIViewController+PlayerRotation.m */; };
 		285E31332058225B00E39916 /* StatisticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 285E31322058225B00E39916 /* StatisticModel.m */; };
 		288B406A2052F62B005B9C38 /* transNBA.json in Resources */ = {isa = PBXBuildFile; fileRef = 288B40692052F62B005B9C38 /* transNBA.json */; };
+		28FED30C20E1387A00699BDE /* timeCalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FED30B20E1387A00699BDE /* timeCalViewController.m */; };
+		28FED31420E1395100699BDE /* MACMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FED31320E1395100699BDE /* MACMachine.m */; };
+		28FED31720E1396200699BDE /* StartUpMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FED31620E1396200699BDE /* StartUpMethod.m */; };
+		28FED31A20E1396E00699BDE /* ShutDownMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FED31920E1396E00699BDE /* ShutDownMethod.m */; };
+		28FED31D20E1398600699BDE /* Man.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FED31C20E1398600699BDE /* Man.m */; };
+		28FED32020E13D9D00699BDE /* invoke.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FED31F20E13D9D00699BDE /* invoke.m */; };
 		E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D411D2052359F00BA5C76 /* PointIconView.m */; };
 		E20D41212052610400BA5C76 /* TeamIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D41202052610400BA5C76 /* TeamIconView.m */; };
 		E2128D35205A586700823F3B /* moreData.png in Resources */ = {isa = PBXBuildFile; fileRef = E2128D34205A586700823F3B /* moreData.png */; };
@@ -79,6 +85,19 @@
 		285E31312058225B00E39916 /* StatisticModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatisticModel.h; sourceTree = "<group>"; };
 		285E31322058225B00E39916 /* StatisticModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatisticModel.m; sourceTree = "<group>"; };
 		288B40692052F62B005B9C38 /* transNBA.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transNBA.json; sourceTree = "<group>"; };
+		28FED30A20E1387A00699BDE /* timeCalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timeCalViewController.h; sourceTree = "<group>"; };
+		28FED30B20E1387A00699BDE /* timeCalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = timeCalViewController.m; sourceTree = "<group>"; };
+		28FED31120E138E400699BDE /* MethodProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodProtocol.h; sourceTree = "<group>"; };
+		28FED31220E1395100699BDE /* MACMachine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MACMachine.h; sourceTree = "<group>"; };
+		28FED31320E1395100699BDE /* MACMachine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MACMachine.m; sourceTree = "<group>"; };
+		28FED31520E1396200699BDE /* StartUpMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartUpMethod.h; sourceTree = "<group>"; };
+		28FED31620E1396200699BDE /* StartUpMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartUpMethod.m; sourceTree = "<group>"; };
+		28FED31820E1396E00699BDE /* ShutDownMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShutDownMethod.h; sourceTree = "<group>"; };
+		28FED31920E1396E00699BDE /* ShutDownMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShutDownMethod.m; sourceTree = "<group>"; };
+		28FED31B20E1398600699BDE /* Man.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Man.h; sourceTree = "<group>"; };
+		28FED31C20E1398600699BDE /* Man.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Man.m; sourceTree = "<group>"; };
+		28FED31E20E13D9D00699BDE /* invoke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = invoke.h; sourceTree = "<group>"; };
+		28FED31F20E13D9D00699BDE /* invoke.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = invoke.m; sourceTree = "<group>"; };
 		9461FFC93CC8578BADE4424F /* Pods-liveSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liveSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-liveSample/Pods-liveSample.debug.xcconfig"; sourceTree = "<group>"; };
 		E20D411C2052359F00BA5C76 /* PointIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointIconView.h; sourceTree = "<group>"; };
 		E20D411D2052359F00BA5C76 /* PointIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointIconView.m; sourceTree = "<group>"; };
@@ -204,6 +223,33 @@
 				E248B6842057A4AE006D551B /* TMCurtainView.m */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		28FED30920E1385800699BDE /* 计时器 */ = {
+			isa = PBXGroup;
+			children = (
+				28FED30A20E1387A00699BDE /* timeCalViewController.h */,
+				28FED30B20E1387A00699BDE /* timeCalViewController.m */,
+			);
+			path = "计时器";
+			sourceTree = "<group>";
+		};
+		28FED30D20E1388600699BDE /* 面向协议 */ = {
+			isa = PBXGroup;
+			children = (
+				28FED31B20E1398600699BDE /* Man.h */,
+				28FED31C20E1398600699BDE /* Man.m */,
+				28FED31120E138E400699BDE /* MethodProtocol.h */,
+				28FED31820E1396E00699BDE /* ShutDownMethod.h */,
+				28FED31920E1396E00699BDE /* ShutDownMethod.m */,
+				28FED31520E1396200699BDE /* StartUpMethod.h */,
+				28FED31620E1396200699BDE /* StartUpMethod.m */,
+				28FED31220E1395100699BDE /* MACMachine.h */,
+				28FED31320E1395100699BDE /* MACMachine.m */,
+				28FED31E20E13D9D00699BDE /* invoke.h */,
+				28FED31F20E13D9D00699BDE /* invoke.m */,
+			);
+			path = "面向协议";
 			sourceTree = "<group>";
 		};
 		7F8D75681700132606F514C1 /* Pods */ = {
@@ -346,6 +392,8 @@
 		E2B7237B204D1F5F00BD972F /* liveSample */ = {
 			isa = PBXGroup;
 			children = (
+				28FED30D20E1388600699BDE /* 面向协议 */,
+				28FED30920E1385800699BDE /* 计时器 */,
 				E24D86242060A711004666F5 /* 播放器 */,
 				E2B7237C204D1F5F00BD972F /* AppDelegate.h */,
 				E2B7237D204D1F5F00BD972F /* AppDelegate.m */,
@@ -621,16 +669,22 @@
 				E243C17B204FCE3600818967 /* TeamStatisticCell.m in Sources */,
 				281233EA2067859D00DA323D /* UIViewController+PlayerRotation.m in Sources */,
 				E26561F1205BC40900BF08DA /* SpeechGetViewController.m in Sources */,
+				28FED31D20E1398600699BDE /* Man.m in Sources */,
 				E243C181204FCE7400818967 /* PointStatisticCell.m in Sources */,
 				E243C187205113C900818967 /* RaceStatisticCCell.m in Sources */,
+				28FED31720E1396200699BDE /* StartUpMethod.m in Sources */,
+				28FED31A20E1396E00699BDE /* ShutDownMethod.m in Sources */,
 				E2B723B0204D20E900BD972F /* RaceStateCell.m in Sources */,
+				28FED32020E13D9D00699BDE /* invoke.m in Sources */,
 				E20D411E2052359F00BA5C76 /* PointIconView.m in Sources */,
 				E2710F7D20634FFB00A1E96C /* TMIconImageView.m in Sources */,
+				28FED31420E1395100699BDE /* MACMachine.m in Sources */,
 				28018CFD204ECEE000289238 /* StretchingNavBar.m in Sources */,
 				E2B7237E204D1F5F00BD972F /* AppDelegate.m in Sources */,
 				E248B6852057A4AE006D551B /* TMCurtainView.m in Sources */,
 				E243C17E204FCE5000818967 /* PlayerStatisticCell.m in Sources */,
 				E2C5FB1A2064DE41008B9EA2 /* TMVideoPlayer.m in Sources */,
+				28FED30C20E1387A00699BDE /* timeCalViewController.m in Sources */,
 				E24D86272060A73B004666F5 /* TMPlayViewController.m in Sources */,
 				E2C284CB204E9AC700FD3823 /* RaceStateViewController.m in Sources */,
 				28018CFA204EC8FF00289238 /* StretchingableNavViewController.m in Sources */,
